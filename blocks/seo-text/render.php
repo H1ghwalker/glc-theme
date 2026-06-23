@@ -12,17 +12,14 @@ if (!$text) {
 
 $stripped = strip_tags($text);
 $is_long  = mb_strlen($stripped) > $preview_length;
-$preview  = $is_long
-    ? mb_substr($stripped, 0, mb_strrpos(mb_substr($stripped, 0, $preview_length), ' '))
-    : $text;
 ?>
 
 <section class="seo-text section--bg-<?php echo esc_attr($bg); ?>">
     <div class="container">
         <div class="seo-text__inner">
 
-            <div class="seo-text__preview" id="seo-preview-<?php echo esc_attr($block['id']); ?>">
-                <?php echo wp_kses_post($preview); ?>
+            <div class="seo-text__preview<?php echo $is_long ? ' is-truncated' : ''; ?>" id="seo-preview-<?php echo esc_attr($block['id']); ?>">
+                <?php echo wp_kses_post($text); ?>
                 <?php if ($is_long) : ?>
                     <span class="seo-text__fade"></span>
                 <?php endif; ?>

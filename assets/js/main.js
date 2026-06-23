@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const title = megaMenu.querySelector('.mega-menu__active-title');
             const detailBtn = megaMenu.querySelector('.mega-menu__detail-btn');
             if (title) title.textContent = catItem.dataset.title;
-            if (detailBtn) detailBtn.href = catItem.dataset.link;
+            if (detailBtn && /^https?:\/\//.test(catItem.dataset.link)) detailBtn.href = catItem.dataset.link;
         });
     });
 

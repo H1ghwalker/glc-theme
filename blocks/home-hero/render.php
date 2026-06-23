@@ -9,6 +9,16 @@ $bg           = get_field('section_bg') ?: 'white';
 $icons_uri    = get_template_directory_uri() . '/assets/img/icons/ui';
 $arrow_badge  = $icons_uri . '/arrow-banner-hero.svg';
 
+$glc_hero_focus_value = static function ($value) {
+    $value = trim((string) $value);
+
+    if ($value === '') {
+        return '';
+    }
+
+    return preg_match('/^[a-z0-9.%\s-]+$/i', $value) ? $value : '';
+};
+
 if (!$slides) {
     glc_block_placeholder('GLC: Головний слайдер — заповніть слайди в правій панелі →');
     return;
@@ -41,13 +51,25 @@ if (!$slides) {
                     $img     = $slide['slide_image'];
                     $img_url = $img ? ($img['sizes']['glc-hero-slide'] ?? $img['url']) : get_template_directory_uri() . '/assets/img/hero/banners.png';
                     $img_alt = $img ? $img['alt'] : '';
+                    $focus_desktop = $glc_hero_focus_value($slide['slide_focus_desktop'] ?? '');
+                    $focus_mobile  = $glc_hero_focus_value($slide['slide_focus_mobile'] ?? '');
+                    $img_style     = '';
+
+                    if ($focus_desktop !== '') {
+                        $img_style .= '--hero-img-position:' . $focus_desktop . ';';
+                    }
+
+                    if ($focus_mobile !== '') {
+                        $img_style .= '--hero-img-position-mobile:' . $focus_mobile . ';';
+                    }
                 ?>
                 <div class="swiper-slide">
                     <div class="container">
                         <div class="hero__media">
                             <img src="<?php echo esc_url($img_url); ?>"
                                  alt="<?php echo esc_attr($img_alt); ?>"
-                                 class="hero__img">
+                                 class="hero__img"<?php if ($img_style) : ?>
+                                 style="<?php echo esc_attr($img_style); ?>"<?php endif; ?>>
                             <div class="hero__gradient"></div>
                         </div>
                     </div>

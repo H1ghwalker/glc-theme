@@ -3,16 +3,12 @@ if (!defined('ABSPATH')) exit;
 
 $bg          = get_field('section_bg') ?: 'page';
 
-$media_text_field = static function (array $selectors) use ($block) {
+$media_text_field = static function (array $selectors) {
     foreach ($selectors as $selector) {
         $value = get_field($selector);
 
         if ($value !== null && $value !== false && $value !== '') {
             return $value;
-        }
-
-        if (isset($block['data'][$selector]) && $block['data'][$selector] !== '') {
-            return $block['data'][$selector];
         }
     }
 

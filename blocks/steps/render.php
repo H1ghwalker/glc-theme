@@ -44,7 +44,7 @@ $nums = ['01', '02', '03', '04', '05', '06'];
 
                 <div class="steps__circle-wrap">
                     <div class="<?php echo esc_attr($circle_class); ?>">
-                        <?php if ( file_exists( $icon_path ) ) include $icon_path; ?>
+                        <?php if ( file_exists( $icon_path ) ) readfile( $icon_path ); ?>
                     </div>
                     <span class="steps__num"><?php echo esc_html($nums[ $i ] ?? '0' . ( $i + 1 )); ?></span>
                 </div>

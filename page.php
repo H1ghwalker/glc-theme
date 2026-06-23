@@ -16,7 +16,7 @@ glc_breadcrumbs();
                         <span class="coming-soon__gear coming-soon__gear--lg">&#9881;</span>
                         <span class="coming-soon__gear coming-soon__gear--sm">&#9881;</span>
                     </div>
-                    <h1 class="coming-soon__title"><?php the_title(); ?></h1>
+                    <h1 class="coming-soon__title"><?php echo esc_html(get_the_title()); ?></h1>
                     <p class="coming-soon__desc">
                         Ми працюємо над цим розділом.<br>
                         Зовсім скоро тут з'явиться корисна інформація.
