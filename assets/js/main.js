@@ -427,12 +427,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    document.addEventListener('fluentform_submission_success', function (e) {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            event: 'generate_lead',
-            form_id: e.detail?.config?.id || '',
+    if (window.jQuery) {
+        jQuery(document.body).on('fluentform_submission_success', function (e, data) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'generate_lead',
+                form_id: data?.config?.id || '',
+            });
         });
-    });
+    }
 
 });
