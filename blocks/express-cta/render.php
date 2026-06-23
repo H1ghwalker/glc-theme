@@ -15,7 +15,7 @@ $bot_line  = implode(' ', array_slice($words, 2)); ?>
 <section class="express-cta section--bg-<?php echo esc_attr($bg); ?>">
     <div class="express-cta__inner">
 
-        <img src="<?php echo esc_url($uri); ?>/assets/img/plane.png"
+        <img src="<?php echo esc_url($uri); ?>/assets/img/icons/plane.svg"
              alt="" class="express-cta__plane">
 
         <div class="express-cta__body">
@@ -35,7 +35,7 @@ $bot_line  = implode(' ', array_slice($words, 2)); ?>
             <?php endif; ?>
         </div>
 
-        <img src="<?php echo esc_url($uri); ?>/assets/img/bus.png"
+        <img src="<?php echo esc_url($uri); ?>/assets/img/icons/bus.svg"
              alt="" class="express-cta__bus">
 
     </div>
