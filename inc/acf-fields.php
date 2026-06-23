@@ -825,6 +825,19 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-stats']]],
     ]);
 
+    // ── CPT: Офіс — поля запису ─────────────────────────────
+    acf_add_local_field_group([
+        'key'    => 'group_cpt_office',
+        'title'  => 'Office Fields',
+        'fields' => [
+            ['key' => 'field_office_phone',   'label' => 'Телефон',            'name' => 'office_phone',   'type' => 'text', 'instructions' => 'Кілька номерів через кому'],
+            ['key' => 'field_office_email',   'label' => 'Email',              'name' => 'office_email',   'type' => 'email'],
+            ['key' => 'field_office_address', 'label' => 'Адреса',            'name' => 'office_address', 'type' => 'text'],
+            ['key' => 'field_office_map_src', 'label' => 'Посилання на карту', 'name' => 'office_map_src', 'type' => 'url', 'instructions' => 'Google Maps embed URL'],
+        ],
+        'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'office']]],
+    ]);
+
     acf_add_local_field_group([
         'key'    => 'group_glc_offices_bg',
         'title'  => 'GLC Block: Офіси — фон',

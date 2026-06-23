@@ -10,3 +10,5 @@ Thumbs.db
 *.7z
 *.sql
 .sass-cache/
+AGENTS.md
+CLAUDE.md
