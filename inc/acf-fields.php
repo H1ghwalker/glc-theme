@@ -120,6 +120,41 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-cargo-types']]],
     ]);
 
+    // ── GLC Block: Види вантажів (слайдер) ────────────────
+    acf_add_local_field_group([
+        'key' => 'group_glc_cargo_slider',
+        'title' => 'GLC Block: Види вантажів (слайдер)',
+        'fields' => [
+            ['key' => 'field_cslider_sec_title', 'label' => 'Заголовок секції', 'name' => 'section_title', 'type' => 'text'],
+            ['key' => 'field_cslider_sec_desc', 'label' => 'Опис секції', 'name' => 'section_desc', 'type' => 'textarea', 'rows' => 3],
+            [
+                'key' => 'field_cslider_items',
+                'label' => 'Елементи',
+                'name' => 'items',
+                'type' => 'repeater',
+                'layout' => 'block',
+                'button_label' => 'Додати вид вантажу',
+                'required' => 1,
+                'sub_fields' => [
+                    ['key' => 'field_cslider_item_title', 'label' => 'Назва', 'name' => 'title', 'type' => 'text', 'required' => 1],
+                    ['key' => 'field_cslider_item_desc', 'label' => 'Опис', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3],
+                    ['key' => 'field_cslider_item_link', 'label' => 'Посилання', 'name' => 'link', 'type' => 'url'],
+                    [
+                        'key' => 'field_cslider_item_image',
+                        'label' => 'Зображення',
+                        'name' => 'image',
+                        'type' => 'image',
+                        'return_format' => 'array',
+                        'preview_size' => 'thumbnail',
+                        'instructions' => 'Рекомендовано горизонтальне фото близько 345x158px',
+                    ],
+                ],
+            ],
+            ['key' => 'field_cslider_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
+        ],
+        'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-cargo-slider']]],
+    ]);
+
     // ── GLC Block: Типи послуг + тарифи ──────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_service_types',
@@ -233,6 +268,102 @@ function glc_register_block_field_groups()
             ['key' => 'field_phero_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
         ],
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-page-hero']]],
+    ]);
+
+    // ── GLC Block: Hero з текстом і фото ──────────────────
+    acf_add_local_field_group([
+        'key' => 'group_glc_content_hero',
+        'title' => 'GLC Block: Hero з текстом і фото',
+        'fields' => [
+            ['key' => 'field_chero_title', 'label' => 'Заголовок', 'name' => 'content_hero_title', 'type' => 'text', 'required' => 1],
+            [
+                'key' => 'field_chero_intro',
+                'label' => 'Основний текст',
+                'name' => 'content_hero_intro',
+                'type' => 'wysiwyg',
+                'toolbar' => 'basic',
+                'media_upload' => 0,
+                'tabs' => 'visual',
+            ],
+            ['key' => 'field_chero_highlight', 'label' => 'Акцентний текст', 'name' => 'content_hero_highlight', 'type' => 'textarea', 'rows' => 6],
+            ['key' => 'field_chero_btn1_text', 'label' => 'Кнопка 1: текст', 'name' => 'content_hero_btn_1_text', 'type' => 'text'],
+            [
+                'key' => 'field_chero_btn1_action',
+                'label' => 'Кнопка 1: дія',
+                'name' => 'content_hero_btn_1_action',
+                'type' => 'select',
+                'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                'default_value' => 'link',
+                'return_format' => 'value',
+            ],
+            ['key' => 'field_chero_btn1_value', 'label' => 'Кнопка 1: значення', 'name' => 'content_hero_btn_1_value', 'type' => 'text'],
+            ['key' => 'field_chero_btn2_text', 'label' => 'Кнопка 2: текст', 'name' => 'content_hero_btn_2_text', 'type' => 'text'],
+            [
+                'key' => 'field_chero_btn2_action',
+                'label' => 'Кнопка 2: дія',
+                'name' => 'content_hero_btn_2_action',
+                'type' => 'select',
+                'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                'default_value' => 'link',
+                'return_format' => 'value',
+            ],
+            ['key' => 'field_chero_btn2_value', 'label' => 'Кнопка 2: значення', 'name' => 'content_hero_btn_2_value', 'type' => 'text'],
+            [
+                'key' => 'field_chero_bottom_text',
+                'label' => 'Текст під кнопками',
+                'name' => 'content_hero_bottom_text',
+                'type' => 'wysiwyg',
+                'toolbar' => 'basic',
+                'media_upload' => 0,
+                'tabs' => 'visual',
+            ],
+            [
+                'key' => 'field_chero_image',
+                'label' => 'Зображення',
+                'name' => 'content_hero_image',
+                'type' => 'image',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'instructions' => 'Рекомендовано вертикальне фото близько 420x520px',
+            ],
+            ['key' => 'field_chero_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
+        ],
+        'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-content-hero']]],
+    ]);
+
+    // ── GLC Block: Фото + текст ───────────────────────────
+    acf_add_local_field_group([
+        'key' => 'group_glc_media_text',
+        'title' => 'GLC Block: Фото + текст',
+        'fields' => [
+            [
+                'key' => 'field_mtext_image',
+                'label' => 'Зображення',
+                'name' => 'media_text_image',
+                'type' => 'image',
+                'return_format' => 'array',
+                'preview_size' => 'medium',
+                'instructions' => 'Рекомендовано вертикальне фото 360x440px',
+            ],
+            ['key' => 'field_mtext_title', 'label' => 'Заголовок', 'name' => 'media_text_title', 'type' => 'text'],
+            ['key' => 'field_mtext_highlight', 'label' => 'Акцентний текст', 'name' => 'media_text_highlight', 'type' => 'textarea', 'rows' => 5],
+            [
+                'key' => 'field_mtext_body',
+                'label' => 'Текст справа',
+                'name' => 'media_text_body',
+                'type' => 'textarea',
+                'rows' => 6,
+            ],
+            [
+                'key' => 'field_mtext_bottom',
+                'label' => 'Текст знизу',
+                'name' => 'media_text_bottom',
+                'type' => 'textarea',
+                'rows' => 7,
+            ],
+            ['key' => 'field_mtext_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
+        ],
+        'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-media-text']]],
     ]);
 
     // ── GLC Block: Етапи ─────────────────────────────────
@@ -425,6 +556,15 @@ function glc_register_block_field_groups()
                 'required'     => 1,
                 'sub_fields'   => [
                     [
+                        'key'           => 'field_slist_image',
+                        'label'         => 'Фото',
+                        'name'          => 'image',
+                        'type'          => 'image',
+                        'return_format' => 'array',
+                        'preview_size'  => 'medium',
+                        'instructions'  => 'Рекомендовано горизонтальне фото близько 415x233px',
+                    ],
+                    [
                         'key'           => 'field_slist_icon',
                         'label'         => 'Іконка',
                         'name'          => 'icon',
@@ -435,6 +575,17 @@ function glc_register_block_field_groups()
                     ],
                     ['key' => 'field_slist_item_title', 'label' => 'Назва', 'name' => 'title', 'type' => 'text', 'required' => 1],
                     ['key' => 'field_slist_item_desc', 'label' => 'Опис', 'name' => 'description', 'type' => 'textarea', 'rows' => 3],
+                    ['key' => 'field_slist_item_btn_text', 'label' => 'Кнопка: текст', 'name' => 'btn_text', 'type' => 'text', 'default_value' => 'Детальніше'],
+                    [
+                        'key'           => 'field_slist_item_btn_action',
+                        'label'         => 'Кнопка: дія',
+                        'name'          => 'btn_action',
+                        'type'          => 'select',
+                        'choices'       => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                        'default_value' => 'link',
+                        'return_format' => 'value',
+                    ],
+                    ['key' => 'field_slist_item_btn_value', 'label' => 'Кнопка: значення', 'name' => 'btn_value', 'type' => 'text'],
                 ],
             ],
             ['key' => 'field_slist_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка', 'dark' => 'Темний'], 'default_value' => 'page', 'return_format' => 'value'],
@@ -643,6 +794,50 @@ function glc_register_block_field_groups()
             ['key' => 'field_tt_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
         ],
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-transport-types']]],
+    ]);
+
+    // ── GLC Block: Типи вантажних автомобілів ─────────────
+    acf_add_local_field_group([
+        'key'    => 'group_glc_truck_types',
+        'title'  => 'GLC Block: Типи вантажних автомобілів',
+        'fields' => [
+            ['key' => 'field_truck_types_title', 'label' => 'Заголовок секції', 'name' => 'section_title', 'type' => 'text'],
+            [
+                'key'          => 'field_truck_types_items',
+                'label'        => 'Картки',
+                'name'         => 'items',
+                'type'         => 'repeater',
+                'layout'       => 'block',
+                'button_label' => 'Додати авто',
+                'required'     => 1,
+                'sub_fields'   => [
+                    [
+                        'key'           => 'field_truck_types_image',
+                        'label'         => 'Фото',
+                        'name'          => 'image',
+                        'type'          => 'image',
+                        'return_format' => 'array',
+                        'preview_size'  => 'medium',
+                        'instructions'  => 'Рекомендовано горизонтальне фото близько 580x234px',
+                    ],
+                    ['key' => 'field_truck_types_item_title', 'label' => 'Назва', 'name' => 'title', 'type' => 'text', 'required' => 1],
+                    ['key' => 'field_truck_types_item_desc', 'label' => 'Опис', 'name' => 'description', 'type' => 'textarea', 'rows' => 6],
+                    ['key' => 'field_truck_types_btn_text', 'label' => 'Кнопка: текст', 'name' => 'btn_text', 'type' => 'text', 'default_value' => 'Замовити авто'],
+                    [
+                        'key'           => 'field_truck_types_btn_action',
+                        'label'         => 'Кнопка: дія',
+                        'name'          => 'btn_action',
+                        'type'          => 'select',
+                        'choices'       => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                        'default_value' => 'link',
+                        'return_format' => 'value',
+                    ],
+                    ['key' => 'field_truck_types_btn_value', 'label' => 'Кнопка: значення', 'name' => 'btn_value', 'type' => 'text'],
+                ],
+            ],
+            ['key' => 'field_truck_types_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
+        ],
+        'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-truck-types']]],
     ]);
 
     // ── GLC Block: Головний слайдер ──────────────────

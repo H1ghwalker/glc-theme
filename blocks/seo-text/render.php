@@ -1,15 +1,15 @@
 <?php
 if (!defined('ABSPATH')) exit;
-$bg   = get_field('section_bg') ?: 'page';
-$text = get_field('seo_text');
+
+$bg             = get_field('section_bg') ?: 'page';
+$text           = get_field('seo_text');
 $preview_length = get_field('preview_length') ?: 300;
 
 if (!$text) {
-    glc_block_placeholder('GLC: SEO текст — заповніть поле в правій панелі →');
+    glc_block_placeholder('GLC: SEO текст - заповніть поле у правій панелі ->');
     return;
 }
 
-// Обрізаємо текст для прев'ю (без розриву слів)
 $stripped = strip_tags($text);
 $is_long  = mb_strlen($stripped) > $preview_length;
 $preview  = $is_long
@@ -29,14 +29,14 @@ $preview  = $is_long
             </div>
 
             <?php if ($is_long) : ?>
-                <div class="seo-text__full" id="seo-full-<?php echo esc_attr($block['id']); ?>"
-                     style="display:none">
+                <div class="seo-text__full" id="seo-full-<?php echo esc_attr($block['id']); ?>" style="display:none">
                     <?php echo wp_kses_post($text); ?>
                 </div>
                 <button class="seo-text__toggle"
                         data-preview="seo-preview-<?php echo esc_attr($block['id']); ?>"
                         data-full="seo-full-<?php echo esc_attr($block['id']); ?>">
-                    Читати далі
+                    <span class="seo-text__toggle-icon" aria-hidden="true"></span>
+                    <span class="seo-text__toggle-label">Читати далі</span>
                 </button>
             <?php endif; ?>
 

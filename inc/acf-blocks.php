@@ -106,6 +106,19 @@ function glc_register_acf_blocks()
     ]);
 
     acf_register_block_type([
+        'name' => 'glc-cargo-slider',
+        'title' => 'GLC: Види вантажів (слайдер)',
+        'render_template' => get_template_directory() . '/blocks/cargo-slider/render.php',
+        'category' => 'glc-services',
+        'icon' => 'slides',
+        'keywords' => ['cargo', 'slider', 'вантажі', 'glc'],
+        'mode' => 'preview',
+        'post_types' => ['page'],
+        'supports' => ['align' => false],
+        'example' => [],
+    ]);
+
+    acf_register_block_type([
         'name' => 'glc-transport-types',
         'title' => 'GLC: Види транспорту',
         'render_template' => get_template_directory() . '/blocks/transport-types/render.php',
@@ -127,6 +140,32 @@ function glc_register_acf_blocks()
         'category' => 'glc-common',
         'icon' => 'cover-image',
         'keywords' => ['hero', 'banner', 'заголовок', 'glc'],
+        'mode' => 'preview',
+        'post_types' => ['page'],
+        'supports' => ['align' => false],
+        'example' => [],
+    ]);
+
+    acf_register_block_type([
+        'name' => 'glc-content-hero',
+        'title' => 'GLC: Hero з текстом і фото',
+        'render_template' => get_template_directory() . '/blocks/content-hero/render.php',
+        'category' => 'glc-common',
+        'icon' => 'cover-image',
+        'keywords' => ['hero', 'content', 'photo', 'glc'],
+        'mode' => 'preview',
+        'post_types' => ['page'],
+        'supports' => ['align' => false],
+        'example' => [],
+    ]);
+
+    acf_register_block_type([
+        'name' => 'glc-media-text',
+        'title' => 'GLC: Фото + текст',
+        'render_template' => get_template_directory() . '/blocks/media-text/render.php',
+        'category' => 'glc-common',
+        'icon' => 'align-pull-left',
+        'keywords' => ['media', 'text', 'photo', 'glc'],
         'mode' => 'preview',
         'post_types' => ['page'],
         'supports' => ['align' => false],
@@ -327,6 +366,19 @@ function glc_register_acf_blocks()
         'post_types'      => ['page'],
         'supports'        => ['align' => false],
         'keywords'        => ['transport', 'варіанти', 'перевезення', 'glc'],
+        'example'         => [],
+    ]);
+
+    acf_register_block_type([
+        'name'            => 'glc-truck-types',
+        'title'           => 'GLC: Типи вантажних автомобілів',
+        'render_template' => get_template_directory() . '/blocks/truck-types/render.php',
+        'category'        => 'glc-common',
+        'icon'            => 'car',
+        'mode'            => 'preview',
+        'post_types'      => ['page'],
+        'supports'        => ['align' => false],
+        'keywords'        => ['truck', 'vehicles', 'вантажні автомобілі', 'glc'],
         'example'         => [],
     ]);
 

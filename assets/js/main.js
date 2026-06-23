@@ -264,6 +264,36 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // ── Cargo Slider ──
+    if (document.querySelector('.cargo-slider__swiper')) {
+        hoverSwap('.cargo-slider__nav');
+        const cPrev = document.querySelector('.cargo-slider__nav--prev');
+        const cNext = document.querySelector('.cargo-slider__nav--next');
+
+        new Swiper('.cargo-slider__swiper', {
+            slidesPerView: 3,
+            spaceBetween: 15,
+            navigation: {
+                prevEl: '.cargo-slider__nav--prev',
+                nextEl: '.cargo-slider__nav--next',
+            },
+            pagination: {
+                el: '.cargo-slider__pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                0:    { slidesPerView: 1 },
+                640:  { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            },
+            on: {
+                init(sw)       { syncNavVisibility(sw, cPrev, cNext); },
+                breakpoint(sw) { syncNavVisibility(sw, cPrev, cNext); },
+                slideChange(sw){ syncNavVisibility(sw, cPrev, cNext); },
+            },
+        });
+    }
+
     // ── Reviews: слайдер + розгортання тексту ──
     if (document.querySelector('.reviews__swiper')) {
         hoverSwap('.reviews__nav');
@@ -412,7 +442,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         preview.style.display = isOpen ? 'block' : 'none';
         full.style.display    = isOpen ? 'none'  : 'block';
-        btn.textContent       = isOpen ? 'Читати далі' : 'Згорнути';
+
+        const label = btn.querySelector('.seo-text__toggle-label');
+        if (label) {
+            label.textContent = isOpen ? 'Читати далі' : 'Згорнути';
+        }
     });
 
     // ── Аналітика: конверсії ──
