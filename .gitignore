@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.old
+*.zip
+*.rar
+*.7z
+*.sql
+.sass-cache/

@@ -1,0 +1,831 @@
+/* ═══════════════════════════════════════════
+   16. FLUENT FORMS
+   ═══════════════════════════════════════════ */
+
+/* Загальні стилі форм GLC */
+.ff-form-wrap {
+  --ff-border-radius: 50px;
+}
+
+
+/* Gutenberg Fluent Forms: експрес розрахунок */
+.glc-express-form.ff_guten_block {
+  max-width: 1055px;
+  margin: 40px auto;
+  padding: 42px 86px 34px;
+  background: var(--bg-white);
+  border-radius: 28px;
+  box-shadow: 0 18px 42px rgba(70, 86, 110, 0.28);
+  box-sizing: border-box;
+}
+
+.glc-express-form .ff-t-container {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 16px !important;
+}
+
+.glc-express-form .ff-t-cell {
+  width: 100% !important;
+  max-width: none !important;
+  flex-basis: auto !important;
+  padding: 0 !important;
+}
+
+.glc-express-form .ff-el-group {
+  margin: 0 !important;
+}
+
+.glc-express-form .ff-el-input--label {
+  display: none;
+}
+
+.glc-express-form .ff-el-input--content input {
+  display: block;
+  width: 100%;
+  height: 50px !important;
+  min-height: 50px !important;
+  border: 1.5px solid #dedede !important;
+  border-radius: 50px !important;
+  padding: 0 22px !important;
+  background: var(--bg-white) !important;
+  color: var(--text-main) !important;
+  box-sizing: border-box !important;
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.4;
+  box-shadow: none !important;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.glc-express-form .ff-el-input--content input:hover,
+.glc-express-form .ff-el-input--content input:focus,
+.glc-express-form .ff-el-input--content input:focus-visible {
+  border-color: var(--yellow) !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.18) !important;
+}
+
+.glc-express-form .ff-el-input--content input::placeholder {
+  color: #9299a3;
+  opacity: 1;
+}
+
+.glc-express-form .ff-el-form-check {
+  margin: 4px 0 0 !important;
+}
+
+.glc-express-form .ff-el-form-check-label {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--dark);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.glc-express-form .ff-el-form-check-label a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.glc-express-form .ff-el-input--content input[type="checkbox"] {
+  flex: 0 0 20px;
+  width: 20px !important;
+  height: 20px !important;
+  min-height: 20px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 1.5px solid #dedede !important;
+  border-radius: 4px !important;
+  background: var(--bg-white) !important;
+  accent-color: var(--yellow);
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.glc-express-form .ff-el-input--content input[type="checkbox"]:hover,
+.glc-express-form .ff-el-input--content input[type="checkbox"]:focus,
+.glc-express-form .ff-el-input--content input[type="checkbox"]:focus-visible {
+  border-color: var(--yellow) !important;
+  box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.18) !important;
+}
+
+.glc-express-form .ff_submit_btn_wrapper {
+  display: block !important;
+  width: 100%;
+}
+
+.glc-express-form .ff-btn-submit,
+.glc-express-form .ff-btn-submit.wpf_has_custom_css {
+  position: relative;
+  width: 100% !important;
+  height: 50px;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 50px !important;
+  background: var(--yellow) !important;
+  color: var(--dark) !important;
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  box-shadow: none !important;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background var(--transition), color var(--transition), transform var(--transition), opacity var(--transition);
+}
+
+.glc-express-form .ff-btn-submit:hover,
+.glc-express-form .ff-btn-submit.wpf_has_custom_css:hover {
+  background: #333333 !important;
+  color: var(--white) !important;
+}
+
+.glc-express-form .ff-btn-submit:active,
+.glc-express-form .ff-btn-submit.wpf_has_custom_css:active {
+  transform: translateY(1px);
+}
+
+.glc-express-form .ff-btn-submit:disabled,
+.glc-express-form .ff-btn-submit[disabled],
+.glc-express-form .ff-btn-submit.ff-btn-loading,
+.glc-express-form .ff-btn-submit.ff-loading {
+  background: #333333 !important;
+  color: var(--white) !important;
+  cursor: wait;
+  opacity: 0.86;
+}
+
+.glc-express-form .ff-btn-submit:disabled::after,
+.glc-express-form .ff-btn-submit[disabled]::after,
+.glc-express-form .ff-btn-submit.ff-btn-loading::after,
+.glc-express-form .ff-btn-submit.ff-loading::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  vertical-align: -3px;
+  animation: glc-spin 0.7s linear infinite;
+}
+
+.glc-express-form .ff-message-success,
+.glc-express-form .ff_success_message {
+  margin: 24px 0 0 !important;
+  padding: 18px 22px !important;
+  border: 1px solid rgba(255, 204, 0, 0.55) !important;
+  border-left: 5px solid var(--yellow) !important;
+  border-radius: 14px !important;
+  background: #fff9dc !important;
+  color: var(--dark) !important;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: left;
+  box-shadow: 0 12px 28px rgba(70, 86, 110, 0.12);
+}
+
+.glc-express-form .ff-message-success p,
+.glc-express-form .ff_success_message p {
+  margin: 0;
+}
+
+.glc-express-form .error.text-danger,
+.glc-express-form .ff-el-is-error .text-danger,
+.glc-express-form .ff-errors-in-stack {
+  margin-top: 8px;
+  color: #d93025 !important;
+  font-family: var(--font);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.glc-express-form .ff-el-is-error .ff-el-input--content input {
+  border-color: #d93025;
+}
+
+@keyframes glc-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.glc-express-form .ff-custom_html:not(.ff_excluded) {
+  color: #9299a3;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.glc-express-form .ff-custom_html:not(.ff_excluded) p {
+  margin: 0;
+}
+
+.glc-express-form .ff-custom_html:not(.ff_excluded) a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.glc-express-form fieldset > .ff-custom_html:not(.ff_excluded):first-of-type {
+  margin: 0 0 28px !important;
+  color: var(--dark);
+  text-align: center;
+}
+
+.glc-express-form fieldset > .ff-custom_html:not(.ff_excluded):first-of-type p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.glc-express-form fieldset > .ff-custom_html:not(.ff_excluded):first-of-type p:first-child {
+  max-width: none;
+  margin-bottom: 18px;
+  color: var(--dark);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.glc-express-form .ff-express-head {
+  margin: 0 0 28px;
+  text-align: center;
+}
+
+.glc-express-form .ff-express-head h2 {
+  margin: 0 0 18px;
+  color: var(--dark);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.glc-express-form .ff-express-head p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+@media (max-width: 1024px) {
+  .glc-express-form.ff_guten_block {
+    max-width: calc(100% - 32px);
+    padding: 34px 32px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .glc-express-form.ff_guten_block {
+    width: calc(100% - 32px);
+    max-width: 420px;
+    margin: 22px auto 40px;
+    padding: 36px 16px 34px;
+    border-radius: 28px;
+    box-shadow: 0 18px 48px rgba(70, 86, 110, 0.34);
+  }
+
+  .glc-express-form .ff-t-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px !important;
+  }
+
+  .glc-express-form .ff-el-input--content input {
+    height: 55px !important;
+    min-height: 55px !important;
+    padding: 0 24px !important;
+    font-size: 15px;
+  }
+
+  .glc-express-form .ff-btn-submit,
+  .glc-express-form .ff-btn-submit.wpf_has_custom_css {
+    height: 55px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .glc-express-form .ff-custom_html:not(.ff_excluded) {
+    margin-top: 8px !important;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .glc-express-form .ff-el-form-check-label {
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .glc-express-form fieldset > .ff-custom_html:not(.ff_excluded):first-of-type p:first-child,
+  .glc-express-form .ff-express-head h2 {
+    font-size: 28px;
+    line-height: 1.35;
+  }
+
+  .glc-express-form fieldset > .ff-custom_html:not(.ff_excluded):first-of-type,
+  .glc-express-form .ff-express-head {
+    margin-bottom: 32px !important;
+  }
+
+  .glc-express-form fieldset > .ff-custom_html:not(.ff_excluded):first-of-type p,
+  .glc-express-form .ff-express-head p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .glc-express-form.ff_guten_block {
+    width: calc(100% - 40px);
+    max-width: 335px;
+    margin: 20px auto 36px;
+    padding: 22px 14px 20px;
+    border-radius: 18px;
+    box-shadow: 0 10px 26px rgba(70, 86, 110, 0.2);
+  }
+
+  .glc-express-form .ff-t-container {
+    gap: 10px;
+    margin-bottom: 10px !important;
+  }
+
+  .glc-express-form .ff-el-group {
+    margin-bottom: 10px !important;
+  }
+
+  .glc-express-form .ff-el-input--content input {
+    height: 42px !important;
+    min-height: 42px !important;
+    padding: 0 16px !important;
+    font-size: 13px;
+  }
+
+  .glc-express-form .ff-btn-submit,
+  .glc-express-form .ff-btn-submit.wpf_has_custom_css {
+    height: 42px;
+    min-height: 42px;
+    font-size: 14px;
+  }
+
+  .glc-express-form fieldset > .ff-custom_html:not(.ff_excluded):first-of-type,
+  .glc-express-form .ff-express-head {
+    margin-bottom: 18px !important;
+  }
+
+  .glc-express-form fieldset > .ff-custom_html:not(.ff_excluded):first-of-type p:first-child,
+  .glc-express-form .ff-express-head h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .glc-express-form fieldset > .ff-custom_html:not(.ff_excluded):first-of-type p,
+  .glc-express-form .ff-express-head p {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .glc-express-form .ff-custom_html:not(.ff_excluded) {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .glc-express-form .ff-el-form-check-label {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .glc-express-form .ff-el-input--content input[type="checkbox"] {
+    flex-basis: 18px;
+    width: 18px !important;
+    height: 18px !important;
+    min-height: 18px !important;
+  }
+}
+
+
+/* Modal forms */
+body.has-glc-modal-open {
+  overflow: hidden;
+}
+
+.glc-modal[hidden] {
+  display: none !important;
+}
+
+.glc-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.glc-modal.is-open {
+  animation: glc-modal-fade-in 0.18s ease-out both;
+}
+
+.glc-modal.is-closing {
+  animation: glc-modal-fade-out 0.18s ease-in both;
+}
+
+.glc-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 46, 0.62);
+  backdrop-filter: blur(2px);
+}
+
+.glc-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1055px);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  padding: 42px 86px 34px;
+  background: var(--bg-white);
+  border-radius: 28px;
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.24);
+}
+
+.glc-modal.is-open .glc-modal__dialog {
+  animation: glc-modal-slide-in 0.22s ease-out both;
+}
+
+.glc-modal.is-closing .glc-modal__dialog {
+  animation: glc-modal-slide-out 0.18s ease-in both;
+}
+
+.glc-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background: #f5f6fb;
+  color: var(--dark);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.glc-modal__close:hover,
+.glc-modal__close:focus-visible {
+  background: var(--yellow);
+  color: var(--dark);
+  outline: none;
+}
+
+.glc-modal__title {
+  margin: 0 48px 28px;
+  color: var(--dark);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.glc-modal__form form,
+.glc-modal__form .frm-fluent-form,
+.glc-modal__form .ff-form {
+  margin: 0 !important;
+}
+
+.glc-modal__form .ff-t-container {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 16px !important;
+}
+
+.glc-modal__form .ff-t-cell {
+  width: 100% !important;
+  max-width: none !important;
+  flex-basis: auto !important;
+  padding: 0 !important;
+}
+
+.glc-modal__form .ff-el-group {
+  margin: 0 !important;
+}
+
+.glc-modal__form .ff-el-input--label {
+  display: none !important;
+}
+
+.glc-modal__form .ff-el-input--content input:not([type="checkbox"]),
+.glc-modal__form .ff-el-input--content .ff-el-form-control:not([type="checkbox"]),
+.glc-modal__form .ff-el-input--content select,
+.glc-modal__form .ff-el-input--content textarea {
+  display: block !important;
+  width: 100% !important;
+  height: 50px !important;
+  min-height: 50px !important;
+  border: 1.5px solid #dedede !important;
+  border-radius: 50px !important;
+  padding: 0 22px !important;
+  background: var(--bg-white) !important;
+  color: var(--text-main) !important;
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.4;
+  box-shadow: none !important;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.glc-modal__form .ff-el-input--content textarea {
+  height: auto !important;
+  min-height: 112px;
+  padding-top: 14px !important;
+  border-radius: 20px !important;
+  resize: vertical;
+}
+
+.glc-modal__form .ff-el-input--content input:not([type="checkbox"]):hover,
+.glc-modal__form .ff-el-input--content input:not([type="checkbox"]):focus,
+.glc-modal__form .ff-el-input--content .ff-el-form-control:not([type="checkbox"]):hover,
+.glc-modal__form .ff-el-input--content .ff-el-form-control:not([type="checkbox"]):focus,
+.glc-modal__form .ff-el-input--content select:hover,
+.glc-modal__form .ff-el-input--content select:focus,
+.glc-modal__form .ff-el-input--content textarea:hover,
+.glc-modal__form .ff-el-input--content textarea:focus {
+  border-color: var(--yellow) !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.18) !important;
+}
+
+.glc-modal__form .ff-el-input--content input::placeholder,
+.glc-modal__form .ff-el-input--content textarea::placeholder {
+  color: #9299a3;
+  opacity: 1;
+}
+
+.glc-modal__form .ff_submit_btn_wrapper {
+  display: flex !important;
+  align-items: stretch;
+  width: 100%;
+  margin: 0 !important;
+}
+
+.glc-modal__form .ff-btn-submit,
+.glc-modal__form .ff_submit_btn_wrapper .ff-btn,
+.glc-modal__form .ff-btn-submit.wpf_has_custom_css {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 50px !important;
+  min-height: 50px !important;
+  margin: 0 !important;
+  padding: 0 18px !important;
+  border: 0 !important;
+  border-radius: 50px !important;
+  background: var(--yellow) !important;
+  color: var(--dark) !important;
+  font-family: var(--font);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: none !important;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.glc-modal__form .ff-btn-submit:hover,
+.glc-modal__form .ff_submit_btn_wrapper .ff-btn:hover,
+.glc-modal__form .ff-btn-submit.wpf_has_custom_css:hover {
+  background: #333333 !important;
+  color: var(--white) !important;
+}
+
+.glc-modal__form .ff-btn-submit:active,
+.glc-modal__form .ff_submit_btn_wrapper .ff-btn:active,
+.glc-modal__form .ff-btn-submit.wpf_has_custom_css:active {
+  transform: translateY(1px);
+}
+
+.glc-modal__form .ff-el-form-check {
+  margin: 28px 0 0 !important;
+}
+
+.glc-modal__form .ff-el-form-check-label {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--text-main);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.glc-modal__form .ff-el-form-check-label a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.glc-modal__form .ff-el-input--content input[type="checkbox"] {
+  flex: 0 0 18px;
+  width: 18px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 1.5px solid #dedede !important;
+  border-radius: 4px !important;
+  background: var(--bg-white) !important;
+  accent-color: var(--yellow);
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.glc-modal__form .ff-custom_html:not(.ff_excluded),
+.glc-modal__form .ff-express-head {
+  max-width: none;
+  margin: 0 0 28px !important;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.glc-modal__form .ff-custom_html:not(.ff_excluded) p,
+.glc-modal__form .ff-express-head p {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.glc-modal__form .ff-custom_html:not(.ff_excluded) h2,
+.glc-modal__form .ff-express-head h2 {
+  margin: 0 0 18px;
+  color: var(--dark);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.glc-modal__form .error.text-danger,
+.glc-modal__form .ff-el-is-error .text-danger,
+.glc-modal__form .ff-errors-in-stack {
+  margin-top: 6px;
+  color: #d93025 !important;
+  font-family: var(--font);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.glc-modal__form .ff-message-success,
+.glc-modal__form .ff_success_message {
+  margin: 16px 0 0 !important;
+  padding: 16px 18px !important;
+  border: 1px solid rgba(255, 204, 0, 0.55) !important;
+  border-left: 5px solid var(--yellow) !important;
+  border-radius: 14px !important;
+  background: #fff9dc !important;
+  color: var(--dark) !important;
+  font-family: var(--font);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+@keyframes glc-modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes glc-modal-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes glc-modal-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glc-modal-slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .glc-modal__dialog {
+    width: calc(100% - 32px);
+    padding: 34px 32px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .glc-modal__dialog {
+    width: calc(100% - 32px);
+    max-width: 420px;
+    padding: 36px 16px 34px;
+  }
+
+  .glc-modal__form .ff-t-container {
+    grid-template-columns: 1fr;
+  }
+
+  .glc-modal__title,
+  .glc-modal__form .ff-custom_html:not(.ff_excluded) h2,
+  .glc-modal__form .ff-express-head h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .glc-modal {
+    padding: 16px;
+  }
+
+  .glc-modal__dialog {
+    max-height: calc(100vh - 32px);
+    padding: 22px 14px 20px;
+    border-radius: 18px;
+  }
+
+  .glc-modal__title {
+    margin: 0 34px 18px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .glc-modal__form .ff-t-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .glc-modal__form .ff-el-group {
+    margin-bottom: 10px !important;
+  }
+
+  .glc-modal__form .ff-el-input--content input:not([type="checkbox"]),
+  .glc-modal__form .ff-el-input--content .ff-el-form-control:not([type="checkbox"]),
+  .glc-modal__form .ff-el-input--content select {
+    height: 44px !important;
+    min-height: 44px !important;
+    padding: 0 16px !important;
+    font-size: 13px;
+  }
+
+  .glc-modal__form .ff-btn-submit,
+  .glc-modal__form .ff_submit_btn_wrapper .ff-btn,
+  .glc-modal__form .ff-btn-submit.wpf_has_custom_css {
+    height: 44px !important;
+    min-height: 44px !important;
+    font-size: 14px;
+  }
+
+  .glc-modal__form .ff-custom_html:not(.ff_excluded) h2,
+  .glc-modal__form .ff-express-head h2 {
+    font-size: 20px;
+  }
+
+  .glc-modal__form .ff-custom_html:not(.ff_excluded) p,
+  .glc-modal__form .ff-express-head p,
+  .glc-modal__form .ff-el-form-check-label {
+    font-size: 12px;
+  }
+}
+
