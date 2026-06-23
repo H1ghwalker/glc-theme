@@ -593,6 +593,51 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-service-list']]],
     ]);
 
+    // ── GLC Block: Картки послуг ─────────────────────────
+    acf_add_local_field_group([
+        'key'    => 'group_glc_service_cards',
+        'title'  => 'GLC Block: Картки послуг',
+        'fields' => [
+            ['key' => 'field_scards_title', 'label' => 'Заголовок', 'name' => 'section_title', 'type' => 'text'],
+            ['key' => 'field_scards_desc', 'label' => 'Опис', 'name' => 'section_desc', 'type' => 'textarea', 'rows' => 3],
+            ['key' => 'field_scards_btn_text', 'label' => 'Текст кнопки', 'name' => 'btn_text', 'type' => 'text'],
+            [
+                'key'           => 'field_scards_btn_action',
+                'label'         => 'Дія кнопки',
+                'name'          => 'btn_action',
+                'type'          => 'select',
+                'choices'       => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                'default_value' => 'link',
+                'return_format' => 'value',
+            ],
+            ['key' => 'field_scards_btn_value', 'label' => 'Значення (URL / id / телефон)', 'name' => 'btn_value', 'type' => 'text'],
+            [
+                'key'          => 'field_scards_items',
+                'label'        => 'Послуги',
+                'name'         => 'items',
+                'type'         => 'repeater',
+                'layout'       => 'block',
+                'button_label' => 'Додати послугу',
+                'required'     => 1,
+                'sub_fields'   => [
+                    [
+                        'key'           => 'field_scards_icon',
+                        'label'         => 'Іконка',
+                        'name'          => 'icon',
+                        'type'          => 'image',
+                        'return_format' => 'array',
+                        'preview_size'  => 'thumbnail',
+                        'instructions'  => 'SVG або PNG іконка',
+                    ],
+                    ['key' => 'field_scards_item_title', 'label' => 'Назва', 'name' => 'title', 'type' => 'text', 'required' => 1],
+                    ['key' => 'field_scards_item_desc', 'label' => 'Опис', 'name' => 'description', 'type' => 'textarea', 'rows' => 3],
+                ],
+            ],
+            ['key' => 'field_scards_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка', 'dark' => 'Темний'], 'default_value' => 'page', 'return_format' => 'value'],
+        ],
+        'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-service-cards']]],
+    ]);
+
     // ── GLC Block: Варіанти перевезення ─────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_care',

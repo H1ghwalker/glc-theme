@@ -344,6 +344,19 @@ function glc_register_acf_blocks()
     ]);
 
     acf_register_block_type([
+        'name'            => 'glc-service-cards',
+        'title'           => 'GLC: Картки послуг',
+        'render_template' => get_template_directory() . '/blocks/service-cards/render.php',
+        'category'        => 'glc-common',
+        'icon'            => 'screenoptions',
+        'mode'            => 'preview',
+        'post_types'      => ['page'],
+        'supports'        => ['align' => false],
+        'keywords'        => ['services', 'cards', 'послуги', 'картки', 'glc'],
+        'example'         => [],
+    ]);
+
+    acf_register_block_type([
         'name'            => 'glc-care',
         'title'           => 'GLC: Всі турботи',
         'render_template' => get_template_directory() . '/blocks/care/render.php',

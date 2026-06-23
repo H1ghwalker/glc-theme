@@ -4079,6 +4079,144 @@ a.office-card__contact-text:hover {
 }
 
 /* ═══════════════════════════════════════════
+   SERVICE CARDS
+   ═══════════════════════════════════════════ */
+.service-cards .container {
+  max-width: 1150px;
+}
+.service-cards__layout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  align-items: start;
+}
+.service-cards__sidebar {
+  padding: 4px 0 0;
+}
+.service-cards__title {
+  max-width: 300px;
+  margin: 0 0 32px;
+  color: var(--text-main);
+  font-size: 45px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.service-cards__desc {
+  max-width: 315px;
+  margin: 0 0 30px;
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.service-cards__btn {
+  justify-content: center;
+  min-width: 282px;
+  min-height: 52px;
+  padding: 14px 28px;
+}
+.service-cards__grid {
+  display: contents;
+}
+.service-cards__card {
+  min-height: 312px;
+  padding: 24px 28px 30px;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+.service-cards__card-header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-height: 102px;
+  margin-bottom: 28px;
+}
+.service-cards__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 102px;
+  height: 102px;
+  flex: 0 0 102px;
+  border-radius: 50%;
+  background: #f5f6fb;
+}
+.service-cards__icon {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+.service-cards__card-title {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+.service-cards__card-desc {
+  margin: 0;
+  color: var(--text-main);
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.28;
+}
+.service-cards.section--bg-dark .service-cards__title,
+.service-cards.section--bg-dark .service-cards__desc {
+  color: #333333;
+}
+
+@media (max-width: 1024px) {
+  .service-cards__layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .service-cards__title {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-cards__layout {
+    grid-template-columns: 1fr;
+  }
+  .service-cards__title {
+    margin-bottom: 20px;
+    font-size: 34px;
+  }
+  .service-cards__desc {
+    margin-bottom: 22px;
+  }
+  .service-cards__btn {
+    width: 100%;
+    min-width: 0;
+  }
+  .service-cards__card {
+    min-height: 0;
+    padding: 24px;
+  }
+  .service-cards__card-header {
+    gap: 16px;
+    min-height: 84px;
+    margin-bottom: 22px;
+  }
+  .service-cards__icon-wrap {
+    width: 84px;
+    height: 84px;
+    flex-basis: 84px;
+  }
+  .service-cards__icon {
+    width: 58px;
+    height: 58px;
+  }
+  .service-cards__card-title {
+    font-size: 24px;
+  }
+  .service-cards__card-desc {
+    font-size: 17px;
+  }
+}
+
+/* ═══════════════════════════════════════════
    TRANSPORT VARIANTS
    ═══════════════════════════════════════════ */
 .transport-variants .container {
