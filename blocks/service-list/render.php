@@ -39,13 +39,15 @@ if (empty($items)) : ?>
                     $title = $item['title'] ?? '';
                     $desc  = $item['description'] ?? '';
                 ?>
-                    <div class="service-list__card">
+                    <article class="service-list__card">
                         <div class="service-list__card-header">
-                            <?php if ($icon) : ?>
-                                <img src="<?php echo esc_url($icon['url']); ?>"
-                                     alt="" class="service-list__icon"
-                                     width="60" height="60" loading="lazy">
-                            <?php endif; ?>
+                            <span class="service-list__icon-wrap" aria-hidden="true">
+                                <?php if ($icon) : ?>
+                                    <img src="<?php echo esc_url($icon['url']); ?>"
+                                         alt="" class="service-list__icon"
+                                         width="70" height="70" loading="lazy">
+                                <?php endif; ?>
+                            </span>
 
                             <?php if ($title) : ?>
                                 <h3 class="service-list__card-title"><?php echo esc_html($title); ?></h3>
@@ -55,7 +57,7 @@ if (empty($items)) : ?>
                         <?php if ($desc) : ?>
                             <p class="service-list__card-desc"><?php echo esc_html($desc); ?></p>
                         <?php endif; ?>
-                    </div>
+                    </article>
                 <?php endforeach; ?>
             </div>
 
