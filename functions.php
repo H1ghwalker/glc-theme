@@ -154,6 +154,21 @@ add_action('admin_head', function() {
     echo '<style>.glc-maintenance-bar a{background:#d63638!important;color:#fff!important}</style>';
 });
 
+// ── HTTP-заголовки безпеки (тільки на проді) ─────────────
+if (!defined('WP_DEBUG') || !WP_DEBUG) {
+    add_action('send_headers', function () {
+        header('X-Content-Type-Options: nosniff');
+        header('X-Frame-Options: SAMEORIGIN');
+        header('Referrer-Policy: strict-origin-when-cross-origin');
+        header('Permissions-Policy: camera=(), microphone=(), geolocation=()');
+        header('X-XSS-Protection: 0');
+
+        if (is_ssl()) {
+            header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
+        }
+    });
+}
+
 // ── Підключення файлів ────────────────────────────────────
 require_once get_template_directory() . '/inc/connect-script-and-style.php';
 require_once get_template_directory() . '/inc/cpt.php';
