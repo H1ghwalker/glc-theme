@@ -1632,26 +1632,97 @@ a.office-card__contact-text:hover {
 }
 
 /* ── FAQ section — overrides for .svc-accordion ── */
+.faq-section .container {
+  max-width: 788px;
+}
+
+.faq-section .section__title {
+  margin: 0 0 28px;
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--dark);
+  white-space: nowrap;
+}
+
+.faq-section .svc-accordion {
+  border-radius: 0;
+  overflow: visible;
+}
+
+.faq-section .svc-accordion__item > .svc-accordion__head {
+  border-bottom-color: #aeb4ba;
+}
+
 .faq-section .svc-accordion__head {
-  padding: 20px 0;
+  min-height: 56px;
+  padding: 6px 0;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: var(--text-main);
+  background: transparent;
+}
+
+.faq-section .svc-accordion__head:hover,
+.faq-section .svc-accordion__item.is-open .svc-accordion__head {
+  background: transparent;
 }
 
 .faq-section .svc-accordion__icon {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: 10px;
+}
+
+.faq-section .svc-accordion__icon::before {
+  width: 12px;
+  height: 4px;
+}
+
+.faq-section .svc-accordion__icon::after {
+  width: 4px;
+  height: 12px;
 }
 
 .faq-section .svc-accordion__body {
-  padding: 0 0 20px;
+  padding: 14px 0 0;
+  background: transparent;
 }
 
 .faq-section .svc-accordion__desc {
+  margin: 0 0 12px;
+  padding: 12px 20px 12px 18px;
   border-left: 3px solid var(--yellow);
-  padding-left: 16px;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--text-main);
+  line-height: 1.4;
+  background: #f5f6fb;
+}
+
+.faq-section .svc-accordion__desc > :last-child {
   margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .faq-section .section__title {
+    font-size: 35px;
+    white-space: normal;
+  }
+
+  .faq-section .svc-accordion__head {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-section .section__title {
+    text-align: left;
+  }
+
+  .faq-section .svc-accordion__head {
+    font-size: 20px;
+  }
 }
 
 /* ── Tariffs table ── */

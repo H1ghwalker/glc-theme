@@ -825,6 +825,24 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-stats']]],
     ]);
 
+    // ── Сторінка: прапорець «Скоро» ─────────────────────────
+    acf_add_local_field_group([
+        'key'    => 'group_glc_page_coming_soon',
+        'title'  => 'Налаштування сторінки',
+        'fields' => [
+            [
+                'key'          => 'field_page_coming_soon',
+                'label'        => 'Розділ в розробці',
+                'name'         => 'page_coming_soon',
+                'type'         => 'true_false',
+                'ui'           => 1,
+                'instructions' => 'Увімкніть, щоб замість контенту показувати заглушку «Розділ в розробці».',
+            ],
+        ],
+        'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'page']]],
+        'position' => 'side',
+    ]);
+
     acf_add_local_field_group([
         'key'    => 'group_glc_offices_bg',
         'title'  => 'GLC Block: Офіси — фон',
