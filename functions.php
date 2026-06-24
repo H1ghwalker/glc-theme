@@ -162,7 +162,7 @@ require_once get_template_directory() . '/inc/gutenberg.php';
 require_once get_template_directory() . '/inc/acf-blocks.php';
 require_once get_template_directory() . '/inc/acf-fields.php';
 require_once get_template_directory() . '/inc/class-walker-mega-menu.php';
-require_once get_template_directory() . '/inc/cookie-consent.php';
+
 require_once get_template_directory() . '/inc/breadcrumbs.php';
 
 // ── ACF: валідація розмірів зображень для hero-слайдів ───
