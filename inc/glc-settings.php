@@ -251,7 +251,7 @@ function glc_settings_page() { ?>
         </table>
 
         <h2>Аналітика та маркетинг</h2>
-        <p class="description">Вкажіть тільки ID контейнера Google Tag Manager. Код GTM генерується темою автоматично і завантажується лише після згоди користувача на cookies.</p>
+        <p class="description">Вкажіть тільки ID контейнера Google Tag Manager. Код GTM генерується темою автоматично.</p>
         <table class="form-table">
             <tr><th>Google Tag Manager ID</th><td>
                 <?php if (isset($_GET['settings-updated']) && get_settings_errors('glc_gtm_id')): ?>
@@ -410,11 +410,7 @@ add_action('admin_init', function() {
     update_option('glc_socials_migrated', true);
 });
 
-// Скрипт завантажується після згоди користувача (cookie consent).
 add_action('wp_head', function() {
-    if (empty($_COOKIE['glc_consent']) || $_COOKIE['glc_consent'] !== '1')
-        return;
-
     $gtm_id = get_option('glc_gtm_id');
     if (!$gtm_id || !preg_match('/^GTM-[A-Z0-9]+$/', $gtm_id))
         return;
