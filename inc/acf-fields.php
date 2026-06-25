@@ -1115,6 +1115,7 @@ function glc_register_block_field_groups()
         ],
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-seo-text']]],
     ]);
+
     acf_add_local_field_group([
         'key' => 'group_glc_seo_text_title',
         'title' => 'GLC Block: SEO текст з заголовком',

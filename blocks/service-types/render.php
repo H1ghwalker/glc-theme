@@ -59,7 +59,7 @@ if (empty($items) && empty($tariffs)) {
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <?php endif; ?>
+            </div>
 
                 <?php if (!empty($tariffs)) : ?>
                 <div class="svc-accordion svc-tab-panel" data-panel="tariffs" style="<?php echo !empty($items) ? 'display:none' : ''; ?>">
