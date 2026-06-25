@@ -1,8 +1,8 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-$bg             = get_field('section_bg') ?: 'page';
-$text           = get_field('seo_text');
+$bg = get_field('section_bg') ?: 'page';
+$text = get_field('seo_text');
 $preview_length = get_field('preview_length') ?: 300;
 
 if (!$text) {
@@ -11,7 +11,7 @@ if (!$text) {
 }
 
 $stripped = strip_tags($text);
-$is_long  = mb_strlen($stripped) > $preview_length;
+$is_long = mb_strlen($stripped) > $preview_length;
 ?>
 
 <section class="seo-text section--bg-<?php echo esc_attr($bg); ?>">

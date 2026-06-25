@@ -452,7 +452,7 @@ ul {
 }
 
 .breadcrumbs__link {
-  font-size: var(--text-sm);
+  font-size: 15px;
   font-weight: 400;
   color: var(--text-muted);
   text-decoration: none;
@@ -464,15 +464,15 @@ ul {
 .breadcrumbs__home { display: flex; align-items: center; }
 
 .breadcrumbs__sep {
-  font-size: var(--text-sm);
+  font-size: 15px;
   color: var(--text-muted);
-  margin: 0 4px;
+  margin: 0 12px;
   user-select: none;
 }
 
 .breadcrumbs__current {
-  font-size: var(--text-sm);
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   color: var(--text-main);
 }
 

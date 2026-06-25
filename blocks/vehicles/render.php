@@ -1,9 +1,9 @@
 <?php
 if (!defined('ABSPATH')) exit;
-$bg        = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 $icons_uri = get_template_directory_uri() . '/assets/img/icons/ui';
-$heading   = get_field('section_heading');
-$items     = get_field('items');
+$heading = get_field('section_heading');
+$items = get_field('items');
 
 if (!$items) {
     glc_block_placeholder('GLC: Транспорт — заповніть елементи в правій панелі →');
@@ -11,10 +11,10 @@ if (!$items) {
 }
 
 $specs_meta = [
-    ['field' => 'spec_body_type',  'icon' => 'Body-type.svg',         'label' => get_field('label_body_type') ?: 'Тип кузова:'],
-    ['field' => 'spec_dimensions', 'icon' => 'dimensions.svg',         'label' => get_field('label_dimensions') ?: 'Д/Ш/В:'],
-    ['field' => 'spec_volume',     'icon' => 'volume.svg',             'label' => get_field('label_volume') ?: 'Об\'єм:'],
-    ['field' => 'spec_pallets',    'icon' => 'number-seats.svg',       'label' => get_field('label_pallets') ?: 'Кількість палетомісць:'],
+    ['field' => 'spec_body_type', 'icon' => 'Body-type.svg', 'label' => get_field('label_body_type') ?: 'Тип кузова:'],
+    ['field' => 'spec_dimensions', 'icon' => 'dimensions.svg', 'label' => get_field('label_dimensions') ?: 'Д/Ш/В:'],
+    ['field' => 'spec_volume', 'icon' => 'volume.svg', 'label' => get_field('label_volume') ?: 'Об\'єм:'],
+    ['field' => 'spec_pallets', 'icon' => 'number-seats.svg', 'label' => get_field('label_pallets') ?: 'Кількість палетомісць:'],
     ['field' => 'spec_additional', 'icon' => 'additional-options.svg', 'label' => get_field('label_additional') ?: 'Доп.опції:'],
 ];
 ?>
@@ -71,9 +71,9 @@ $specs_meta = [
                                 </ul>
 
                                 <?php
-                                $btn_label  = $v['vehicle_btn'] ?: 'Замовити авто';
+                                $btn_label = $v['vehicle_btn'] ?: 'Замовити авто';
                                 $btn_action = $v['vehicle_btn_action'] ?: 'link';
-                                $btn_value  = $v['vehicle_btn_value'] ?? '';
+                                $btn_value = $v['vehicle_btn_value'] ?? '';
                                 if ($btn_label) glc_action_btn($btn_label, $btn_action, $btn_value, 'btn--primary vehicle-card__btn');
                                 ?>
                             </div>

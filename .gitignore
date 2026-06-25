@@ -10,6 +10,3 @@ Thumbs.db
 *.7z
 *.sql
 .sass-cache/
-*.png
-CLAUDE.md
-AGENTS.md

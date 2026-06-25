@@ -1,10 +1,10 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-$bg        = get_field('section_bg') ?: 'dark';
-$title     = get_field('section_title');
-$image     = get_field('image');
-$items     = get_field('items');
+$bg = get_field('section_bg') ?: 'dark';
+$title = get_field('section_title');
+$image = get_field('image');
+$items = get_field('items');
 $highlight = get_field('highlight_text');
 
 if (!$title && !$image && empty($items) && !$highlight) {

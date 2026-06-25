@@ -17,14 +17,14 @@ add_action('enqueue_block_editor_assets', function () {
 // Кастомні категорії блоків GLC
 add_filter('block_categories_all', function($categories) {
     return array_merge([
-        ['slug' => 'glc-hero',       'title' => 'GLC: Hero'],
-        ['slug' => 'glc-sliders',    'title' => 'GLC: Слайдери'],
-        ['slug' => 'glc-services',   'title' => 'GLC: Послуги'],
-        ['slug' => 'glc-transport',  'title' => 'GLC: Транспорт'],
+        ['slug' => 'glc-hero', 'title' => 'GLC: Hero'],
+        ['slug' => 'glc-sliders', 'title' => 'GLC: Слайдери'],
+        ['slug' => 'glc-services', 'title' => 'GLC: Послуги'],
+        ['slug' => 'glc-transport', 'title' => 'GLC: Транспорт'],
         ['slug' => 'glc-accordions', 'title' => 'GLC: Акордеони'],
-        ['slug' => 'glc-seo',       'title' => 'GLC: SEO / Текст'],
-        ['slug' => 'glc-cpt',       'title' => 'GLC: CPT / Дані'],
-        ['slug' => 'glc-extra',     'title' => 'GLC: Додаткові'],
-        ['slug' => 'glc-common',    'title' => 'GLC: Загальні'],
+        ['slug' => 'glc-seo', 'title' => 'GLC: SEO / Текст'],
+        ['slug' => 'glc-cpt', 'title' => 'GLC: CPT / Дані'],
+        ['slug' => 'glc-extra', 'title' => 'GLC: Додаткові'],
+        ['slug' => 'glc-common', 'title' => 'GLC: Загальні'],
     ], $categories);
 }, 10, 2);

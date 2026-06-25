@@ -1,10 +1,10 @@
 <?php
 if (!defined('ABSPATH')) exit;
 $hero_title = get_field('hero_title');
-$hero_desc  = get_field('hero_desc');
-$slides     = get_field('slides');
-$bg         = get_field('section_bg') ?: 'white';
-$icons_uri  = get_template_directory_uri() . '/assets/img/icons/ui';
+$hero_desc = get_field('hero_desc');
+$slides = get_field('slides');
+$bg = get_field('section_bg') ?: 'white';
+$icons_uri = get_template_directory_uri() . '/assets/img/icons/ui';
 
 if (!$slides) {
     glc_block_placeholder('GLC: Слайдер послуг — заповніть слайди в правій панелі →');
@@ -25,7 +25,7 @@ if (!$slides) {
         <div class="swiper services-hero__swiper">
             <div class="swiper-wrapper">
                 <?php foreach ($slides as $slide) :
-                    $img     = $slide['slide_image'];
+                    $img = $slide['slide_image'];
                     $img_url = $img ? ($img['sizes']['glc-hero-slide'] ?? $img['url']) : get_template_directory_uri() . '/assets/img/hero/banners.png';
                     $img_alt = $img ? $img['alt'] : '';
                 ?>

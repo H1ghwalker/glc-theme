@@ -6,14 +6,14 @@ if (!defined('ABSPATH')) exit;
  *       map_btn_1_text, map_btn_1_link,
  *       map_btn_2_text, map_btn_2_link
  */
-$bg         = get_field('section_bg') ?: 'page';
-$map_title  = get_field('map_title');
-$btn_1_text   = get_field('map_btn_1_text');
+$bg = get_field('section_bg') ?: 'page';
+$map_title = get_field('map_title');
+$btn_1_text = get_field('map_btn_1_text');
 $btn_1_action = get_field('map_btn_1_action') ?: 'link';
-$btn_1_value  = get_field('map_btn_1_value');
-$btn_2_text   = get_field('map_btn_2_text');
+$btn_1_value = get_field('map_btn_1_value');
+$btn_2_text = get_field('map_btn_2_text');
 $btn_2_action = get_field('map_btn_2_action') ?: 'link';
-$btn_2_value  = get_field('map_btn_2_value');
+$btn_2_value = get_field('map_btn_2_value');
 
 if (!$map_title) {
     glc_block_placeholder('GLC: Карта маршрутів — заповніть поля в правій панелі →');

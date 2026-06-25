@@ -1,6 +1,8 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
+// script for later
+
 add_action('wp_footer', function() {
     $privacy_url = get_privacy_policy_url();
     if (!$privacy_url)

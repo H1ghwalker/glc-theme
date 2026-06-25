@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-$bg          = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 
 $media_text_field = static function (array $selectors) {
     foreach ($selectors as $selector) {
@@ -25,10 +25,10 @@ $media_text_content = static function ($value) {
     return wp_kses_post(wpautop($value));
 };
 
-$image       = $media_text_field(['media_text_image', 'field_mtext_image']);
-$title       = $media_text_field(['media_text_title', 'field_mtext_title']);
-$highlight   = $media_text_field(['media_text_highlight', 'field_mtext_highlight']);
-$body_text   = $media_text_field(['media_text_body', 'field_mtext_body', 'media_text_right', 'right_text', 'body_text']);
+$image = $media_text_field(['media_text_image', 'field_mtext_image']);
+$title = $media_text_field(['media_text_title', 'field_mtext_title']);
+$highlight = $media_text_field(['media_text_highlight', 'field_mtext_highlight']);
+$body_text = $media_text_field(['media_text_body', 'field_mtext_body', 'media_text_right', 'right_text', 'body_text']);
 $bottom_text = $media_text_field(['media_text_bottom', 'field_mtext_bottom', 'media_text_text_bottom', 'text_bottom', 'bottom_text']);
 
 if (!$title && empty($image['url']) && !$highlight && !$body_text && !$bottom_text) {
@@ -36,8 +36,8 @@ if (!$title && empty($image['url']) && !$highlight && !$body_text && !$bottom_te
     return;
 }
 
-$highlight_html   = $media_text_content($highlight);
-$body_text_html   = $media_text_content($body_text);
+$highlight_html = $media_text_content($highlight);
+$body_text_html = $media_text_content($body_text);
 $bottom_text_html = $media_text_content($bottom_text);
 ?>
 

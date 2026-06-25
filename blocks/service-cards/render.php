@@ -1,13 +1,13 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-$bg            = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 $section_title = get_field('section_title');
-$section_desc  = get_field('section_desc');
-$btn_text      = get_field('btn_text');
-$btn_action    = get_field('btn_action') ?: 'link';
-$btn_value     = get_field('btn_value') ?: '#';
-$items         = get_field('items');
+$section_desc = get_field('section_desc');
+$btn_text = get_field('btn_text');
+$btn_action = get_field('btn_action') ?: 'link';
+$btn_value = get_field('btn_value') ?: '#';
+$items = get_field('items');
 
 if (empty($items)) {
     glc_block_placeholder('GLC: Картки послуг — заповніть поля в правій панелі →');
@@ -35,9 +35,9 @@ if (empty($items)) {
 
             <div class="service-cards__grid">
                 <?php foreach ($items as $item) :
-                    $icon  = $item['icon'] ?? null;
+                    $icon = $item['icon'] ?? null;
                     $title = $item['title'] ?? '';
-                    $desc  = $item['description'] ?? '';
+                    $desc = $item['description'] ?? '';
                 ?>
                     <article class="service-cards__card">
                         <div class="service-cards__card-header">

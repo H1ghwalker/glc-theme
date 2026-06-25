@@ -6,10 +6,10 @@ if (!defined('ABSPATH')) exit;
  * Поля: title, desc, map_image (Image/Array),
  *       route_groups (Repeater) → group_title, routes (Repeater) → route_title, route_link
  */
-$bg           = get_field('section_bg') ?: 'page';
-$title        = get_field( 'title' );
-$desc         = get_field( 'desc' );
-$map_image    = get_field( 'map_image' );
+$bg = get_field('section_bg') ?: 'page';
+$title = get_field( 'title' );
+$desc = get_field( 'desc' );
+$map_image = get_field( 'map_image' );
 $route_groups = get_field( 'route_groups' );
 
 if (!$title && !$map_image) {

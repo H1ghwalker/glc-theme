@@ -10,7 +10,7 @@ function glc_breadcrumbs()
 
     $icon_url = get_template_directory_uri() . '/assets/img/icons/ui/breadcrumb.svg';
     $items[] = '<a href="' . esc_url(home_url('/')) . '" class="breadcrumbs__link breadcrumbs__home" aria-label="Головна">'
-        . '<img src="' . esc_url($icon_url) . '" alt="" width="16" height="16">'
+        . '<img src="' . esc_url($icon_url) . '" alt="" width="19" height="19">'
         . '</a>';
 
     if (is_page()) {

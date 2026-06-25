@@ -7,8 +7,8 @@ if (!defined('ABSPATH')) exit;
  *             review_body_type, review_volume, review_text
  * ⚠️ Swiper ініціалізований в main.js — зберігати клас .reviews__swiper
  */
-$bg        = get_field('section_bg') ?: 'page';
-$items     = get_field('items');
+$bg = get_field('section_bg') ?: 'page';
+$items = get_field('items');
 $icons_uri = get_template_directory_uri() . '/assets/img/icons/ui';
 
 if (!$items) {
@@ -32,11 +32,11 @@ if (!$items) {
                 <div class="swiper reviews__swiper">
                     <div class="swiper-wrapper">
                         <?php foreach ($items as $review) :
-                            $avatar    = get_field('review_avatar',    $review->ID);
-                            $company   = get_field('review_company',   $review->ID);
+                            $avatar = get_field('review_avatar', $review->ID);
+                            $company = get_field('review_company', $review->ID);
                             $body_type = get_field('review_body_type', $review->ID);
-                            $volume    = get_field('review_volume',    $review->ID);
-                            $text      = get_field('review_text',      $review->ID);
+                            $volume = get_field('review_volume', $review->ID);
+                            $text = get_field('review_text', $review->ID);
                         ?>
                         <div class="swiper-slide">
                             <article class="review-card">
@@ -46,10 +46,10 @@ if (!$items) {
                                         <?php if ($avatar) : ?>
                                             <img src="<?php echo esc_url($avatar); ?>"
                                                  alt="<?php echo esc_attr($review->post_title); ?>"
-                                                 width="40" height="40">
+                                                 width="57" height="57">
                                         <?php else : ?>
-                                            <img src="<?php echo esc_url($icons_uri); ?>/reviews-client.svg"
-                                                 alt="" width="40" height="40">
+                                            <img src="<?php echo esc_url($icons_uri); ?>/review-avatar.svg"
+                                                 alt="" width="57" height="57">
                                         <?php endif; ?>
                                     </div>
                                     <div class="review-card__author-info">

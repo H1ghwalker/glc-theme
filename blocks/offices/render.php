@@ -1,6 +1,6 @@
 <?php
 if (!defined('ABSPATH')) exit;
-$bg        = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 $icons_uri = get_template_directory_uri() . '/assets/img/icons/ui';
 
 $offices = get_posts([
@@ -20,8 +20,8 @@ if (!$offices) {
     <div class="container">
 
         <?php foreach ($offices as $index => $office) :
-            $phone   = get_field('office_phone', $office->ID);
-            $email   = get_field('office_email', $office->ID);
+            $phone = get_field('office_phone', $office->ID);
+            $email = get_field('office_email', $office->ID);
             $address = get_field('office_address', $office->ID);
             $map_src_raw = get_field('office_map_src', $office->ID);
             $map_src = '';

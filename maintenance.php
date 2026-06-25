@@ -2,9 +2,9 @@
 if (!defined('ABSPATH')) exit;
 
 $logo_url = get_template_directory_uri() . '/assets/img/logo/logo.svg';
-$email    = get_option('glc_email');
-$phone_1  = get_option('glc_phone_1');
-$phone_2  = get_option('glc_phone_2');
+$email = get_option('glc_email');
+$phone_1 = get_option('glc_phone_1');
+$phone_2 = get_option('glc_phone_2');
 $digits_1 = preg_replace('/\D/', '', $phone_1);
 $digits_2 = preg_replace('/\D/', '', $phone_2);
 

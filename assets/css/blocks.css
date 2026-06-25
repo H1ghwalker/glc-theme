@@ -400,7 +400,7 @@
 
 .ticker__sep {
   font-size: 32px;
-  font-weight: 400;
+  font-weight: 800;
   line-height: 1.4;
   color: var(--dark);
   opacity: 0.4;
@@ -430,6 +430,8 @@
 
 .vehicles__heading {
   margin-bottom: 24px;
+  font-size: 45px;
+  font-weight: 800;
 }
 
 .vehicles__slider-wrap {
@@ -478,14 +480,18 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  flex: 1; 
-  min-height: 550px; 
+  flex: 1;
+  min-height: 550px;
+  transition: box-shadow var(--transition);
+}
+.vehicle-card:hover {
+  box-shadow: 0px 4px 40px 0px #8094AE;
 }
 
 .vehicle-card__img-wrap {
   position: relative;
   flex-shrink: 0;
-  height: 270px;
+  aspect-ratio: 360 / 270;
 }
 
 .vehicle-card__img {
@@ -509,8 +515,8 @@
   transform: translateY(50%);
   background: var(--bg-blue);
   color: var(--text-main);
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   width: 130px;
   height: 35px;
   display: flex;
@@ -531,8 +537,8 @@
 }
 
 .vehicle-card__title {
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 35px;
+  font-weight: 700;
   color: var(--dark);
   line-height: 1.2;
 }
@@ -550,7 +556,7 @@
   grid-template-rows: auto auto;
   column-gap: 8px;
   row-gap: 1px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .vehicle-card__spec-icon {
@@ -566,7 +572,7 @@
   grid-column: 2;
   grid-row: 1;
   display: block;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-main);
 }
 
@@ -574,6 +580,7 @@
   grid-column: 2;
   grid-row: 2;
   display: block;
+  font-weight: 400;
   color: var(--text-muted);
   line-height: 1.4;
 }
@@ -609,9 +616,6 @@
   .vehicle-card {
     min-height: unset;
   }
-  .vehicle-card__img-wrap {
-    height: 200px;
-  }
   .vehicle-card__body {
     padding-bottom: 16px;
   }
@@ -631,15 +635,16 @@
 }
 
 .about__title {
-  font-size: clamp(28px, 4vw, 56px);
-  font-weight: 900;
+  font-size: 45px;
+  font-weight: 700;
   color: var(--dark);
   line-height: 1.1;
   margin-bottom: 24px;
 }
 
 .about__desc {
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 400;
   color: var(--text-main);
   line-height: 1.65;
   margin-bottom: 28px;
@@ -649,7 +654,7 @@
   border-left: 3px solid #4a90d9;
   padding: 4px 0 4px 20px;
   margin: 0 0 40px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--dark);
   line-height: 1.65;
@@ -660,6 +665,22 @@
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+.about__btn-outline {
+  gap: 10px;
+  color: var(--text-muted);
+}
+
+.about__btn-outline::before {
+  content: '';
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  background: currentColor;
+  mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
+  -webkit-mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
 }
 
 .about__media {
@@ -712,26 +733,24 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  padding: 8px 48px 8px 0;
-  border-right: 1px solid var(--border);
+  padding: 8px 48px;
+}
+.stats__item:first-child {
+  padding-left: 0;
 }
 .stats__item:last-child {
-  border-right: none;
   padding-right: 0;
-}
-.stats__item:not(:first-child) {
-  padding-left: 48px;
 }
 
 .stats__label-top {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 600;
   color: var(--text-muted);
   line-height: 1.4;
 }
 
 .stats__number {
-  font-size: clamp(40px, 5vw, 64px);
+  font-size: 54px;
   font-weight: 900;
   color: var(--dark);
   line-height: 1;
@@ -739,8 +758,8 @@
 }
 
 .stats__label-bottom {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   color: var(--dark);
   display: flex;
   align-items: center;
@@ -761,6 +780,8 @@
 
 .reviews__heading {
   margin-bottom: 36px;
+  font-size: 45px;
+  font-weight: 800;
 }
 
 .reviews__slider-wrap {
@@ -820,25 +841,33 @@
 }
 
 .review-card__avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #dde3ec;
+  width: 57px;
+  height: 57px;
+  border-radius: 12px;
+  background: #F5F6FB;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  overflow: hidden;
+}
+.review-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
 .review-card__name {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 800;
   color: var(--dark);
   margin-bottom: 3px;
 }
 
 .review-card__company {
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: 400;
   color: var(--text-muted);
   line-height: 1.4;
 }
@@ -855,7 +884,7 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .review-card__spec-icon {
@@ -872,12 +901,13 @@
 }
 
 .review-card__spec-label {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--dark);
   white-space: nowrap;
 }
 
 .review-card__spec-value {
+  font-weight: 400;
   color: var(--text-main);
   line-height: 1.4;
 }
@@ -888,11 +918,11 @@
 }
 
 .review-card__text {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 400;
   color: var(--text-main);
   line-height: 1.65;
-  /* 5 рядків × line-height 1.65 × font-size 14px */
-  max-height: calc(14px * 1.65 * 5);
+  max-height: calc(16px * 1.65 * 5);
   overflow: hidden;
 }
 
@@ -963,6 +993,8 @@
 
 .steps__heading {
   margin-bottom: 52px;
+  font-size: 45px;
+  font-weight: 700;
 }
 
 .steps__grid {
@@ -1007,16 +1039,16 @@
 .steps__num {
   position: absolute;
   top: 4px;
-  right: -10px;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-muted);
+  right: -20px;
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--text-main);
   line-height: 1;
 }
 
 .steps__title {
-  font-size: var(--text-lg); /* 18px */
-  font-weight: 700;
+  font-size: 25px;
+  font-weight: 800;
   color: var(--dark);
   line-height: var(--lh-normal);
   max-width: 180px;
@@ -1033,7 +1065,7 @@
 .steps__desc {
   max-width: 240px;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.35;
   color: var(--text-main);
 }
@@ -1107,8 +1139,8 @@
 }
 
 .office-card__title {
-  font-size: clamp(22px, 2.5vw, 34px);
-  font-weight: 900;
+  font-size: 45px;
+  font-weight: 700;
   color: var(--dark);
   line-height: var(--lh-tight);
   margin-bottom: 32px;
@@ -1135,7 +1167,8 @@
 }
 
 .office-card__contact-text {
-  font-size: var(--text-md);
+  font-size: 18px;
+  font-weight: 400;
   color: var(--text-main);
   line-height: 1.5;
   text-decoration: none;
@@ -1248,8 +1281,8 @@ a.office-card__contact-text:hover {
 }
 
 .services-hero__title {
-  font-size: clamp(26px, 4vw, 52px);
-  font-weight: 900;
+  font-size: 45px;
+  font-weight: 700;
   color: var(--dark);
   line-height: var(--lh-tight);
   margin-bottom: 20px;
@@ -1371,7 +1404,7 @@ a.office-card__contact-text:hover {
   border: none;
   border-radius: 999px;
   font-family: var(--font);
-  font-size: var(--text-lg);
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.25;
   white-space: nowrap;
@@ -1602,7 +1635,7 @@ a.office-card__contact-text:hover {
   min-height: 56px;
   padding: 6px 0;
   font-size: 25px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.3;
   color: var(--text-main);
   background: transparent;
@@ -1644,6 +1677,7 @@ a.office-card__contact-text:hover {
   padding: 12px 20px 12px 18px;
   border-left: 3px solid var(--yellow);
   font-size: 18px;
+  font-weight: 400;
   color: var(--text-main);
   line-height: 1.4;
   background: #f5f6fb;
@@ -1732,7 +1766,7 @@ a.office-card__contact-text:hover {
   border-left: 3px solid var(--yellow);
   background: transparent;
   color: var(--text-main);
-  cursor: default;
+  cursor: pointer;
   font-size: 35px;
   font-weight: 800;
   line-height: 1.18;
@@ -1807,21 +1841,21 @@ a.office-card__contact-text:hover {
   min-height: 50px;
   padding: 10px 26px 10px 20px;
   border: 1px solid #7f8994;
-  border-radius: 999px;
   color: var(--text-muted);
+  border-radius: 999px;
   font-size: var(--text-lg);
   font-weight: 600;
   line-height: 1.2;
-  gap: 12px;
+  gap: 10px;
 }
 .svc-section .svc-accordion__btn::before {
   content: "";
-  width: 18px;
-  height: 18px;
+  width: 21px;
+  height: 21px;
   flex-shrink: 0;
   background: currentColor;
-  mask: url("../img/icons/ui/ion_arrow-redo.svg") center / contain no-repeat;
-  -webkit-mask: url("../img/icons/ui/ion_arrow-redo.svg") center / contain no-repeat;
+  mask: url("../img/icons/ui/arrow-redo.svg") center / contain no-repeat;
+  -webkit-mask: url("../img/icons/ui/arrow-redo.svg") center / contain no-repeat;
 }
 
 @media (max-width: 1024px) {
@@ -1888,7 +1922,7 @@ a.office-card__contact-text:hover {
   transition: box-shadow var(--transition);
 }
 .cargo-card:hover {
-  box-shadow: var(--shadow);
+  box-shadow: 0px 4px 40px 0px #8094AE;
 }
 
 .cargo-card__img-wrap {
@@ -1917,15 +1951,15 @@ a.office-card__contact-text:hover {
 }
 
 .cargo-card__title {
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 800;
   color: var(--dark);
   line-height: 1.2;
 }
 
 .cargo-card__desc {
-  font-size: 13px;
-  color: var(--text-muted);
+  font-size: 18px;
+  color: var(--text-main);
   line-height: 1.6;
   flex: 1;
 }
@@ -1934,6 +1968,19 @@ a.office-card__contact-text:hover {
   width: 100%;
   justify-content: center;
   margin-top: 4px;
+  gap: 15px;
+  color: var(--text-muted);
+}
+
+.cargo-card__btn::before {
+  content: '';
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  background: currentColor;
+  mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
+  -webkit-mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
 }
 
 @media (max-width: 1024px) {
@@ -1948,6 +1995,12 @@ a.office-card__contact-text:hover {
   }
   .cargo-types {
     padding: 40px 0;
+  }
+  .cargo-card__title {
+    font-size: 20px;
+  }
+  .cargo-card__desc {
+    font-size: 15px;
   }
 }
 
@@ -1973,7 +2026,7 @@ a.office-card__contact-text:hover {
   max-width: 560px;
   margin: 0;
   color: var(--text-muted);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.45;
 }
@@ -2060,7 +2113,7 @@ a.office-card__contact-text:hover {
 .cargo-slider-card__title {
   margin: 0 0 12px;
   color: var(--text-main);
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 800;
   line-height: 1.2;
 }
@@ -2082,6 +2135,18 @@ a.office-card__contact-text:hover {
   color: var(--text-muted);
   font-size: 17px;
   font-weight: 600;
+  gap: 15px;
+}
+
+.cargo-slider-card__btn::before {
+  content: '';
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  background: currentColor;
+  mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
+  -webkit-mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
 }
 
 .cargo-slider__pagination {
@@ -2143,7 +2208,10 @@ a.office-card__contact-text:hover {
   }
 
   .cargo-slider-card__title {
-    font-size: 24px;
+    font-size: 20px;
+  }
+  .cargo-slider-card__desc {
+    font-size: 15px;
   }
 }
 
@@ -2242,8 +2310,8 @@ a.office-card__contact-text:hover {
 
 .page-hero__btns {
   display: flex;
+  align-items: center;
   gap: 16px;
-  flex-wrap: wrap;
   margin-top: 32px;
 }
 
@@ -2270,6 +2338,9 @@ a.office-card__contact-text:hover {
   }
   .page-hero__title {
     font-size: var(--text-h2-mob);
+  }
+  .page-hero__btns {
+    flex-wrap: wrap;
   }
   .page-hero__media {
     flex: none;
@@ -2304,8 +2375,9 @@ a.office-card__contact-text:hover {
 }
 
 .page-hero-accent__desc {
-  font-size: var(--text-base);
-  color: var(--text-muted);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-main);
   line-height: 1.7;
   margin-bottom: 0;
 }
@@ -2317,8 +2389,8 @@ a.office-card__contact-text:hover {
   border-left: 10px solid #9bc6ff;
   border-radius: 6px;
   color: var(--dark);
-  font-size: var(--text-lg);
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1.5;
 }
 
@@ -2366,6 +2438,10 @@ a.office-card__contact-text:hover {
     font-size: var(--text-h2-mob);
   }
 
+  .page-hero-accent__desc {
+    font-size: 15px;
+  }
+
   .page-hero-accent__media {
     flex: none;
     width: 100%;
@@ -2378,7 +2454,7 @@ a.office-card__contact-text:hover {
   .page-hero-accent__accent {
     padding-left: 16px;
     border-left-width: 8px;
-    font-size: var(--text-base);
+    font-size: 15px;
   }
 }
 
@@ -2418,8 +2494,8 @@ a.office-card__contact-text:hover {
   max-width: 570px;
   margin: 0 0 28px;
   color: var(--text-main);
-  font-size: var(--text-h2);
-  font-weight: 800;
+  font-size: 45px;
+  font-weight: 700;
   line-height: 1.18;
 }
 
@@ -2458,8 +2534,8 @@ a.office-card__contact-text:hover {
 .media-text__body {
   max-width: 570px;
   color: var(--text-main);
-  font-size: var(--text-base);
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.55;
 }
 
@@ -2531,6 +2607,10 @@ a.office-card__contact-text:hover {
     font-size: 30px;
   }
 
+  .media-text__body {
+    font-size: 15px;
+  }
+
   .media-text__bottom {
     font-size: var(--text-base);
   }
@@ -2567,7 +2647,7 @@ a.office-card__contact-text:hover {
   font-size: 18px;
   font-weight: 600;
   line-height: 1.4;
-  color: var(--text-main);
+  color: var(--text-muted);
 }
 
 @media (max-width: 1024px) {
@@ -2613,6 +2693,7 @@ a.office-card__contact-text:hover {
   .page-hero__title,
   .services-hero__title {
     text-align: center;
+    font-size: 30px;
   }
 
   .section-title,
@@ -2647,7 +2728,7 @@ a.office-card__contact-text:hover {
   }
 
   .vehicle-card__img-wrap {
-    height: 178px;
+    aspect-ratio: 360 / 270;
   }
 
   .vehicle-card__price {
@@ -2706,10 +2787,11 @@ a.office-card__contact-text:hover {
 
   .about__title {
     margin-bottom: 16px;
+    font-size: 30px;
   }
 
   .about__desc {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.55;
     margin-bottom: 16px;
   }
@@ -2717,7 +2799,7 @@ a.office-card__contact-text:hover {
   .about__quote {
     margin-bottom: 20px;
     padding-left: 14px;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.5;
   }
 
@@ -2775,6 +2857,7 @@ a.office-card__contact-text:hover {
 
   .reviews__heading {
     margin-bottom: 18px;
+    font-size: 30px;
   }
 
   .reviews__swiper-wrap {
@@ -2794,6 +2877,10 @@ a.office-card__contact-text:hover {
   .review-card__avatar {
     width: 46px;
     height: 46px;
+    border-radius: 10px;
+  }
+  .review-card__avatar img {
+    border-radius: 10px;
   }
 
   .review-card__specs {
@@ -2826,6 +2913,7 @@ a.office-card__contact-text:hover {
 
   .steps__heading {
     margin-bottom: 24px;
+    font-size: 30px;
   }
 
   .steps__grid {
@@ -2879,7 +2967,7 @@ a.office-card__contact-text:hover {
 
   .office-card__title {
     margin-bottom: 16px;
-    font-size: 20px;
+    font-size: 30px;
   }
 
   .office-card__contacts {
@@ -2896,7 +2984,7 @@ a.office-card__contact-text:hover {
   }
 
   .office-card__contact-text {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.4;
   }
 }
@@ -2990,6 +3078,8 @@ a.office-card__contact-text:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+  padding: 10px;
+  margin: -10px;
 }
 
 /* Якщо остання картка одна в рядку — центруємо */
@@ -3004,6 +3094,10 @@ a.office-card__contact-text:hover {
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
+  transition: box-shadow var(--transition);
+}
+.transport-card:hover {
+  box-shadow: 0px 4px 40px 0px #8094AE;
 }
 
 .transport-card__img-wrap {
@@ -3037,15 +3131,15 @@ a.office-card__contact-text:hover {
 }
 
 .transport-card__title {
-  font-size: var(--text-md);
+  font-size: 35px;
   font-weight: 700;
   color: var(--dark);
   margin-bottom: 12px;
 }
 
 .transport-card__desc {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
+  font-size: 18px;
+  color: var(--text-main);
   line-height: 1.6;
   flex: 1;
   margin-bottom: 20px;
@@ -3070,6 +3164,22 @@ a.office-card__contact-text:hover {
   line-height: 1.6;
 }
 
+.transport-card__btn {
+  gap: 15px;
+  color: var(--text-muted);
+}
+
+.transport-card__btn::before {
+  content: '';
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  background: currentColor;
+  mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
+  -webkit-mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
+}
+
 @media (max-width: 1024px) {
   .transport-types__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -3091,6 +3201,12 @@ a.office-card__contact-text:hover {
   }
   .transport-types__grid > .transport-card:last-child:nth-child(odd) {
     grid-column: auto;
+  }
+  .transport-card__title {
+    font-size: 24px;
+  }
+  .transport-card__desc {
+    font-size: 15px;
   }
 }
 
@@ -3116,6 +3232,8 @@ a.office-card__contact-text:hover {
 
 .truck-types__card {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .truck-types__media {
@@ -3138,6 +3256,7 @@ a.office-card__contact-text:hover {
   flex-direction: column;
   align-items: flex-start;
   padding-top: 24px;
+  flex: 1;
 }
 
 .truck-types__name {
@@ -3153,13 +3272,14 @@ a.office-card__contact-text:hover {
   max-width: 560px;
   margin: 0;
   color: var(--text-main);
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.55;
 }
 
 .truck-types__action {
   padding-top: 30px;
+  margin-top: auto;
 }
 
 .truck-types__btn {
@@ -3215,7 +3335,7 @@ a.office-card__contact-text:hover {
   }
 
   .truck-types__desc {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.45;
   }
 
@@ -3325,7 +3445,7 @@ a.office-card__contact-text:hover {
 
 .express-cta__desc {
   font-size: 15px;
-  color: var(--text-muted);
+  color: var(--text-main);
   line-height: 1.35;
   text-align: center;
   max-width: 536px;
@@ -3365,7 +3485,40 @@ a.office-card__contact-text:hover {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
+  .express-cta__plane {
+    width: 120px;
+  }
+
+  .express-cta__bus {
+    width: 100px;
+  }
+
+  .express-cta__inner {
+    gap: 14px;
+    padding: 24px 24px 28px;
+  }
+
+  .express-cta__title {
+    font-size: 26px;
+  }
+
+  .express-cta__title-row {
+    gap: 16px;
+  }
+
+  .express-cta__title-row .btn--primary {
+    min-width: 0;
+    padding: 12px 22px;
+    font-size: 16px;
+  }
+
+  .express-cta__desc {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 680px) {
   .express-cta {
     padding: 24px 14px 40px;
   }
@@ -3428,7 +3581,7 @@ a.office-card__contact-text:hover {
 }
 @media (max-width: 480px) {
   .express-cta {
-    padding: 0 0 34px;
+    padding: 0 16px 34px;
   }
 
   .express-cta__inner {
@@ -3529,7 +3682,7 @@ a.office-card__contact-text:hover {
   background: transparent;
   color: var(--text-muted);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.2;
   padding: 0;
   border: none;
@@ -3542,8 +3695,8 @@ a.office-card__contact-text:hover {
   height: 18px;
   flex: 0 0 18px;
   background: currentColor;
-  mask: url('../img/icons/ui/ion_arrow-redo.svg') center / contain no-repeat;
-  -webkit-mask: url('../img/icons/ui/ion_arrow-redo.svg') center / contain no-repeat;
+  mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
+  -webkit-mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
 }
 
 .seo-text__toggle:hover {
@@ -3585,6 +3738,14 @@ a.office-card__contact-text:hover {
 }
 
 @media (max-width: 768px) {
+  .seo-text__toggle {
+    font-size: 15px;
+  }
+  .seo-text__toggle-icon {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+  }
   .seo-text--title {
     padding: 12px 0 34px;
   }
@@ -3616,6 +3777,8 @@ a.office-card__contact-text:hover {
 .price-table__heading {
   text-align: center;
   margin-bottom: 40px;
+  font-size: 45px;
+  font-weight: 700;
 }
 .price-table__wrap {
   max-width: 1040px;
@@ -3645,7 +3808,7 @@ a.office-card__contact-text:hover {
 .price-table__wrap th {
   padding: 10px 24px;
   background: #f4f5fa;
-  font-size: var(--text-lg);
+  font-size: 25px;
   font-weight: 800;
   line-height: 1.35;
   white-space: nowrap;
@@ -3659,8 +3822,8 @@ a.office-card__contact-text:hover {
 }
 .price-table__wrap td {
   padding: 8px 24px;
-  font-size: var(--text-base);
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1.35;
   border-top: 1px solid #e8edf5;
 }
@@ -3671,6 +3834,7 @@ a.office-card__contact-text:hover {
   }
   .price-table__heading {
     margin-bottom: 22px;
+    font-size: 30px;
   }
   .price-table__wrap {
     border-radius: 14px;
@@ -3680,9 +3844,11 @@ a.office-card__contact-text:hover {
   }
   .price-table__wrap th {
     padding: 9px 14px;
+    font-size: 18px;
   }
   .price-table__wrap td {
     padding: 8px 14px;
+    font-size: 15px;
   }
 }
 
@@ -3755,6 +3921,8 @@ a.office-card__contact-text:hover {
 /* PHOTO REPORT */
 .photo-report__heading {
   margin-bottom: 54px;
+  font-size: 45px;
+  font-weight: 700;
 }
 .photo-report__slider-wrap {
   position: relative;
@@ -3873,7 +4041,7 @@ a.office-card__contact-text:hover {
   align-items: center;
   gap: 10px;
   color: var(--dark);
-  font-size: var(--text-lg);
+  font-size: 16px;
   font-weight: 800;
   line-height: 1.25;
 }
@@ -3888,7 +4056,7 @@ a.office-card__contact-text:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
   border-radius: 50px;
   padding: 12px 24px;
   color: var(--text-muted);
@@ -3897,12 +4065,12 @@ a.office-card__contact-text:hover {
 }
 .report-card__btn::before {
   content: "";
-  width: 20px;
-  height: 20px;
+  width: 21px;
+  height: 21px;
   flex-shrink: 0;
   background: currentColor;
-  mask: url("../img/icons/ui/ion_arrow-redo.svg") center / contain no-repeat;
-  -webkit-mask: url("../img/icons/ui/ion_arrow-redo.svg") center / contain no-repeat;
+  mask: url("../img/icons/ui/arrow-redo.svg") center / contain no-repeat;
+  -webkit-mask: url("../img/icons/ui/arrow-redo.svg") center / contain no-repeat;
 }
 
 @media (max-width: 1340px) {
@@ -3915,6 +4083,9 @@ a.office-card__contact-text:hover {
 }
 
 @media (max-width: 768px) {
+  .photo-report__heading {
+    font-size: 30px;
+  }
   .photo-report__nav {
     display: none;
   }
@@ -3928,6 +4099,8 @@ a.office-card__contact-text:hover {
   max-width: 1200px;
   margin: 0 auto 18px;
   color: rgba(17, 17, 17, 0.82);
+  font-size: 45px;
+  font-weight: 800;
 }
 .benefits-slider__wrap {
   position: relative;
@@ -3978,15 +4151,15 @@ a.office-card__contact-text:hover {
 .benefit-slide__title {
   margin: 0 0 28px;
   color: var(--text-main);
-  font-size: var(--text-h2);
-  font-weight: 800;
+  font-size: 45px;
+  font-weight: 700;
   line-height: 1.18;
 }
 .benefit-slide__text {
   max-width: 575px;
-  color: var(--text-muted);
+  color: var(--text-main);
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.42;
 }
 .benefit-slide__text p {
@@ -4077,6 +4250,7 @@ a.office-card__contact-text:hover {
   .benefits-slider__heading {
     margin-bottom: 26px;
     text-align: center;
+    font-size: 30px;
   }
   .benefits-slider__swiper {
     padding: 12px 14px 0;
@@ -4205,8 +4379,8 @@ a.office-card__contact-text:hover {
   height: 20px;
   flex: 0 0 20px;
   background: currentColor;
-  mask: url('../img/icons/ui/ion_arrow-redo.svg') center / contain no-repeat;
-  -webkit-mask: url('../img/icons/ui/ion_arrow-redo.svg') center / contain no-repeat;
+  mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
+  -webkit-mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
 }
 .service-list.section--bg-dark .service-list__title {
   color: #333333;
@@ -4277,13 +4451,13 @@ a.office-card__contact-text:hover {
   margin: 0 0 32px;
   color: var(--text-main);
   font-size: 45px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
 }
 .service-cards__desc {
   max-width: 315px;
   margin: 0 0 30px;
-  color: var(--text-muted);
+  color: var(--text-main);
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
@@ -4329,15 +4503,15 @@ a.office-card__contact-text:hover {
 .service-cards__card-title {
   margin: 0;
   color: var(--text-main);
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 800;
   line-height: 1.35;
 }
 .service-cards__card-desc {
   margin: 0;
   color: var(--text-main);
-  font-size: 19px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1.28;
 }
 .service-cards.section--bg-dark .service-cards__title,
@@ -4388,10 +4562,10 @@ a.office-card__contact-text:hover {
     height: 58px;
   }
   .service-cards__card-title {
-    font-size: 24px;
+    font-size: 20px;
   }
   .service-cards__card-desc {
-    font-size: 17px;
+    font-size: 15px;
   }
 }
 
@@ -4402,6 +4576,8 @@ a.office-card__contact-text:hover {
 .transport-variants__title {
   margin: 0 0 50px;
   text-align: center;
+  font-size: 45px;
+  font-weight: 700;
 }
 .transport-variants__grid {
   display: grid;
@@ -4427,8 +4603,8 @@ a.office-card__contact-text:hover {
 }
 .transport-variants__name {
   margin: 0;
-  font-size: 32px;
-  font-weight: 800;
+  font-size: 35px;
+  font-weight: 700;
   line-height: 1.2;
   color: var(--text-main);
 }
@@ -4436,9 +4612,9 @@ a.office-card__contact-text:hover {
   max-width: 530px;
   margin: 0;
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.45;
-  color: var(--text-muted);
+  color: var(--text-main);
 }
 .transport-variants .btn--primary {
   justify-content: center;
@@ -4467,6 +4643,9 @@ a.office-card__contact-text:hover {
 }
 
 @media (max-width: 768px) {
+  .transport-variants__title {
+    font-size: 30px;
+  }
   .transport-variants .container {
     max-width: var(--container);
   }
@@ -4535,6 +4714,8 @@ a.office-card__contact-text:hover {
   max-width: 520px;
   margin: 0 0 30px;
   color: var(--text-main);
+  font-size: 45px;
+  font-weight: 700;
 }
 .care-block__list {
   display: flex;
@@ -4549,8 +4730,8 @@ a.office-card__contact-text:hover {
   display: list-item;
   padding-left: 2px;
   color: var(--text-main);
-  font-size: var(--text-lg);
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.35;
 }
 .care-block__item::marker {
@@ -4563,8 +4744,8 @@ a.office-card__contact-text:hover {
   border-left: 10px solid #8fc5ff;
   border-radius: 4px;
   color: var(--text-main);
-  font-size: var(--text-lg);
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1.35;
 }
 .care-block__highlight p {
@@ -4617,10 +4798,11 @@ a.office-card__contact-text:hover {
   }
   .care-block__title {
     margin-bottom: 22px;
+    font-size: 30px;
   }
   .care-block__item,
   .care-block__highlight {
-    font-size: var(--text-base);
+    font-size: 15px;
   }
 }
 

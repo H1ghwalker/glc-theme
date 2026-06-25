@@ -1,13 +1,13 @@
 <?php
 if (!defined('ABSPATH')) exit;
-$title_top    = get_field('hero_title_top');
+$title_top = get_field('hero_title_top');
 $title_before = get_field('hero_title_before');
-$title_after  = get_field('hero_title_after');
-$subtitle     = get_field('hero_subtitle');
-$slides       = get_field('slides');
-$bg           = get_field('section_bg') ?: 'white';
-$icons_uri    = get_template_directory_uri() . '/assets/img/icons/ui';
-$arrow_badge  = $icons_uri . '/arrow-banner-hero.svg';
+$title_after = get_field('hero_title_after');
+$subtitle = get_field('hero_subtitle');
+$slides = get_field('slides');
+$bg = get_field('section_bg') ?: 'white';
+$icons_uri = get_template_directory_uri() . '/assets/img/icons/ui';
+$arrow_badge = $icons_uri . '/arrow-banner-hero.svg';
 
 $glc_hero_focus_value = static function ($value) {
     $value = trim((string) $value);
@@ -48,12 +48,12 @@ if (!$slides) {
         <div class="swiper hero__swiper">
             <div class="swiper-wrapper">
                 <?php foreach ($slides as $slide) :
-                    $img     = $slide['slide_image'];
+                    $img = $slide['slide_image'];
                     $img_url = $img ? ($img['sizes']['glc-hero-slide'] ?? $img['url']) : get_template_directory_uri() . '/assets/img/hero/banners.png';
                     $img_alt = $img ? $img['alt'] : '';
                     $focus_desktop = $glc_hero_focus_value($slide['slide_focus_desktop'] ?? '');
-                    $focus_mobile  = $glc_hero_focus_value($slide['slide_focus_mobile'] ?? '');
-                    $img_style     = '';
+                    $focus_mobile = $glc_hero_focus_value($slide['slide_focus_mobile'] ?? '');
+                    $img_style = '';
 
                     if ($focus_desktop !== '') {
                         $img_style .= '--hero-img-position:' . $focus_desktop . ';';

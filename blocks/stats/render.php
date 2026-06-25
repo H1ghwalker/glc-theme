@@ -1,9 +1,9 @@
 <?php
 if (!defined('ABSPATH')) exit;
-$bg        = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 $icons_uri = get_template_directory_uri() . '/assets/img/icons/ui';
 $stats_raw = get_field('items');
-$stats     = is_array($stats_raw) ? $stats_raw : [];
+$stats = is_array($stats_raw) ? $stats_raw : [];
 
 if (empty($stats)) {
     glc_block_placeholder('GLC: Статистика — заповніть поля в правій панелі →');

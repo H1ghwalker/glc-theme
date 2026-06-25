@@ -1,9 +1,9 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-$bg            = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 $section_title = get_field('section_title');
-$items         = get_field('items');
+$items = get_field('items');
 
 if (empty($items)) {
     glc_block_placeholder('GLC: Варіанти перевезення — заповніть поля в правій панелі →');
@@ -20,12 +20,12 @@ if (empty($items)) {
 
         <div class="transport-variants__grid">
             <?php foreach ($items as $item) :
-                $image      = $item['image'] ?? null;
-                $title      = $item['title'] ?? '';
-                $desc       = $item['description'] ?? '';
-                $btn_text   = $item['btn_text'] ?? '';
+                $image = $item['image'] ?? null;
+                $title = $item['title'] ?? '';
+                $desc = $item['description'] ?? '';
+                $btn_text = $item['btn_text'] ?? '';
                 $btn_action = $item['btn_action'] ?? 'link';
-                $btn_value  = $item['btn_value'] ?? '#';
+                $btn_value = $item['btn_value'] ?? '#';
             ?>
                 <div class="transport-variants__card">
                     <?php if ($image) : ?>

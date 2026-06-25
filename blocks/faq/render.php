@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) exit;
 
 $title = get_field('faq_title');
 $items = get_field('faq_items');
-$bg    = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 
 if (!$items)
 {

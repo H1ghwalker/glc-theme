@@ -6,13 +6,13 @@ if (!defined('ABSPATH')) exit;
  * Поля: section_title (text),
  *       items (Repeater) → image (Image/Array), title, desc, link
  */
-$bg             = get_field('section_bg') ?: 'page';
-$section_title  = get_field('section_title');
-$items          = get_field('items');
-$cta_btn_text   = get_field('cta_btn_text');
+$bg = get_field('section_bg') ?: 'page';
+$section_title = get_field('section_title');
+$items = get_field('items');
+$cta_btn_text = get_field('cta_btn_text');
 $cta_btn_action = get_field('cta_btn_action') ?: 'link';
-$cta_btn_value  = get_field('cta_btn_value');
-$cta_text       = get_field('cta_text');
+$cta_btn_value = get_field('cta_btn_value');
+$cta_text = get_field('cta_text');
 
 if (!$items) {
     glc_block_placeholder('GLC: Види транспорту — додайте елементи в правій панелі →');
@@ -48,10 +48,10 @@ if (!$items) {
                         <p class="transport-card__desc"><?php echo esc_html( $item['desc'] ); ?></p>
                     <?php endif; ?>
                     <?php
-                    $i_btn_text   = $item['btn_text'] ?? 'Детальніше про послугу';
+                    $i_btn_text = $item['btn_text'] ?? 'Детальніше про послугу';
                     $i_btn_action = $item['btn_action'] ?? 'link';
-                    $i_btn_value  = $item['btn_value'] ?? '';
-                    if ($i_btn_text) glc_action_btn($i_btn_text, $i_btn_action, $i_btn_value, 'btn--outline');
+                    $i_btn_value = $item['btn_value'] ?? '';
+                    if ($i_btn_text) glc_action_btn($i_btn_text, $i_btn_action, $i_btn_value, 'btn--outline transport-card__btn');
                     ?>
                 </div>
 

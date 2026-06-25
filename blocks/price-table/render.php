@@ -1,12 +1,12 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-$bg            = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 $section_title = get_field('section_title');
-$col_1         = get_field('col_1_label') ?: 'Маршрут';
-$col_2         = get_field('col_2_label') ?: 'Ціна 1';
-$col_3         = get_field('col_3_label') ?: 'Ціна 2';
-$rows          = get_field('rows');
+$col_1 = get_field('col_1_label') ?: 'Маршрут';
+$col_2 = get_field('col_2_label') ?: 'Ціна 1';
+$col_3 = get_field('col_3_label') ?: 'Ціна 2';
+$rows = get_field('rows');
 
 if (empty($rows)) {
     glc_block_placeholder('GLC: Прайс — заповніть рядки таблиці в правій панелі →');

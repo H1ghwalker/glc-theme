@@ -5,10 +5,10 @@ if (!defined('ABSPATH')) exit;
  * Поля: section_title (text), section_desc (textarea),
  *       items (Repeater) → title, desc, link, image (Image, Array)
  */
-$bg            = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 $section_title = get_field( 'section_title' );
-$section_desc  = get_field( 'section_desc' );
-$items         = get_field( 'items' );
+$section_desc = get_field( 'section_desc' );
+$items = get_field( 'items' );
 
 if (!$items) {
     glc_block_placeholder('GLC: Види вантажів — додайте елементи в правій панелі →');
@@ -47,9 +47,9 @@ if (!$items) {
                     <h3 class="cargo-card__title"><?php echo esc_html( $cargo['title'] ); ?></h3>
                     <p class="cargo-card__desc"><?php echo esc_html( $cargo['desc'] ); ?></p>
                     <?php
-                    $c_btn_text   = $cargo['btn_text'] ?: 'Детальніше';
+                    $c_btn_text = $cargo['btn_text'] ?: 'Детальніше';
                     $c_btn_action = $cargo['btn_action'] ?: 'link';
-                    $c_btn_value  = $cargo['btn_value'] ?: '';
+                    $c_btn_value = $cargo['btn_value'] ?: '';
                     if ($c_btn_text) glc_action_btn($c_btn_text, $c_btn_action, $c_btn_value, 'btn--outline cargo-card__btn');
                     ?>
                 </div>

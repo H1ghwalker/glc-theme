@@ -97,7 +97,7 @@
 
 .header__phone {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.26;
   color: var(--text-main);
   transition: color var(--transition);
@@ -357,6 +357,7 @@
 .header__menu > li > a {
   font-size: 18px;
   font-weight: 700;
+
   line-height: 1;
   color: var(--text-main);
   padding: 0;
@@ -606,7 +607,8 @@
 
 .mega-menu__route > a {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 400;
   color: var(--text-muted);
   text-decoration: none;
   padding: 4px 8px;
@@ -617,7 +619,8 @@
 .mega-menu__route > a::before {
   content: "+ ";
   color: var(--text-main);
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 16px;
 }
 
 .mega-menu__route > a:hover {
@@ -648,9 +651,10 @@
 .mega-menu__all-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-shrink: 0;
   white-space: nowrap;
+  color: var(--text-muted);
   width: calc(100% - 70px);
   min-height: 50px;
   justify-content: center;
@@ -683,6 +687,22 @@
 
 .mega-menu__detail-btn {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+}
+
+.mega-menu__all-link::before,
+.mega-menu__detail-btn::before {
+  content: '';
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  background: currentColor;
+  mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
+  -webkit-mask: url('../img/icons/ui/arrow-redo.svg') center / contain no-repeat;
 }
 
 @keyframes megaFadeInSlideDown {
@@ -1099,6 +1119,12 @@
     font-size: 12px;
     font-weight: 400;
     color: var(--text-muted);
+    gap: 6px;
+  }
+  .mega-menu__all-link::before {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
   }
 
   .mega-menu__all-link .btn__icon {

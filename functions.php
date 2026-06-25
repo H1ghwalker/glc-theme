@@ -10,15 +10,12 @@ function theme_setup()
     add_theme_support('post-thumbnails');
     add_theme_support('menus');
 
-    // Кастомні розміри зображень для слайдерів
-    // Контейнер = 1200px → hero рендериться в 1200×390px.
-    // Реєструємо з запасом для Retina.
-    add_image_size('glc-hero-slide', 1200, 390, true);  // hero-банер (crop)
-    add_image_size('glc-card', 600, 400, true);  // картки послуг/авто
-    add_image_size('glc-page-hero', 360, 440, true);  // page-hero зображення
+    add_image_size('glc-hero-slide', 1200, 390, true);  
+    add_image_size('glc-card', 600, 400, true);  
+    add_image_size('glc-page-hero', 360, 440, true);  
 
     register_nav_menus([
-        'main' => __('Main menu', 'wp-lesson'),
+        'main' => __('Main menu', 'glc'),
         'footer' => 'Footer: Головна навігація',
         'footer-legal' => 'Footer: Юридичні посилання',
     ]);
@@ -106,7 +103,7 @@ function glc_sanitize_svg($content)
             if (in_array($name, ['href', 'xlink:href', 'src', 'data', 'action', 'formaction']))
             {
                 $val = preg_replace('/\s+/', '', strtolower($attr->value));
-                if (str_starts_with($val, 'javascript:') || str_starts_with($val, 'data:'))
+                if (str_starts_with($val, 'javascript:') || (str_starts_with($val, 'data:') && !str_starts_with($val, 'data:image/')))
                 {
                     $to_remove[] = $attr;
                 }

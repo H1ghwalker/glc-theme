@@ -1,10 +1,10 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-$bg            = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 $section_title = get_field('section_title');
-$items         = get_field('items');
-$icons_uri     = get_template_directory_uri() . '/assets/img/icons/ui';
+$items = get_field('items');
+$icons_uri = get_template_directory_uri() . '/assets/img/icons/ui';
 
 $format_meta_value = static function ($value, $suffix, $has_suffix_pattern)
 {
@@ -43,13 +43,13 @@ if (empty($items)) {
             <div class="swiper photo-report__swiper">
                 <div class="swiper-wrapper">
                     <?php foreach ($items as $item) :
-                        $image      = $item['image'] ?? null;
-                        $route      = $item['route'] ?? '';
-                        $count      = $format_meta_value($item['vehicles_count'] ?? '', 'авто', '/авто/ui');
-                        $duration   = $format_meta_value($item['duration'] ?? '', 'день', '/день|дня|дні|днів/ui');
-                        $btn_text   = $item['btn_text'] ?? 'Замовити';
+                        $image = $item['image'] ?? null;
+                        $route = $item['route'] ?? '';
+                        $count = $format_meta_value($item['vehicles_count'] ?? '', 'авто', '/авто/ui');
+                        $duration = $format_meta_value($item['duration'] ?? '', 'день', '/день|дня|дні|днів/ui');
+                        $btn_text = $item['btn_text'] ?? 'Замовити';
                         $btn_action = $item['btn_action'] ?? 'link';
-                        $btn_value  = $item['btn_value'] ?? '#';
+                        $btn_value = $item['btn_value'] ?? '#';
                     ?>
                     <div class="swiper-slide">
                         <article class="report-card">

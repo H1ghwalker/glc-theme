@@ -1,11 +1,11 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-$bg            = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 $section_title = get_field('section_title');
-$section_desc  = get_field('section_desc');
-$items         = get_field('items');
-$icons_uri     = get_template_directory_uri() . '/assets/img/icons/ui';
+$section_desc = get_field('section_desc');
+$items = get_field('items');
+$icons_uri = get_template_directory_uri() . '/assets/img/icons/ui';
 
 if (empty($items)) {
     glc_block_placeholder('GLC: Види вантажів (слайдер) - додайте елементи у правій панелі ->');
@@ -35,11 +35,11 @@ if (empty($items)) {
                 <div class="swiper-wrapper">
                     <?php foreach ($items as $cargo) :
                         $image = $cargo['image'] ?? null;
-                        $title      = $cargo['title'] ?? '';
-                        $desc       = $cargo['desc'] ?? '';
-                        $btn_text   = $cargo['btn_text'] ?? 'Детальніше';
+                        $title = $cargo['title'] ?? '';
+                        $desc = $cargo['desc'] ?? '';
+                        $btn_text = $cargo['btn_text'] ?? 'Детальніше';
                         $btn_action = $cargo['btn_action'] ?? 'link';
-                        $btn_value  = $cargo['btn_value'] ?? '';
+                        $btn_value = $cargo['btn_value'] ?? '';
                     ?>
                         <div class="swiper-slide">
                             <article class="cargo-slider-card">

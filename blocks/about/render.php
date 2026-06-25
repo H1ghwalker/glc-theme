@@ -1,16 +1,16 @@
 <?php
 if (!defined('ABSPATH')) exit;
-$bg                     = get_field('section_bg') ?: 'page';
-$about_title            = get_field('about_title');
-$about_desc             = get_field('about_desc');
-$about_quote            = get_field('about_quote');
-$about_btn_outline_text   = get_field('about_btn_outline_text');
+$bg = get_field('section_bg') ?: 'page';
+$about_title = get_field('about_title');
+$about_desc = get_field('about_desc');
+$about_quote = get_field('about_quote');
+$about_btn_outline_text = get_field('about_btn_outline_text');
 $about_btn_outline_action = get_field('about_btn_outline_action') ?: 'link';
-$about_btn_outline_value  = get_field('about_btn_outline_value');
-$about_btn_primary_text   = get_field('about_btn_primary_text');
+$about_btn_outline_value = get_field('about_btn_outline_value');
+$about_btn_primary_text = get_field('about_btn_primary_text');
 $about_btn_primary_action = get_field('about_btn_primary_action') ?: 'link';
-$about_btn_primary_value  = get_field('about_btn_primary_value');
-$about_image            = get_field('about_image'); // Return Format: URL
+$about_btn_primary_value = get_field('about_btn_primary_value');
+$about_image = get_field('about_image'); // Return Format: URL
 
 if (!$about_title && !$about_image) {
     glc_block_placeholder('GLC: Про компанію — заповніть поля в правій панелі →');
@@ -34,7 +34,7 @@ if (!$about_title && !$about_image) {
                 </blockquote>
 
                 <div class="about__actions">
-                    <?php if ($about_btn_outline_text) glc_action_btn($about_btn_outline_text, $about_btn_outline_action, $about_btn_outline_value, 'btn--outline'); ?>
+                    <?php if ($about_btn_outline_text) glc_action_btn($about_btn_outline_text, $about_btn_outline_action, $about_btn_outline_value, 'btn--outline about__btn-outline'); ?>
                     <?php if ($about_btn_primary_text) glc_action_btn($about_btn_primary_text, $about_btn_primary_action, $about_btn_primary_value, 'btn--primary'); ?>
                 </div>
 

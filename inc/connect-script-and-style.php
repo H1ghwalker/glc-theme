@@ -1,6 +1,5 @@
 <?php
 if (!defined('ABSPATH')) exit;
-require_once get_template_directory() . '/inc/fluent-forms.php';
 
 /**
  * Enque scripts and styles.

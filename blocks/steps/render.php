@@ -6,9 +6,9 @@ if (!defined('ABSPATH')) exit;
  *       items (Repeater) → icon (select 1-4), title (text), description (textarea)
  * SVG іконки: assets/img/icons/steps/* (inline)
  */
-$bg            = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 $section_title = get_field( 'section_title' );
-$items         = get_field( 'items' );
+$items = get_field( 'items' );
 
 if (!$items) {
     glc_block_placeholder('GLC: Етапи — додайте кроки в правій панелі →');
@@ -28,7 +28,7 @@ $nums = ['01', '02', '03', '04', '05', '06'];
         <div class="steps__grid">
             <?php foreach ( $items as $i => $item ) :
                 $allowed_icons = ['1', '2', '3', '4', '5'];
-                $icon_num  = in_array($item['icon'], $allowed_icons, true) ? $item['icon'] : '1';
+                $icon_num = in_array($item['icon'], $allowed_icons, true) ? $item['icon'] : '1';
                 $icon_files = [
                     '1' => '1_step.svg',
                     '2' => '2_step.svg',

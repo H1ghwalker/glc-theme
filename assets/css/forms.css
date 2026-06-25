@@ -68,7 +68,9 @@
 }
 
 .glc-express-form .ff-el-input--content input::placeholder {
-  color: #9299a3;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 400;
   opacity: 1;
 }
 
@@ -284,8 +286,9 @@
 }
 
 .glc-express-form .ff-custom_html:not(.ff_excluded) {
-  color: #9299a3;
+  color: var(--text-muted);
   font-size: 13px;
+  font-weight: 400;
   line-height: 1.4;
   text-align: center;
 }
@@ -308,8 +311,9 @@
 .glc-express-form fieldset > .ff-custom_html:not(.ff_excluded):first-of-type p {
   max-width: 760px;
   margin: 0 auto;
-  color: var(--text-muted);
-  font-size: 16px;
+  color: var(--text-main);
+  font-size: 15px;
+  font-weight: 400;
   line-height: 1.45;
 }
 
@@ -317,7 +321,7 @@
   max-width: none;
   margin-bottom: 18px;
   color: var(--dark);
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 800;
   line-height: 1.2;
   text-transform: uppercase;
@@ -331,7 +335,7 @@
 .glc-express-form .ff-express-head h2 {
   margin: 0 0 18px;
   color: var(--dark);
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 800;
   line-height: 1.2;
   text-transform: uppercase;
@@ -340,8 +344,9 @@
 .glc-express-form .ff-express-head p {
   max-width: 760px;
   margin: 0 auto;
-  color: var(--text-muted);
-  font-size: 16px;
+  color: var(--text-main);
+  font-size: 15px;
+  font-weight: 400;
   line-height: 1.45;
 }
 
@@ -564,7 +569,7 @@ body.has-glc-modal-open {
 .glc-modal__title {
   margin: 0 48px 28px;
   color: var(--dark);
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 800;
   line-height: 1.2;
   text-align: center;
@@ -650,7 +655,9 @@ body.has-glc-modal-open {
 
 .glc-modal__form .ff-el-input--content input::placeholder,
 .glc-modal__form .ff-el-input--content textarea::placeholder {
-  color: #9299a3;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 400;
   opacity: 1;
 }
 
@@ -746,6 +753,8 @@ body.has-glc-modal-open {
   max-width: none;
   margin: 0 0 28px !important;
   color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 400;
   text-align: center;
 }
 
@@ -753,7 +762,9 @@ body.has-glc-modal-open {
 .glc-modal__form .ff-express-head p {
   max-width: 760px;
   margin: 0 auto;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-main);
   line-height: 1.45;
 }
 
@@ -761,7 +772,7 @@ body.has-glc-modal-open {
 .glc-modal__form .ff-express-head h2 {
   margin: 0 0 18px;
   color: var(--dark);
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 800;
   line-height: 1.2;
   text-transform: uppercase;

@@ -1,16 +1,16 @@
 <?php
 if (!defined('ABSPATH')) exit;
-$bg         = get_field('section_bg') ?: 'page';
-$title      = get_field('cta_title')      ?: 'ЕКСПРЕС РОЗРАХУНОК ВАРТОСТІ';
-$desc       = get_field('cta_desc')       ?: '';
-$btn_text   = get_field('cta_btn_text')   ?: 'Розрахувати вартість';
+$bg = get_field('section_bg') ?: 'page';
+$title = get_field('cta_title') ?: 'ЕКСПРЕС РОЗРАХУНОК ВАРТОСТІ';
+$desc = get_field('cta_desc') ?: '';
+$btn_text = get_field('cta_btn_text') ?: 'Розрахувати вартість';
 $btn_action = get_field('cta_btn_action') ?: 'link';
-$btn_value  = get_field('cta_btn_value')  ?: '#';
-$uri        = get_template_directory_uri();
+$btn_value = get_field('cta_btn_value') ?: '#';
+$uri = get_template_directory_uri();
 
-$words     = explode(' ', $title);
-$top_line  = implode(' ', array_slice($words, 0, 2));
-$bot_line  = implode(' ', array_slice($words, 2)); ?>
+$words = explode(' ', $title);
+$top_line = implode(' ', array_slice($words, 0, 2));
+$bot_line = implode(' ', array_slice($words, 2)); ?>
 
 <section class="express-cta section--bg-<?php echo esc_attr($bg); ?>">
     <div class="express-cta__inner">

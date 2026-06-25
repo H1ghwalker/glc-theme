@@ -1,8 +1,8 @@
 <?php
 if (!defined('ABSPATH')) exit;
-$rows  = get_field('items') ?: [];
+$rows = get_field('items') ?: [];
 $items = array_column($rows, 'text');
-$bg    = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 
 if (empty($items)) {
     $items = [

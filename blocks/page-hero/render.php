@@ -5,16 +5,16 @@ if (!defined('ABSPATH')) exit;
  * Універсальний hero для внутрішніх сторінок.
  * Поля: hero_title, hero_desc, hero_btn_1_*, hero_btn_2_*, hero_image
  */
-$bg          = get_field('section_bg') ?: 'page';
-$hero_title  = get_field( 'hero_title' );
-$hero_desc   = get_field( 'hero_desc' );
-$btn_1_text   = get_field( 'hero_btn_1_text' );
+$bg = get_field('section_bg') ?: 'page';
+$hero_title = get_field( 'hero_title' );
+$hero_desc = get_field( 'hero_desc' );
+$btn_1_text = get_field( 'hero_btn_1_text' );
 $btn_1_action = get_field( 'hero_btn_1_action' ) ?: 'link';
-$btn_1_value  = get_field( 'hero_btn_1_value' );
-$btn_2_text   = get_field( 'hero_btn_2_text' );
+$btn_1_value = get_field( 'hero_btn_1_value' );
+$btn_2_text = get_field( 'hero_btn_2_text' );
 $btn_2_action = get_field( 'hero_btn_2_action' ) ?: 'link';
-$btn_2_value  = get_field( 'hero_btn_2_value' );
-$hero_image  = get_field( 'hero_image' );
+$btn_2_value = get_field( 'hero_btn_2_value' );
+$hero_image = get_field( 'hero_image' );
 
 if (!$hero_title) {
     glc_block_placeholder('GLC: Hero сторінки — заповніть поля в правій панелі →');
@@ -35,7 +35,7 @@ if (!$hero_title) {
                 <?php if ( $btn_1_text || $btn_2_text ) : ?>
                 <div class="page-hero__btns">
                     <?php if ( $btn_1_text ) glc_action_btn( $btn_1_text, $btn_1_action, $btn_1_value, 'btn--primary' ); ?>
-                    <?php if ( $btn_2_text ) glc_action_btn( $btn_2_text, $btn_2_action, $btn_2_value, 'btn--outline' ); ?>
+                    <?php if ( $btn_2_text ) glc_action_btn( $btn_2_text, $btn_2_action, $btn_2_value, 'btn--primary' ); ?>
                 </div>
                 <?php endif; ?>
             </div>

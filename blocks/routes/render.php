@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
  */
 $style = get_field('style') ?: 'tabs';
 $items = get_field('items');
-$bg    = get_field('section_bg') ?: 'white';
+$bg = get_field('section_bg') ?: 'white';
 
 if (!$items) {
     glc_block_placeholder('GLC: Маршрути — додайте маршрути в правій панелі →');
@@ -20,7 +20,7 @@ if (!$items) {
         <div class="glc-routes__list">
             <?php foreach ($items as $item) :
                 $title = $item['route_title'];
-                $link  = $item['route_link'] ?: '#';
+                $link = $item['route_link'] ?: '#';
             ?>
             <a href="<?php echo esc_url($link); ?>" class="glc-routes__item">
                 <?php echo esc_html($title); ?>

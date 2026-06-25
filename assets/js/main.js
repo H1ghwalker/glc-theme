@@ -467,11 +467,17 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!section) return;
 
             section.querySelectorAll('.svc-sidebar__item').forEach(b => b.classList.remove('is-active'));
-            section.querySelectorAll('.svc-panel').forEach(p => p.classList.remove('is-active'));
+            section.querySelectorAll('.svc-tab-panel').forEach(p => p.style.display = 'none');
 
             this.classList.add('is-active');
-            const panel = section.querySelector(`.svc-panel[data-panel="${target}"]`);
-            if (panel) panel.classList.add('is-active');
+            const panel = section.querySelector(`.svc-tab-panel[data-panel="${target}"]`);
+            if (panel) {
+                panel.style.display = '';
+                if (!panel.querySelector('.svc-accordion__item.is-open')) {
+                    const first = panel.querySelector('.svc-accordion__item');
+                    if (first) first.classList.add('is-open');
+                }
+            }
         });
     });
 

@@ -1,10 +1,10 @@
 <?php
 if (!defined('ABSPATH')) exit;
 
-$bg            = get_field('section_bg') ?: 'page';
+$bg = get_field('section_bg') ?: 'page';
 $section_title = get_field('section_title');
-$items         = get_field('items');
-$icons_uri     = get_template_directory_uri() . '/assets/img/icons/ui';
+$items = get_field('items');
+$icons_uri = get_template_directory_uri() . '/assets/img/icons/ui';
 
 if (empty($items)) {
     glc_block_placeholder('GLC: Слайдер переваг — заповніть поля в правій панелі →');
@@ -32,7 +32,7 @@ if (empty($items)) {
                     <?php foreach ($items as $item) :
                         $image = $item['image'] ?? null;
                         $title = $item['title'] ?? '';
-                        $desc  = $item['description'] ?? '';
+                        $desc = $item['description'] ?? '';
                     ?>
                         <div class="swiper-slide">
                             <article class="benefit-slide">

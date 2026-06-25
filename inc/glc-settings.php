@@ -402,9 +402,9 @@ add_action('admin_init', function() {
     $socials = [];
 
     $old = [
-        ['option' => 'glc_facebook',  'name' => 'Facebook',  'icon' => 'facebook'],
+        ['option' => 'glc_facebook', 'name' => 'Facebook', 'icon' => 'facebook'],
         ['option' => 'glc_instagram', 'name' => 'Instagram', 'icon' => 'instagram'],
-        ['option' => 'glc_linkedin',  'name' => 'LinkedIn',  'icon' => 'linkedin'],
+        ['option' => 'glc_linkedin', 'name' => 'LinkedIn', 'icon' => 'linkedin'],
     ];
 
     foreach ($old as $s) {
@@ -464,10 +464,7 @@ function glc_megamenu_images()
 
 function glc_megamenu_all_link($all_link)
 {
-    $icon_url = get_template_directory_uri() . '/assets/img/icons/ui/ion_arrow-redo.svg';
-
-    return '<a href="' . esc_url($all_link) . '" class="btn--outline mega-menu__all-link">'
-        . '<img src="' . esc_url($icon_url) . '" alt="" class="btn__icon">Всі послуги GLC</a>';
+    return '<a href="' . esc_url($all_link) . '" class="btn--outline mega-menu__all-link">Всі послуги GLC</a>';
 }
 
 function glc_megamenu_footer_active($active_title = '', $active_link = '#')
