@@ -35,9 +35,11 @@ if (empty($items)) {
                 <div class="swiper-wrapper">
                     <?php foreach ($items as $cargo) :
                         $image = $cargo['image'] ?? null;
-                        $title = $cargo['title'] ?? '';
-                        $desc  = $cargo['desc'] ?? '';
-                        $link  = $cargo['link'] ?? '#';
+                        $title      = $cargo['title'] ?? '';
+                        $desc       = $cargo['desc'] ?? '';
+                        $btn_text   = $cargo['btn_text'] ?? 'Детальніше';
+                        $btn_action = $cargo['btn_action'] ?? 'link';
+                        $btn_value  = $cargo['btn_value'] ?? '';
                     ?>
                         <div class="swiper-slide">
                             <article class="cargo-slider-card">
@@ -59,7 +61,7 @@ if (empty($items)) {
                                         <p class="cargo-slider-card__desc"><?php echo esc_html($desc); ?></p>
                                     <?php endif; ?>
 
-                                    <?php glc_btn('Детальніше', $link ?: '#', 'btn--outline cargo-slider-card__btn', true); ?>
+                                    <?php if ($btn_text) glc_action_btn($btn_text, $btn_action, $btn_value, 'btn--outline cargo-slider-card__btn'); ?>
                                 </div>
                             </article>
                         </div>

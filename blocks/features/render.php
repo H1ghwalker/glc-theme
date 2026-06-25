@@ -19,7 +19,7 @@ $items = [
             <div class="features__item">
                 <?php if ( $icon_slug && file_exists( $icon_path ) ) : ?>
                 <div class="features__icon-wrap">
-                    <?php include $icon_path; ?>
+                    <?php echo glc_sanitize_svg(file_get_contents($icon_path)); ?>
                 </div>
                 <?php endif; ?>
                 <p class="features__text"><?php echo esc_html( $item['text'] ); ?></p>

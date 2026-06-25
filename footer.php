@@ -4,19 +4,16 @@ if (!defined('ABSPATH')) exit;
 
 <footer class="footer">
 
-    <!-- Кнопка "вгору" -->
     <div class="footer__top-wrap">
         <button class="footer__scroll-top" id="scrollTopBtn" aria-label="Вгору">
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/icons/ui/scroll-top.svg" alt="">
         </button>
     </div>
 
-    <!-- Рядок 1: Лого + Навігація + Соцмережі -->
     <div class="footer__main">
         <div class="container">
             <div class="footer__main-inner">
 
-                <!-- Лого -->
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="footer__logo">
                     <?php
                     $custom_logo_id = get_theme_mod('custom_logo');
@@ -28,7 +25,6 @@ if (!defined('ABSPATH')) exit;
                     <?php endif; ?>
                 </a>
 
-                <!-- Навігація -->
                 <?php if (has_nav_menu('footer')): ?>
                     <?php wp_nav_menu([
                         'theme_location' => 'footer',
@@ -45,7 +41,6 @@ if (!defined('ABSPATH')) exit;
                     </p>
                 <?php endif; ?>
 
-                <!-- Соцмережі -->
                 <div class="footer__socials">
                     <?php glc_render_socials('footer__social', 'footer__social-icon'); ?>
                 </div>
@@ -54,7 +49,6 @@ if (!defined('ABSPATH')) exit;
         </div>
     </div>
 
-    <!-- Рядок 2: Категорії (сірий фон) -->
     <div class="footer__cats">
         <div class="container">
             <div class="footer__cats-grid">
@@ -103,7 +97,6 @@ if (!defined('ABSPATH')) exit;
         </div>
     </div>
 
-    <!-- Рядок 3: Юридичні посилання -->
     <div class="footer__legal">
         <div class="container">
             <div class="footer__legal-inner">

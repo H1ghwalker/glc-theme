@@ -20,13 +20,15 @@ if (!$items)
 
         <div class="svc-accordion">
             <?php foreach ($items as $i => $item) : ?>
-            <div class="svc-accordion__item<?php echo $i === 0 ? ' is-open' : ''; ?>">
+            <div class="svc-accordion__item<?php echo esc_attr($i === 0 ? ' is-open' : ''); ?>">
                 <button class="svc-accordion__head" type="button">
                     <span class="svc-accordion__title"><?php echo esc_html($item['question']); ?></span>
                     <span class="svc-accordion__icon"></span>
                 </button>
                 <div class="svc-accordion__body">
-                    <div class="svc-accordion__desc"><?php echo wp_kses_post($item['answer']); ?></div>
+                    <div class="svc-accordion__body-inner">
+                        <div class="svc-accordion__desc"><?php echo wp_kses_post($item['answer']); ?></div>
+                    </div>
                 </div>
             </div>
             <?php endforeach; ?>

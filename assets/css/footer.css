@@ -1,8 +1,3 @@
-/* ═══════════════════════════════════════════
-   12. FOOTER
-   ═══════════════════════════════════════════ */
-
-/* ── Кнопка "вгору" ── */
 .footer {
   flex-shrink: 0;
   background: var(--bg-white);
@@ -40,7 +35,6 @@
   display: block;
 }
 
-/* ── Рядок 1: Лого + Навігація + Соцмережі ── */
 .footer__main {
   background: var(--bg-white);
   padding: 10px 0;
@@ -55,7 +49,6 @@
   height: 66px;
 }
 
-/* Лого */
 .footer__logo {
   display: flex;
   flex-shrink: 0;
@@ -65,7 +58,6 @@
   width: auto;
 }
 
-/* Навігація */
 .footer__nav {
   display: flex;
   align-items: center;
@@ -85,7 +77,6 @@
   color: var(--yellow);
 }
 
-/* Соцмережі */
 .footer__socials {
   display: flex;
   align-items: center;
@@ -110,7 +101,6 @@
   display: block;
 }
 
-/* ── Рядок 2: Категорії (сірий) ── */
 .footer__cats {
   background: var(--bg-light);
   padding: 20px 0;
@@ -135,7 +125,6 @@
   color: var(--yellow);
 }
 
-/* ── Рядок 3: Юридичні посилання ── */
 .footer__legal {
   background: var(--bg-white);
   padding: 20px 0;
@@ -158,7 +147,6 @@
   color: var(--dark);
 }
 
-/* ── Адаптив ── */
 @media (max-width: 1024px) {
   .footer__main-inner {
     flex-wrap: wrap;
@@ -185,11 +173,7 @@
   }
 }
 
-/* ── wp_nav_menu: паралельні селектори для WordPress-розмітки ──
-   WP генерує <ul class="menu"><li class="menu-item"><a>...</a></li></ul>
-   Старі селектори (.footer__nav-link, .footer__cat, .footer__legal-link) збережені. */
-
-/* footer__nav → <nav class="footer__nav"><ul class="menu">...</ul></nav> */
+/* wp_nav_menu selectors — WP generates <ul class="menu"><li class="menu-item"><a>...</a></li></ul> */
 .footer__nav .menu {
   display: flex;
   align-items: center;
@@ -213,7 +197,6 @@
   color: var(--yellow);
 }
 
-/* footer__cats-grid → <div class="footer__cats-grid"><ul class="menu">...</ul></div> */
 .footer__cats-grid .menu {
   display: flex;
   justify-content: space-between;
@@ -238,7 +221,6 @@
   color: var(--yellow);
 }
 
-/* footer__legal → <div class="footer__legal"><div class="container"><ul class="menu">...</ul></div></div> */
 .footer__legal .menu {
   display: flex;
   align-items: center;
@@ -260,7 +242,6 @@
   color: var(--dark);
 }
 
-/* Адаптив для нових селекторів */
 @media (max-width: 1024px) {
   .footer__nav .menu {
     gap: 20px;

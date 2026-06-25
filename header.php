@@ -10,7 +10,6 @@
 
 <header class="header">
 
-    <!-- РЯДОК 1: Соцмережі -->
     <div class="header__row header__row--top">
         <div class="container">
             <div class="header__top-inner">
@@ -23,12 +22,10 @@
         </div>
     </div>
 
-    <!-- РЯДОК 2: Лого + Контакти + CTA + Пошук -->
     <div class="header__row header__row--middle">
         <div class="container">
             <div class="header__middle-inner">
 
-                <!-- Лого -->
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="header__logo">
                     <?php
                     $custom_logo_id = get_theme_mod('custom_logo');
@@ -40,12 +37,12 @@
                     <?php endif; ?>
                 </a>
 
-                <!-- Контакти -->
                 <div class="header__contacts">
-                    <a href="mailto:<?php echo esc_attr(get_option('glc_email', 'info@glc.in.ua')); ?>" class="header__contact">
+                    <?php $glc_email = sanitize_email(get_option('glc_email', 'info@glc.in.ua')); ?>
+                    <a href="mailto:<?php echo esc_attr($glc_email); ?>" class="header__contact">
                         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/icons/ui/email-arrow.svg"
                              alt="" width="45" height="45" class="header__contact-icon">
-                        <span><?php echo esc_html(get_option('glc_email', 'info@glc.in.ua')); ?></span>
+                        <span><?php echo esc_html($glc_email); ?></span>
                     </a>
                     <div class="header__phones">
                         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/icons/ui/phone-number.svg"
@@ -63,17 +60,27 @@
                     </div>
                 </div>
 
-                <!-- CTA -->
                 <div class="header__actions">
                     <?php
                     $cta_text = get_option('glc_cta_text', 'Заявка на перевезення');
-                    $cta_link = get_option('glc_cta_link', '/contacts');
-                    $cta_url = str_starts_with($cta_link, '#') || preg_match('#^https?://#', $cta_link) ? $cta_link : home_url($cta_link);
+                    $cta_link = trim((string) get_option('glc_cta_link', ''));
+                    $cta_popup_id = '';
+
+                    if ($cta_link && !str_starts_with($cta_link, '/') && !preg_match('#^https?://#', $cta_link))
+                        $cta_popup_id = sanitize_key(ltrim($cta_link, '#'));
+
+                    if (!$cta_popup_id) {
+                        $form_popups = get_option('glc_form_popups', []);
+                        if (is_array($form_popups) && !empty($form_popups[0]['popup_id']))
+                            $cta_popup_id = sanitize_key($form_popups[0]['popup_id']);
+                    }
+
+                    if (!$cta_popup_id)
+                        $cta_popup_id = 'glc-request';
                     ?>
-                    <a href="<?php echo esc_url($cta_url); ?>" class="btn--primary header__cta"><?php echo esc_html($cta_text); ?></a>
+                    <button type="button" class="btn--primary header__cta" data-popup="<?php echo esc_attr($cta_popup_id); ?>"><?php echo esc_html($cta_text); ?></button>
                 </div>
 
-                <!-- Бургер (мобільний) -->
                 <button class="header__burger" aria-label="Меню">
                     <span></span><span></span><span></span>
                 </button>
@@ -82,7 +89,6 @@
         </div>
     </div>
 
-    <!-- РЯДОК 3: Навігація -->
     <div class="header__row header__row--nav">
         <div class="container">
             <?php wp_nav_menu([

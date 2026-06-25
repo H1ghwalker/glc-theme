@@ -9,11 +9,11 @@ $btn_action    = get_field('btn_action') ?: 'link';
 $btn_value     = get_field('btn_value') ?: '#';
 $items         = get_field('items');
 
-if (empty($items)) : ?>
-    <div style="padding:40px;text-align:center;background:#f5f5f5;border:2px dashed #ccc">
-        <p style="color:#999">GLC: Список послуг — заповніть поля в правій панелі &rarr;</p>
-    </div>
-<?php return; endif; ?>
+if (empty($items)) {
+    glc_block_placeholder('GLC: Список послуг — заповніть поля в правій панелі →');
+    return;
+}
+?>
 
 <section class="service-list section section--bg-<?php echo esc_attr($bg); ?>">
     <div class="container">

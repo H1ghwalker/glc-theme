@@ -47,7 +47,12 @@ if (!$items) {
                     <?php if ( $item['desc'] ) : ?>
                         <p class="transport-card__desc"><?php echo esc_html( $item['desc'] ); ?></p>
                     <?php endif; ?>
-                    <?php if ( $item['link'] ) glc_btn( 'Детальніше про послугу', $item['link'], 'btn--outline' ); ?>
+                    <?php
+                    $i_btn_text   = $item['btn_text'] ?? 'Детальніше про послугу';
+                    $i_btn_action = $item['btn_action'] ?? 'link';
+                    $i_btn_value  = $item['btn_value'] ?? '';
+                    if ($i_btn_text) glc_action_btn($i_btn_text, $i_btn_action, $i_btn_value, 'btn--outline');
+                    ?>
                 </div>
 
             </article>

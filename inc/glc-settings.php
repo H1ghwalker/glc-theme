@@ -106,9 +106,9 @@ add_action('admin_enqueue_scripts', function ($hook) {
             $('#glc-popup-add').on('click', function () {
                 var idx = $('#glc-popups-table tbody tr').length;
                 var row = '<tr class=\"glc-popup-row\">' +
-                    '<td><input type=\"text\" name=\"glc_form_popups[' + idx + '][popup_id]\" placeholder=\"glc-request-popup\"></td>' +
+                    '<td><input type=\"text\" name=\"glc_form_popups[' + idx + '][popup_id]\" placeholder=\"glc-request\"></td>' +
                     '<td><input type=\"text\" name=\"glc_form_popups[' + idx + '][title]\" placeholder=\"Заявка на перевезення\"></td>' +
-                    '<td><input type=\"text\" name=\"glc_form_popups[' + idx + '][shortcode]\" placeholder=\"[fluentform id=&quot;3&quot;]\"></td>' +
+                    '<td><input type=\"number\" name=\"glc_form_popups[' + idx + '][form_id]\" min=\"1\" placeholder=\"3\"></td>' +
                     '<td><button type=\"button\" class=\"button glc-popup-remove\">×</button></td>' +
                     '</tr>';
                 $('#glc-popups-table tbody').append(row);
@@ -162,9 +162,14 @@ function glc_settings_page() { ?>
             <tr><th>Текст кнопки</th><td>
                 <input type="text" name="glc_cta_text" value="<?php echo esc_attr(get_option('glc_cta_text', 'Заявка на перевезення')); ?>" class="regular-text">
             </td></tr>
-            <tr><th>Посилання</th><td>
-                <input type="text" name="glc_cta_link" value="<?php echo esc_attr(get_option('glc_cta_link', '/contacts')); ?>" class="regular-text">
-                <p class="description">Шлях сторінки, наприклад: /contacts</p>
+            <tr><th>Popup ID</th><td>
+                <?php
+                $cta_popup_value = trim((string) get_option('glc_cta_link', 'glc-request'));
+                if (!$cta_popup_value || str_starts_with($cta_popup_value, '/') || preg_match('#^https?://#', $cta_popup_value))
+                    $cta_popup_value = 'glc-request';
+                ?>
+                <input type="text" name="glc_cta_link" value="<?php echo esc_attr($cta_popup_value); ?>" class="regular-text">
+                <p class="description">ID popup-форми, наприклад: glc-request. Кнопка хедера відкриває модалку з таким ID.</p>
             </td></tr>
         </table>
 
@@ -207,13 +212,13 @@ function glc_settings_page() { ?>
         <p><button type="button" class="button" id="glc-social-add">+ Додати соцмережу</button></p>
 
         <h2>Popup-форми</h2>
-        <p class="description">Додайте Fluent Forms shortcode для popup. Кнопки можуть відкривати його через <code>#popup-id</code> або ACF action <code>Popup</code> зі значенням <code>popup-id</code>.</p>
+        <p class="description">Вкажіть ID форми Fluent Forms (число). Кнопки відкривають popup через <code>#popup-id</code> або ACF action <code>Popup</code> зі значенням <code>popup-id</code>.</p>
         <table class="widefat" id="glc-popups-table">
             <thead>
                 <tr>
                     <th style="width:220px">Popup ID</th>
                     <th style="width:260px">Заголовок</th>
-                    <th>Fluent Forms shortcode</th>
+                    <th style="width:120px">Form ID</th>
                     <th style="width:40px"></th>
                 </tr>
             </thead>
@@ -222,11 +227,14 @@ function glc_settings_page() { ?>
                 $form_popups = get_option('glc_form_popups', []);
                 if (!is_array($form_popups)) $form_popups = [];
                 foreach ($form_popups as $i => $popup):
+                    $popup_form_id = absint($popup['form_id'] ?? 0);
+                    if (!$popup_form_id && !empty($popup['shortcode']) && preg_match('/id=["\']?(\d+)/', $popup['shortcode'], $m))
+                        $popup_form_id = absint($m[1]);
                 ?>
                 <tr class="glc-popup-row">
-                    <td><input type="text" name="glc_form_popups[<?php echo (int) $i; ?>][popup_id]" value="<?php echo esc_attr($popup['popup_id'] ?? ''); ?>" placeholder="glc-request-popup"></td>
+                    <td><input type="text" name="glc_form_popups[<?php echo (int) $i; ?>][popup_id]" value="<?php echo esc_attr($popup['popup_id'] ?? ''); ?>" placeholder="glc-request"></td>
                     <td><input type="text" name="glc_form_popups[<?php echo (int) $i; ?>][title]" value="<?php echo esc_attr($popup['title'] ?? ''); ?>" placeholder="Заявка на перевезення"></td>
-                    <td><input type="text" name="glc_form_popups[<?php echo (int) $i; ?>][shortcode]" value="<?php echo esc_attr($popup['shortcode'] ?? ''); ?>" placeholder='[fluentform id="3"]'></td>
+                    <td><input type="number" name="glc_form_popups[<?php echo (int) $i; ?>][form_id]" value="<?php echo $popup_form_id; ?>" min="1" placeholder="3"></td>
                     <td><button type="button" class="button glc-popup-remove">×</button></td>
                 </tr>
                 <?php endforeach; ?>
@@ -317,19 +325,22 @@ function glc_sanitize_form_popups($value)
 
     foreach ($value as $item) {
         $popup_id = sanitize_key($item['popup_id'] ?? '');
-        $shortcode = trim(wp_unslash($item['shortcode'] ?? ''));
 
-        if (!$popup_id || !$shortcode || isset($used_ids[$popup_id]))
-            continue;
+        $form_id = 0;
+        if (!empty($item['form_id'])) {
+            $form_id = absint($item['form_id']);
+        } elseif (!empty($item['shortcode']) && preg_match('/id=["\']?(\d+)/', $item['shortcode'], $m)) {
+            $form_id = absint($m[1]);
+        }
 
-        if (!preg_match('/^\[fluentform\s+id=["\']?\d+["\']?\]$/', $shortcode))
+        if (!$popup_id || !$form_id || isset($used_ids[$popup_id]))
             continue;
 
         $used_ids[$popup_id] = true;
         $clean[] = [
             'popup_id' => $popup_id,
             'title' => sanitize_text_field($item['title'] ?? ''),
-            'shortcode' => $shortcode,
+            'form_id' => $form_id,
         ];
     }
 
@@ -343,7 +354,11 @@ function glc_render_form_popups()
         return;
 
     foreach ($popups as $popup) {
-        if (empty($popup['popup_id']) || empty($popup['shortcode']))
+        $form_id = absint($popup['form_id'] ?? 0);
+        if (!$form_id && !empty($popup['shortcode']) && preg_match('/id=["\']?(\d+)/', $popup['shortcode'], $m))
+            $form_id = absint($m[1]);
+
+        if (empty($popup['popup_id']) || !$form_id)
             continue;
         ?>
         <div class="glc-modal" id="<?php echo esc_attr($popup['popup_id']); ?>" role="dialog" aria-modal="true" aria-hidden="true" hidden>
@@ -354,7 +369,7 @@ function glc_render_form_popups()
                     <h2 class="glc-modal__title"><?php echo esc_html($popup['title']); ?></h2>
                 <?php endif; ?>
                 <div class="glc-modal__form">
-                    <?php echo do_shortcode($popup['shortcode']); ?>
+                    <?php echo do_shortcode('[fluentform id="' . $form_id . '"]'); ?>
                 </div>
             </div>
         </div>

@@ -11,8 +11,6 @@ function glc_register_acf_blocks()
     if (!function_exists('acf_register_block_type'))
         return;
 
-    // ── GLC: Загальні блоки ───────────────────────────
-
     acf_register_block_type([
         'name'            => 'glc-about',
         'title'           => 'GLC: Про компанію',
@@ -42,7 +40,7 @@ function glc_register_acf_blocks()
         'name' => 'glc-reviews',
         'title' => 'GLC: Відгуки',
         'render_template' => get_template_directory() . '/blocks/reviews/render.php',
-        'category' => 'glc-common',
+        'category' => 'glc-cpt',
         'icon' => 'format-quote',
         'keywords' => ['reviews', 'відгуки', 'glc'],
         'mode' => 'preview',
@@ -51,13 +49,11 @@ function glc_register_acf_blocks()
         'example' => [],
     ]);
 
-    // ── 🚛 GLC: Послуги ──────────────────────────────────
-
     acf_register_block_type([
         'name' => 'glc-services-hero',
         'title' => 'GLC: Слайдер послуг',
         'render_template' => get_template_directory() . '/blocks/services-hero/render.php',
-        'category' => 'glc-services',
+        'category' => 'glc-sliders',
         'icon' => 'slides',
         'keywords' => ['hero', 'slider', 'послуги', 'glc'],
         'mode' => 'preview',
@@ -83,7 +79,7 @@ function glc_register_acf_blocks()
         'name' => 'glc-service-types',
         'title' => 'GLC: Типи послуг + тарифи',
         'render_template' => get_template_directory() . '/blocks/service-types/render.php',
-        'category' => 'glc-services',
+        'category' => 'glc-accordions',
         'icon' => 'list-view',
         'keywords' => ['services', 'tariffs', 'послуги', 'тарифи', 'glc'],
         'mode' => 'preview',
@@ -109,7 +105,7 @@ function glc_register_acf_blocks()
         'name' => 'glc-cargo-slider',
         'title' => 'GLC: Види вантажів (слайдер)',
         'render_template' => get_template_directory() . '/blocks/cargo-slider/render.php',
-        'category' => 'glc-services',
+        'category' => 'glc-sliders',
         'icon' => 'slides',
         'keywords' => ['cargo', 'slider', 'вантажі', 'glc'],
         'mode' => 'preview',
@@ -131,13 +127,11 @@ function glc_register_acf_blocks()
         'example' => [],
     ]);
 
-    // ── GLC: Загальні блоки (додаткові) ──────────────
-
     acf_register_block_type([
         'name' => 'glc-page-hero',
         'title' => 'GLC: Hero сторінки',
         'render_template' => get_template_directory() . '/blocks/page-hero/render.php',
-        'category' => 'glc-common',
+        'category' => 'glc-hero',
         'icon' => 'cover-image',
         'keywords' => ['hero', 'banner', 'заголовок', 'glc'],
         'mode' => 'preview',
@@ -147,12 +141,12 @@ function glc_register_acf_blocks()
     ]);
 
     acf_register_block_type([
-        'name' => 'glc-content-hero',
-        'title' => 'GLC: Hero з текстом і фото',
-        'render_template' => get_template_directory() . '/blocks/content-hero/render.php',
-        'category' => 'glc-common',
+        'name' => 'glc-page-hero-accent',
+        'title' => 'GLC: Hero сторінки з акцентом',
+        'render_template' => get_template_directory() . '/blocks/page-hero-accent/render.php',
+        'category' => 'glc-hero',
         'icon' => 'cover-image',
-        'keywords' => ['hero', 'content', 'photo', 'glc'],
+        'keywords' => ['hero', 'banner', 'accent', 'glc'],
         'mode' => 'preview',
         'post_types' => ['page'],
         'supports' => ['align' => false],
@@ -202,7 +196,7 @@ function glc_register_acf_blocks()
         'name' => 'glc-transport-icons',
         'title' => 'GLC: Транспорт / іконки',
         'render_template' => get_template_directory() . '/blocks/transport-icons/render.php',
-        'category' => 'glc-common',
+        'category' => 'glc-transport',
         'icon' => 'car',
         'keywords' => ['transport', 'транспорт', 'іконки', 'glc'],
         'mode' => 'preview',
@@ -228,7 +222,7 @@ function glc_register_acf_blocks()
         'name' => 'glc-seo-text',
         'title' => 'GLC: SEO текст',
         'render_template' => get_template_directory() . '/blocks/seo-text/render.php',
-        'category' => 'glc-common',
+        'category' => 'glc-seo',
         'icon' => 'text',
         'mode' => 'preview',
         'post_types' => ['page'],
@@ -237,13 +231,23 @@ function glc_register_acf_blocks()
         'example' => [],
     ]);
 
-    // ── GLC: Головна сторінка ────────────────────────
-
+    acf_register_block_type([
+        'name' => 'glc-seo-text-title',
+        'title' => 'GLC: SEO текст з заголовком',
+        'render_template' => get_template_directory() . '/blocks/seo-text-title/render.php',
+        'category' => 'glc-seo',
+        'icon' => 'text-page',
+        'mode' => 'preview',
+        'post_types' => ['page'],
+        'supports' => ['align' => false],
+        'keywords' => ['seo', 'текст', 'заголовок', 'glc'],
+        'example' => [],
+    ]);
     acf_register_block_type([
         'name'            => 'glc-home-hero',
         'title'           => 'GLC: Головний слайдер',
         'render_template' => get_template_directory() . '/blocks/home-hero/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-hero',
         'icon'            => 'slides',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -256,7 +260,7 @@ function glc_register_acf_blocks()
         'name'            => 'glc-vehicles',
         'title'           => 'GLC: Транспорт',
         'render_template' => get_template_directory() . '/blocks/vehicles/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-transport',
         'icon'            => 'car',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -269,7 +273,7 @@ function glc_register_acf_blocks()
         'name'            => 'glc-routes',
         'title'           => 'GLC: Маршрути',
         'render_template' => get_template_directory() . '/blocks/routes/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-extra',
         'icon'            => 'location-alt',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -282,7 +286,7 @@ function glc_register_acf_blocks()
         'name'            => 'glc-ticker',
         'title'           => 'GLC: Бігуча стрічка',
         'render_template' => get_template_directory() . '/blocks/ticker/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-extra',
         'icon'            => 'minus',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -295,7 +299,7 @@ function glc_register_acf_blocks()
         'name'            => 'glc-offices',
         'title'           => 'GLC: Офіси',
         'render_template' => get_template_directory() . '/blocks/offices/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-cpt',
         'icon'            => 'location',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -308,7 +312,7 @@ function glc_register_acf_blocks()
         'name'            => 'glc-price-table',
         'title'           => 'GLC: Прайс-таблиця',
         'render_template' => get_template_directory() . '/blocks/price-table/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-services',
         'icon'            => 'editor-table',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -321,7 +325,7 @@ function glc_register_acf_blocks()
         'name'            => 'glc-photo-report',
         'title'           => 'GLC: Фотозвіт перевезень',
         'render_template' => get_template_directory() . '/blocks/photo-report/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-sliders',
         'icon'            => 'camera',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -334,7 +338,7 @@ function glc_register_acf_blocks()
         'name'            => 'glc-service-list',
         'title'           => 'GLC: Список послуг',
         'render_template' => get_template_directory() . '/blocks/service-list/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-services',
         'icon'            => 'grid-view',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -347,7 +351,7 @@ function glc_register_acf_blocks()
         'name'            => 'glc-service-cards',
         'title'           => 'GLC: Картки послуг',
         'render_template' => get_template_directory() . '/blocks/service-cards/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-services',
         'icon'            => 'screenoptions',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -373,7 +377,7 @@ function glc_register_acf_blocks()
         'name'            => 'glc-transport-variants',
         'title'           => 'GLC: Варіанти перевезення',
         'render_template' => get_template_directory() . '/blocks/transport-variants/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-transport',
         'icon'            => 'car',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -383,10 +387,23 @@ function glc_register_acf_blocks()
     ]);
 
     acf_register_block_type([
+        'name'            => 'glc-benefits-slider',
+        'title'           => 'GLC: Слайдер переваг',
+        'render_template' => get_template_directory() . '/blocks/benefits-slider/render.php',
+        'category'        => 'glc-sliders',
+        'icon'            => 'slides',
+        'mode'            => 'preview',
+        'post_types'      => ['page'],
+        'supports'        => ['align' => false],
+        'keywords'        => ['benefits', 'переваги', 'слайдер', 'glc'],
+        'example'         => [],
+    ]);
+
+    acf_register_block_type([
         'name'            => 'glc-truck-types',
         'title'           => 'GLC: Типи вантажних автомобілів',
         'render_template' => get_template_directory() . '/blocks/truck-types/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-transport',
         'icon'            => 'car',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -399,7 +416,7 @@ function glc_register_acf_blocks()
         'name'            => 'glc-faq',
         'title'           => 'GLC: FAQ (акордеон)',
         'render_template' => get_template_directory() . '/blocks/faq/render.php',
-        'category'        => 'glc-common',
+        'category'        => 'glc-accordions',
         'icon'            => 'editor-help',
         'mode'            => 'preview',
         'post_types'      => ['page'],
@@ -408,13 +425,11 @@ function glc_register_acf_blocks()
         'example'         => [],
     ]);
 
-    // ── GLC: Міжнародні перевезення ──────────────────
-
     acf_register_block_type([
         'name' => 'glc-int-experience',
         'title' => 'GLC: Наш досвід (карта)',
         'render_template' => get_template_directory() . '/blocks/int-experience/render.php',
-        'category' => 'glc-international',
+        'category' => 'glc-cpt',
         'icon' => 'admin-site-alt3',
         'keywords' => ['experience', 'досвід', 'карта', 'маршрути', 'glc'],
         'mode' => 'preview',

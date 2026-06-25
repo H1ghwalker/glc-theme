@@ -1,16 +1,9 @@
-/* ═══════════════════════════════════════════
-   SECTION — єдиний padding для всіх блоків
-   ═══════════════════════════════════════════ */
-
 .section {
   padding: 80px 0;
 }
 
-/*
-   04. HERO (головна)
-   */
+/* HERO */
 
-/* ── Секція: білий фон ── */
 .hero {
   padding: 0;
   position: relative;
@@ -23,7 +16,6 @@
   height: auto;
 }
 
-/* ── Текстова зона (на білому фоні) ── */
 .hero__content {
   padding: 0 0 24px;
 }
@@ -31,7 +23,7 @@
 .hero__title {
   font-size: 45px;
   font-weight: 800;
-  color: var(--dark); /* темний текст на білому */
+  color: var(--dark);
   line-height: 1.4;
   text-transform: uppercase;
   margin-bottom: 12px;
@@ -41,7 +33,6 @@
   display: block;
 }
 
-/* Бейдж + слово після нього — не розривати */
 .hero__title-line {
   display: inline-flex;
   align-items: center;
@@ -55,7 +46,6 @@
   white-space: nowrap;
 }
 
-/* Кнопка-стрілка всередині заголовку */
 .hero__arrow-badge {
   display: inline-flex;
   align-items: center;
@@ -79,7 +69,6 @@
   color: var(--text-muted);
 }
 
-/* ── Зображення нижче тексту ── */
 .hero__media {
   position: relative;
   border-radius: 16px;
@@ -110,7 +99,6 @@
   pointer-events: none;
 }
 
-/* ── Pagination dots ── */
 .hero__pagination {
   position: absolute !important;
   bottom: 20px !important;
@@ -136,8 +124,8 @@
   box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.2);
 }
 
-/* ── Hero: кнопки навігації (поза swiper-ом, відносно .hero) ── */
 .hero__nav {
+  display: none !important;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -146,16 +134,15 @@
   border: none;
   cursor: pointer;
   padding: 4px;
-  display: flex;
   align-items: center;
   justify-content: center;
   line-height: 0;
 }
 .hero__nav--prev {
-  left: max(20px, calc((100% - var(--container)) / 2));
+  left: max(5px, calc((100% - var(--container)) / 2 - 30px));
 }
 .hero__nav--next {
-  right: max(20px, calc((100% - var(--container)) / 2));
+  right: max(5px, calc((100% - var(--container)) / 2 - 30px));
 }
 .hero__nav img {
   width: 32px;
@@ -318,12 +305,6 @@
   }
 }
 
-/* ── СЕКЦІЯ: ВИДИ ТРАНСПОРТУ ── */
-/* (окремий блок під hero-слайдером) */
-
-.transport-types {
-}
-
 .transport-types__grid {
   display: flex;
   align-items: stretch;
@@ -360,11 +341,7 @@
   line-height: 1.3;
 }
 
-/* ═══════════════════════════════════════════
-   05. TICKER (бігуча стрічка)
-   ═══════════════════════════════════════════ */
-
-/* Обгортка — резервує висоту для X */
+/* TICKER */
 .ticker-wrap {
   position: relative;
   height: 160px;
@@ -374,7 +351,6 @@
   contain: paint;
 }
 
-/* Кожна стрічка — абсолютно позиційована, по центру висоти */
 .ticker__band {
   position: absolute;
   left: -10%;
@@ -385,7 +361,6 @@
   top: 50%;
 }
 
-/* Стрічка 1: біла з сірим контуром, нахил ↘ */
 .ticker__band--1 {
   background: var(--bg-white);
   border-top: 1px solid var(--border);
@@ -393,13 +368,11 @@
   transform: translateY(-50%) rotate(-4deg);
 }
 
-/* Стрічка 2: блакитна без контуру, нахил ↗ */
 .ticker__band--2 {
   background: var(--bg-blue);
   transform: translateY(-50%) rotate(4deg);
 }
 
-/* Рухома доріжка */
 .ticker__track {
   display: inline-flex;
   align-items: center;
@@ -412,7 +385,6 @@
   animation: ticker-fwd 45s linear infinite;
 }
 
-/* Вправо */
 .ticker__track--rev {
   animation: ticker-rev 45s linear infinite;
 }
@@ -454,26 +426,18 @@
   }
 }
 
-/* ═══════════════════════════════════════════
-   06. VEHICLES (слайдер авто)
-   ═══════════════════════════════════════════ */
+/* VEHICLES */
 
-.vehicles {
-}
-
-/* Заголовок */
 .vehicles__heading {
   margin-bottom: 24px;
 }
 
-/* Обгортка: стрілки + swiper */
 .vehicles__slider-wrap {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
+  gap: 5px;
 }
 
-/* Стрілки — на рівні заголовку картки (після фото 270px + padding 16px) */
 .vehicles__nav {
   flex-shrink: 0;
   margin-top: calc(270px + 16px);
@@ -518,7 +482,6 @@
   min-height: 550px; 
 }
 
-/* Зона фото */
 .vehicle-card__img-wrap {
   position: relative;
   flex-shrink: 0;
@@ -539,7 +502,6 @@
   background: #d9d9d9;
 }
 
-/* Бейдж ціни */
 .vehicle-card__price {
   position: absolute;
   bottom: 0;
@@ -559,7 +521,6 @@
   z-index: 1;
 }
 
-/* Тіло картки */
 /* padding-top: половина висоти бейджа (35/2=17.5) + зазор 12px = ~30px */
 .vehicle-card__body {
   padding: 30px 25px 19px;
@@ -576,7 +537,6 @@
   line-height: 1.2;
 }
 
-/* Список характеристик — займає весь вільний простір, штовхаючи кнопку вниз */
 .vehicle-card__specs {
   display: flex;
   flex-direction: column;
@@ -584,7 +544,6 @@
   flex: 1;
 }
 
-/* Іконка зліва, лейбл і значення — кожен на своєму рядку */
 .vehicle-card__spec {
   display: grid;
   grid-template-columns: 20px 1fr;
@@ -619,7 +578,6 @@
   line-height: 1.4;
 }
 
-/* Кнопка — завжди внизу через flex: 1 на specs */
 .vehicle-card__btn {
   flex-shrink: 0;
   width: 100%;
@@ -629,7 +587,6 @@
   justify-content: center;
 }
 
-/* Pagination */
 .vehicles__pagination {
   margin-top: 24px;
   text-align: center;
@@ -660,9 +617,7 @@
   }
 }
 
-/* ═══════════════════════════════════════════
-   ABOUT / ПРО КОМПАНІЮ
-═══════════════════════════════════════════ */
+/* ABOUT */
 
 .about {
   background: var(--bg-white);
@@ -675,7 +630,6 @@
   align-items: center;
 }
 
-/* ── Текст ── */
 .about__title {
   font-size: clamp(28px, 4vw, 56px);
   font-weight: 900;
@@ -701,7 +655,6 @@
   line-height: 1.65;
 }
 
-/* ── Кнопки ── */
 .about__actions {
   display: flex;
   align-items: center;
@@ -709,7 +662,6 @@
   flex-wrap: wrap;
 }
 
-/* ── Фото ── */
 .about__media {
   flex-shrink: 0;
 }
@@ -721,7 +673,6 @@
   border-radius: 16px;
 }
 
-/* ── Адаптив ── */
 @media (max-width: 1024px) {
   .about__inner {
     grid-template-columns: 1fr 320px;
@@ -745,9 +696,7 @@
   }
 }
 
-/* ═══════════════════════════════════════════
-   STATS / СТАТИСТИКА
-═══════════════════════════════════════════ */
+/* STATS */
 
 .stats {
   background: var(--bg-light);
@@ -804,9 +753,7 @@
   flex-shrink: 0;
 }
 
-/* ═══════════════════════════════════════════
-   07. REVIEWS (відгуки)
-   ═══════════════════════════════════════════ */
+/* REVIEWS */
 
 .reviews {
   background: var(--bg-white);
@@ -816,11 +763,10 @@
   margin-bottom: 36px;
 }
 
-/* Обгортка: стрілки + swiper */
 .reviews__slider-wrap {
   display: flex;
   align-items: center; /* стрілки по центру висоти swiper */
-  gap: 8px;
+  gap: 5px;
 }
 
 .reviews__nav {
@@ -837,7 +783,6 @@
   opacity: 0.7;
 }
 
-/* Обгортка swiper + pagination */
 .reviews__swiper-wrap {
   flex: 1;
   min-width: 0;
@@ -850,13 +795,11 @@
   overflow: visible;
 }
 
-/* Слайди тягнуться до висоти найвищого */
 .reviews__swiper .swiper-slide {
   display: flex;
   height: auto;
 }
 
-/* ── Картка відгуку ── */
 .review-card {
   background: var(--bg-white);
   /* border: 1px solid var(--border); */
@@ -869,7 +812,6 @@
 }
 .review-card:hover { box-shadow: 0px 4px 40px 0px #8094AE; }
 
-/* Автор */
 .review-card__author {
   display: flex;
   align-items: center;
@@ -901,7 +843,6 @@
   line-height: 1.4;
 }
 
-/* Характеристики вантажу — на всю ширину */
 .review-card__specs {
   background: var(--bg-review);
   padding: 14px 20px;
@@ -924,7 +865,6 @@
   margin-top: 1px;
 }
 
-/* Лейбл і значення в рядок, value обертається якщо довгий */
 .review-card__spec-text {
   display: flex;
   flex-direction: column;
@@ -942,7 +882,6 @@
   line-height: 1.4;
 }
 
-/* Текст відгуку */
 .review-card__body {
   padding: 16px 16px 16px;
   flex: 1;
@@ -961,7 +900,6 @@
   max-height: none;
 }
 
-/* Кнопка розгорнути/згорнути — завжди в потоці, іконка з'являється якщо текст обрізано */
 .review-card__toggle {
   display: flex;
   justify-content: center;
@@ -997,7 +935,6 @@
   transform: rotate(-135deg) translateY(-3px);
 }
 
-/* Pagination — під swiper, не всередині */
 .reviews__pagination {
   position: static !important; /* скидаємо absolute від Swiper */
   margin-top: 24px;
@@ -1018,9 +955,7 @@
   background: var(--yellow);
 }
 
-/* ═══════════════════════════════════════════
-   08. STEPS (етапи)
-   ═══════════════════════════════════════════ */
+/* STEPS */
 
 .steps {
   background: var(--bg-page);
@@ -1043,13 +978,11 @@
   text-align: center;
 }
 
-/* Обгортка — для позиціонування номера відносно кола */
 .steps__circle-wrap {
   position: relative;
   margin-bottom: 24px;
 }
 
-/* Сине коло з іконкою */
 .steps__circle {
   width: 160px;
   height: 160px;
@@ -1071,7 +1004,6 @@
   object-fit: contain;
 }
 
-/* Номер кроку — у правому верхньому куті кола */
 .steps__num {
   position: absolute;
   top: 4px;
@@ -1082,7 +1014,6 @@
   line-height: 1;
 }
 
-/* Назва кроку */
 .steps__title {
   font-size: var(--text-lg); /* 18px */
   font-weight: 700;
@@ -1107,7 +1038,6 @@
   color: var(--text-main);
 }
 
-/* Адаптив */
 @media (max-width: 768px) {
   .steps__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1139,15 +1069,12 @@
   }
 }
 
-/* ═══════════════════════════════════════════
-   09. OFFICES (офіси)
-   ═══════════════════════════════════════════ */
+/* OFFICES */
 
 .offices {
   background: var(--bg-white);
 }
 
-/* Картка офісу — 2 колонки */
 .office-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1159,7 +1086,6 @@
   margin-bottom: 0;
 }
 
-/* Зворотний порядок — карта праворуч */
 .office-card--reverse .office-card__map {
   order: 2;
 }
@@ -1167,7 +1093,6 @@
   order: 1;
 }
 
-/* Карта */
 .office-card__map {
   border-radius: 16px;
   overflow: hidden;
@@ -1181,7 +1106,6 @@
   display: block;
 }
 
-/* Заголовок офісу */
 .office-card__title {
   font-size: clamp(22px, 2.5vw, 34px);
   font-weight: 900;
@@ -1190,7 +1114,6 @@
   margin-bottom: 32px;
 }
 
-/* Список контактів */
 .office-card__contacts {
   list-style: none;
   display: flex;
@@ -1222,7 +1145,6 @@ a.office-card__contact-text:hover {
   text-decoration: underline;
 }
 
-/* Адаптив */
 @media (max-width: 1024px) {
   .office-card {
     grid-template-columns: 1fr;
@@ -1238,7 +1160,6 @@ a.office-card__contact-text:hover {
 }
 
 
-/* ── Responsive: blocks at 1024px ── */
 @media (max-width: 1024px) {
   .hero__slide {
     min-height: 300px;
@@ -1313,11 +1234,10 @@ a.office-card__contact-text:hover {
   }
 }
 
-/*
-   13. SERVICES (сторінка послуг)
-   */
+/* SERVICES */
 
 .services-hero {
+  padding-top: 20px;
   padding-bottom: 0;
 }
 
@@ -1336,20 +1256,24 @@ a.office-card__contact-text:hover {
 }
 
 .services-hero__desc {
-  font-size: var(--text-md);
-  color: var(--text-muted);
+  font-size: 18px;
+  color: var(--text-main);
   line-height: 1.7;
-  max-width: 860px;
+  max-width: 993px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* ── Swiper + стрілки ── */
 .services-hero__slider {
   position: relative;
 }
 
+.services-hero__slider .container {
+  padding-bottom: 0;
+}
+
 .services-hero__nav {
+  display: none !important;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1358,15 +1282,14 @@ a.office-card__contact-text:hover {
   border: none;
   cursor: pointer;
   padding: 0;
-  display: flex;
   justify-content: center;
   line-height: 0;
 }
 .services-hero__nav--prev {
-  left: max(20px, calc((100% - var(--container)) / 2));
+  left: max(5px, calc((100% - var(--container)) / 2 - 30px));
 }
 .services-hero__nav--next {
-  right: max(20px, calc((100% - var(--container)) / 2));
+  right: max(5px, calc((100% - var(--container)) / 2 - 30px));
 }
 .services-hero__nav img {
   width: 32px;
@@ -1375,7 +1298,7 @@ a.office-card__contact-text:hover {
 }
 
 .services-hero__swiper {
-  background: var(--bg-white);
+  background: inherit;
 }
 
 .services-hero__media {
@@ -1433,68 +1356,56 @@ a.office-card__contact-text:hover {
   box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.2);
 }
 
-/* ══ GLC Routes block */
 .glc-routes {
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 20px 0 40px;
 }
 
 .glc-routes__item {
-  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px 16px;
+  color: var(--text-muted);
+  background: #f5f6fb;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font);
+  font-size: var(--text-lg);
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.25;
   white-space: nowrap;
   text-decoration: none;
-  transition:
-    color var(--transition),
-    background var(--transition);
+  transition: background var(--transition), color var(--transition);
 }
 
-/* ── Tabs: рядок табів по центру ── */
+.glc-routes__item:hover,
+.glc-routes__item:focus-visible {
+  color: var(--dark);
+  background: var(--yellow);
+}
+
+/* Tabs */
 .glc-routes--tabs .glc-routes__list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 10px;
 }
 
-.glc-routes--tabs .glc-routes__item {
-  color: var(--text-muted);
-  padding: 4px 12px;
-  border-radius: 4px;
-  background: var(--bg-review);
-}
-.glc-routes--tabs .glc-routes__item:hover {
-  color: var(--dark);
-  background: #e8eaf3;
-}
-
-/* ── Tags: сітка тегів з синьою лінією ── */
+/* Tags */
 .glc-routes--tags .glc-routes__list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px 24px;
-}
-
-.glc-routes--tags .glc-routes__item {
-  color: var(--text-main);
-  padding: 6px 12px;
-  border-left: 3px solid #4A90D9;
-  background: var(--bg-light);
-  border-radius: 0 4px 4px 0;
-}
-.glc-routes--tags .glc-routes__item:hover {
-  color: var(--dark);
-  background: #e8eaf3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 @media (max-width: 768px) {
   .glc-routes__item {
     white-space: normal;
-  }
-  .glc-routes--tags .glc-routes__list {
-    grid-template-columns: 1fr;
   }
   .services-hero__img {
     height: 260px;
@@ -1510,9 +1421,7 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ─────────────────────────────────────────
-   SVC SECTION — Типи послуг / Тарифи
-───────────────────────────────────────── */
+/* SVC SECTION */
 
 .svc-section {
   background: var(--bg-white);
@@ -1525,7 +1434,6 @@ a.office-card__contact-text:hover {
   align-items: start;
 }
 
-/* ── Sidebar ── */
 .svc-sidebar {
   display: flex;
   flex-direction: column;
@@ -1559,7 +1467,6 @@ a.office-card__contact-text:hover {
   color: var(--dark);
 }
 
-/* ── Content panels ── */
 .svc-panel {
   display: none;
 }
@@ -1567,7 +1474,6 @@ a.office-card__contact-text:hover {
   display: block;
 }
 
-/* ── Accordion ── */
 .svc-accordion {
   border-radius: 12px;
   overflow: hidden;
@@ -1606,7 +1512,6 @@ a.office-card__contact-text:hover {
   flex: 1;
 }
 
-/* + / − icon — жовтий округлий квадрат */
 .svc-accordion__icon {
   flex-shrink: 0;
   width: 32px;
@@ -1641,14 +1546,22 @@ a.office-card__contact-text:hover {
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
-/* Body */
 .svc-accordion__body {
-  display: none;
-  padding: 12px 0 20px;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
   background: var(--bg-white);
 }
+.svc-accordion__body > .svc-accordion__body-inner {
+  overflow: hidden;
+  padding: 0;
+  transition: padding 0.35s ease;
+}
 .svc-accordion__item.is-open .svc-accordion__body {
-  display: block;
+  grid-template-rows: 1fr;
+}
+.svc-accordion__item.is-open .svc-accordion__body > .svc-accordion__body-inner {
+  padding: 12px 0 20px;
 }
 
 .svc-accordion__desc {
@@ -1662,7 +1575,7 @@ a.office-card__contact-text:hover {
   display: inline-block;
 }
 
-/* ── FAQ section — overrides for .svc-accordion ── */
+/* FAQ overrides */
 .faq-section .container {
   max-width: 788px;
 }
@@ -1717,8 +1630,13 @@ a.office-card__contact-text:hover {
 }
 
 .faq-section .svc-accordion__body {
-  padding: 14px 0 0;
   background: transparent;
+}
+.faq-section .svc-accordion__body > .svc-accordion__body-inner {
+  padding: 0;
+}
+.faq-section .svc-accordion__item.is-open .svc-accordion__body > .svc-accordion__body-inner {
+  padding: 14px 0 0;
 }
 
 .faq-section .svc-accordion__desc {
@@ -1756,7 +1674,6 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ── Tariffs table ── */
 .svc-tariffs {
   width: 100%;
   border-collapse: collapse;
@@ -1797,47 +1714,145 @@ a.office-card__contact-text:hover {
   line-height: 1.5;
 }
 
-/* Responsive */
+/* SERVICE TYPES ACCORDION */
+.svc-section .container {
+  max-width: 1100px;
+}
+.svc-section__inner {
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.svc-sidebar {
+  gap: 45px;
+}
+.svc-sidebar__item {
+  position: relative;
+  padding: 12px 18px;
+  border: none;
+  border-left: 3px solid var(--yellow);
+  background: transparent;
+  color: var(--text-main);
+  cursor: default;
+  font-size: 35px;
+  font-weight: 800;
+  line-height: 1.18;
+}
+.svc-sidebar__item:hover {
+  border-left-color: var(--yellow);
+  background: transparent;
+}
+.svc-sidebar__item.is-active {
+  background: #f5f6fb;
+  color: var(--text-main);
+}
+.svc-section .svc-content {
+  min-width: 0;
+}
+.svc-section .svc-accordion {
+  overflow: visible;
+  border-radius: 0;
+}
+.svc-section .svc-accordion__item > .svc-accordion__head {
+  border-bottom: 1px solid #aeb4ba;
+}
+.svc-section .svc-accordion__head {
+  min-height: 56px;
+  padding: 4px 0 7px;
+  background: transparent;
+  color: var(--text-main);
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.svc-section .svc-accordion__head:hover,
+.svc-section .svc-accordion__item.is-open .svc-accordion__head {
+  background: transparent;
+}
+.svc-section .svc-accordion__title {
+  min-width: 0;
+}
+.svc-section .svc-accordion__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+.svc-section .svc-accordion__icon::before {
+  width: 12px;
+  height: 4px;
+}
+.svc-section .svc-accordion__icon::after {
+  width: 4px;
+  height: 12px;
+}
+.svc-section .svc-accordion__body {
+  background: transparent;
+}
+.svc-section .svc-accordion__body > .svc-accordion__body-inner {
+  padding: 0;
+}
+.svc-section .svc-accordion__item.is-open .svc-accordion__body > .svc-accordion__body-inner {
+  padding: 14px 0 14px;
+}
+.svc-section .svc-accordion__desc {
+  max-width: 520px;
+  margin: 0 0 12px;
+  color: var(--text-main);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+.svc-section .svc-accordion__btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 50px;
+  padding: 10px 26px 10px 20px;
+  border: 1px solid #7f8994;
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.2;
+  gap: 12px;
+}
+.svc-section .svc-accordion__btn::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url("../img/icons/ui/ion_arrow-redo.svg") center / contain no-repeat;
+  -webkit-mask: url("../img/icons/ui/ion_arrow-redo.svg") center / contain no-repeat;
+}
+
 @media (max-width: 1024px) {
   .svc-section__inner {
     grid-template-columns: 1fr;
   }
   .svc-sidebar {
-    flex-direction: row;
-    border-radius: 8px;
+    gap: 18px;
   }
   .svc-sidebar__item {
-    flex: 1;
-    text-align: center;
-    border-bottom: none;
-    border-right: 1px solid var(--border);
-    padding: 14px 12px;
-    font-size: 13px;
-  }
-  .svc-sidebar__item:last-child {
-    border-right: none;
+    font-size: 30px;
   }
 }
 
 @media (max-width: 768px) {
-  .svc-sidebar {
-    flex-direction: column;
-  }
   .svc-sidebar__item {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-  .svc-sidebar__item:last-child {
-    border-bottom: none;
+    font-size: 26px;
   }
   .svc-section {
     padding: 36px 0;
   }
+  .svc-section .svc-accordion__head {
+    min-height: 52px;
+    font-size: 22px;
+  }
+  .svc-section .svc-accordion__desc {
+    font-size: 16px;
+  }
 }
 
-/* ─────────────────────────────────────────
-   CARGO TYPES — Види вантажів
-───────────────────────────────────────── */
+/* CARGO TYPES */
 
 .cargo-types {
   background: var(--bg-light);
@@ -1864,7 +1879,6 @@ a.office-card__contact-text:hover {
   gap: 24px;
 }
 
-/* ── Cargo card ── */
 .cargo-card {
   background: var(--bg-white);
   border-radius: 12px;
@@ -1922,7 +1936,6 @@ a.office-card__contact-text:hover {
   margin-top: 4px;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .cargo-types__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1938,9 +1951,7 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ─────────────────────────────────────────
-   CARGO SLIDER
-───────────────────────────────────────── */
+/* CARGO SLIDER */
 .cargo-slider .container {
   max-width: 1100px;
 }
@@ -1998,11 +2009,11 @@ a.office-card__contact-text:hover {
 }
 
 .cargo-slider__nav--prev {
-  left: -68px;
+  left: -45px;
 }
 
 .cargo-slider__nav--next {
-  right: -68px;
+  right: -45px;
 }
 
 .cargo-slider__nav:hover {
@@ -2101,11 +2112,11 @@ a.office-card__contact-text:hover {
   }
 
   .cargo-slider__nav--prev {
-    left: -12px;
+    left: -45px;
   }
 
   .cargo-slider__nav--next {
-    right: -12px;
+    right: -45px;
   }
 }
 
@@ -2136,9 +2147,7 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ─────────────────────────────────────────
-   SERVICES MAP — Карта напрямків
-───────────────────────────────────────── */
+/* SERVICES MAP */
 
 .svc-map {
   padding: 64px 0 0;
@@ -2198,11 +2207,6 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ═══════════════════════════════════════════
-   14. BLOCKS (ACF блоки)
-   ═══════════════════════════════════════════ */
-
-/* ── page-hero ── */
 .page-hero {
   padding: 0 0 60px;
   background: var(--bg-white);
@@ -2211,11 +2215,13 @@ a.office-card__contact-text:hover {
 .page-hero__inner {
   display: flex;
   align-items: center;
-  gap: 48px;
+  justify-content: space-between;
+  gap: 150px;
 }
 
 .page-hero__content {
   flex: 1;
+  max-width: 535px;
   min-width: 0;
 }
 
@@ -2242,22 +2248,16 @@ a.office-card__contact-text:hover {
 }
 
 .page-hero__media {
-  flex: 0 0 480px;
-  max-width: 480px;
+  flex: 0 0 360px;
+  max-width: 360px;
 }
 
 .page-hero__img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  object-fit: cover;
+  border-radius: 30px;
   display: block;
-}
-
-@media (max-width: 1024px) {
-  .page-hero__media {
-    flex: 0 0 360px;
-    max-width: 360px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -2279,154 +2279,109 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ── content hero ── */
-.content-hero {
-  padding: 0 0 56px;
+.page-hero-accent {
+  padding: 0 0 60px;
+  background: var(--bg-white);
 }
 
-.content-hero__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 560px) minmax(280px, 420px);
-  align-items: start;
-  justify-content: space-between;
-  gap: 56px;
+.page-hero-accent__inner {
+  display: flex;
+  align-items: center;
+  gap: 48px;
 }
 
-.content-hero__content {
+.page-hero-accent__content {
+  flex: 1;
   min-width: 0;
 }
 
-.content-hero__title {
-  max-width: 540px;
-  margin-bottom: 26px;
-  color: var(--text-main);
+.page-hero-accent__title {
   font-size: var(--text-h2);
   font-weight: 800;
-  line-height: 1.08;
+  color: var(--dark);
+  line-height: 1.15;
+  margin-bottom: 20px;
 }
 
-.content-hero__intro {
-  max-width: 560px;
-  color: var(--text-main);
+.page-hero-accent__desc {
   font-size: var(--text-base);
-  line-height: 1.45;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 0;
 }
 
-.content-hero__intro p + p,
-.content-hero__bottom p + p {
-  margin-top: 14px;
-}
-
-.content-hero__highlight {
-  max-width: 560px;
-  margin-top: 22px;
-  padding-left: 18px;
-  border-left: 8px solid #9bc6ff;
-  border-radius: 4px;
-  color: var(--text-main);
-  font-size: var(--text-base);
+.page-hero-accent__accent {
+  max-width: 620px;
+  margin-top: 32px;
+  padding-left: 24px;
+  border-left: 10px solid #9bc6ff;
+  border-radius: 6px;
+  color: var(--dark);
+  font-size: var(--text-lg);
   font-weight: 700;
-  line-height: 1.38;
+  line-height: 1.5;
 }
 
-.content-hero__actions {
+.page-hero-accent__accent p + p {
+  margin-top: 12px;
+}
+
+.page-hero-accent__btns {
   display: flex;
+  gap: 16px;
   flex-wrap: wrap;
-  gap: 22px;
-  margin-top: 20px;
+  margin-top: 32px;
 }
 
-.content-hero__btn {
-  justify-content: center;
-  min-width: 196px;
-  min-height: 40px;
-  padding: 10px 32px;
-  font-size: var(--text-base);
-  font-weight: 600;
+.page-hero-accent__media {
+  flex: 0 0 480px;
+  max-width: 480px;
 }
 
-.content-hero__actions .content-hero__btn:nth-child(2) {
-  min-width: 272px;
-}
-
-.content-hero__media {
+.page-hero-accent__img {
   width: 100%;
-  max-width: 420px;
-  aspect-ratio: 282 / 345;
-  justify-self: end;
-  overflow: hidden;
-  border-radius: 24px;
-}
-
-.content-hero__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.content-hero__bottom {
-  max-width: 1160px;
-  margin-top: 28px;
-  color: var(--text-main);
-  font-size: var(--text-base);
-  line-height: 1.35;
+  height: auto;
+  border-radius: 8px;
+  display: block;
 }
 
 @media (max-width: 1024px) {
-  .content-hero__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
-    gap: 36px;
-  }
-
-  .content-hero__title {
-    font-size: 38px;
+  .page-hero-accent__media {
+    flex: 0 0 360px;
+    max-width: 360px;
   }
 }
 
 @media (max-width: 768px) {
-  .content-hero {
-    padding-bottom: 40px;
+  .page-hero-accent {
+    padding: 0 0 40px;
   }
 
-  .content-hero__grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
+  .page-hero-accent__inner {
+    flex-direction: column;
+    gap: 32px;
   }
 
-  .content-hero__title {
-    max-width: none;
-    margin-bottom: 18px;
+  .page-hero-accent__title {
     font-size: var(--text-h2-mob);
   }
 
-  .content-hero__media {
-    justify-self: start;
-    max-width: 420px;
-  }
-
-  .content-hero__bottom {
-    margin-top: 24px;
+  .page-hero-accent__media {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    order: 2;
   }
 }
 
 @media (max-width: 480px) {
-  .content-hero__title {
-    font-size: 30px;
-  }
-
-  .content-hero__actions {
-    gap: 12px;
-  }
-
-  .content-hero__btn,
-  .content-hero__actions .content-hero__btn:nth-child(2) {
-    width: 100%;
-    min-width: 0;
+  .page-hero-accent__accent {
+    padding-left: 16px;
+    border-left-width: 8px;
+    font-size: var(--text-base);
   }
 }
 
-/* ── media text ── */
 .media-text {
   padding: 80px 0;
 }
@@ -2581,7 +2536,6 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ── features ── */
 .features {
   background: var(--bg-light);
 }
@@ -2844,7 +2798,7 @@ a.office-card__contact-text:hover {
 
   .review-card__specs {
     padding: 12px 16px;
-    gap: 8px;
+    gap: 5px;
   }
 
   .review-card__spec {
@@ -2947,10 +2901,6 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ── int-experience ── */
-.int-experience {
-}
-
 .int-experience__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -3030,10 +2980,6 @@ a.office-card__contact-text:hover {
   .int-experience__route-groups {
     grid-template-columns: 1fr;
   }
-}
-
-/* ── transport-types ── */
-.transport-types {
 }
 
 .transport-types__title {
@@ -3148,9 +3094,7 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ─────────────────────────────────────────
-   TRUCK TYPES
-───────────────────────────────────────── */
+/* TRUCK TYPES */
 .truck-types .container {
   max-width: 1240px;
 }
@@ -3291,9 +3235,7 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ─────────────────────────────────────────
-   EXPRESS CTA
-───────────────────────────────────────── */
+/* EXPRESS CTA */
 
 .express-cta {
   max-width: var(--container);
@@ -3329,7 +3271,6 @@ a.office-card__contact-text:hover {
   transform: scaleX(-1);
 }
 
-/* Внутрішній блок з контентом */
 .express-cta__body {
   flex: 1;
   min-width: 0;
@@ -3531,20 +3472,21 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ═══════════════════════════════════════════
-   15. SEO TEXT
-   ═══════════════════════════════════════════ */
+/* SEO TEXT */
 .seo-text {
-  padding: 24px 0;
+  padding: 80px 0 140px;
 }
 .seo-text__inner {
   position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .seo-text__preview {
   position: relative;
   color: var(--color-text-secondary, #6b7280);
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.7;
 }
 
@@ -3573,7 +3515,8 @@ a.office-card__contact-text:hover {
 
 .seo-text__full {
   color: var(--color-text-secondary, #6b7280);
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 400;
   line-height: 1.7;
 }
 
@@ -3608,10 +3551,54 @@ a.office-card__contact-text:hover {
   opacity: 0.85;
 }
 
+/* SEO TEXT WITH TITLE */
+.seo-text--title {
+  padding: 80px 0 140px;
+}
+.seo-text--title__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.seo-text--title__heading {
+  margin: 0 0 22px;
+  color: var(--text-main);
+  font-size: var(--text-h2);
+  font-weight: 800;
+  line-height: 1.18;
+}
+.seo-text--title__preview,
+.seo-text--title__full {
+  color: var(--text-muted);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+.seo-text--title__preview.is-truncated {
+  max-height: 5.4em;
+}
+.seo-text--title .seo-text__fade {
+  height: 82px;
+}
+.seo-text--title .seo-text__toggle {
+  margin-top: 18px;
+  font-size: 16px;
+}
 
-/* ═══════════════════════════════════════════
-   18. SLIDER NAV — mobile
-   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .seo-text--title {
+    padding: 12px 0 34px;
+  }
+  .seo-text--title__heading {
+    margin-bottom: 16px;
+    font-size: 34px;
+  }
+  .seo-text--title__preview,
+  .seo-text--title__full {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+}
+
 
 @media (max-width: 480px) {
   .vehicles__nav,
@@ -3622,9 +3609,7 @@ a.office-card__contact-text:hover {
 }
 
 
-/* ═══════════════════════════════════════════
-   PRICE TABLE
-   ═══════════════════════════════════════════ */
+/* PRICE TABLE */
 .price-table {
   padding: 12px 0 70px;
 }
@@ -3767,9 +3752,7 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ═══════════════════════════════════════════
-   PHOTO REPORT
-   ═══════════════════════════════════════════ */
+/* PHOTO REPORT */
 .photo-report__heading {
   margin-bottom: 54px;
 }
@@ -3793,10 +3776,10 @@ a.office-card__contact-text:hover {
   transition: opacity var(--transition);
 }
 .photo-report__nav--prev {
-  left: -78px;
+  left: -43px;
 }
 .photo-report__nav--next {
-  right: -78px;
+  right: -43px;
 }
 .photo-report__nav:hover {
   opacity: 0.75;
@@ -3924,10 +3907,10 @@ a.office-card__contact-text:hover {
 
 @media (max-width: 1340px) {
   .photo-report__nav--prev {
-    left: -12px;
+    left: -43px;
   }
   .photo-report__nav--next {
-    right: -12px;
+    right: -43px;
   }
 }
 
@@ -3940,9 +3923,202 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ═══════════════════════════════════════════
-   SERVICE LIST
-   ═══════════════════════════════════════════ */
+/* BENEFITS SLIDER */
+.benefits-slider__heading {
+  max-width: 1200px;
+  margin: 0 auto 18px;
+  color: rgba(17, 17, 17, 0.82);
+}
+.benefits-slider__wrap {
+  position: relative;
+}
+.benefits-slider__swiper {
+  overflow: hidden;
+  max-width: 1158px;
+  margin: 0 auto;
+  padding: 30px 24px 30px;
+}
+.benefit-slide {
+  display: grid;
+  grid-template-columns: 38% minmax(0, 1fr);
+  min-height: 440px;
+  overflow: hidden;
+  background: var(--bg-white);
+  border: 1px solid #edf2fb;
+  border-radius: 28px;
+  box-shadow: 0px 4px 21px 0px #D3DDEA;
+}
+.benefit-slide__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 440px;
+  padding: 42px 24px;
+  border-right: 1px solid #edf2fb;
+  background: var(--bg-white);
+}
+.benefit-slide__image {
+  display: block;
+  width: 100%;
+  max-height: 310px;
+  object-fit: contain;
+  object-position: center;
+}
+.benefit-slide__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 0;
+  width: min(100%, 677px);
+  min-height: 310px;
+  align-self: center;
+  justify-self: center;
+  padding: 8px 20px 18px;
+}
+.benefit-slide__title {
+  margin: 0 0 28px;
+  color: var(--text-main);
+  font-size: var(--text-h2);
+  font-weight: 800;
+  line-height: 1.18;
+}
+.benefit-slide__text {
+  max-width: 575px;
+  color: var(--text-muted);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.42;
+}
+.benefit-slide__text p {
+  margin: 0 0 12px;
+}
+.benefit-slide__text p:last-child {
+  margin-bottom: 0;
+}
+.benefits-slider__nav {
+  position: absolute;
+  top: 237px;
+  z-index: 2;
+  width: auto;
+  height: auto;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition);
+}
+.benefits-slider__nav--prev {
+  left: -20px;
+}
+.benefits-slider__nav--next {
+  right: -20px;
+}
+.benefits-slider__nav:hover {
+  opacity: 0.75;
+}
+.benefits-slider__nav-icon {
+  display: block;
+  width: auto;
+  height: auto;
+}
+.benefits-slider__pagination {
+  position: static !important;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 34px;
+}
+.benefits-slider__pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  margin: 0 !important;
+  background: var(--border);
+  border: none;
+  opacity: 1;
+  border-radius: 50%;
+  transition: background var(--transition);
+}
+.benefits-slider__pagination .swiper-pagination-bullet-active {
+  background: var(--yellow);
+}
+
+@media (max-width: 1340px) {
+  .benefits-slider__nav--prev {
+    left: -20px;
+  }
+  .benefits-slider__nav--next {
+    right: -20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .benefit-slide {
+    grid-template-columns: 42% minmax(0, 1fr);
+  }
+  .benefit-slide__body {
+    width: auto;
+    min-height: 0;
+    justify-self: stretch;
+    padding: 42px 34px;
+  }
+  .benefit-slide__title {
+    font-size: 36px;
+  }
+  .benefit-slide__text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits-slider__heading {
+    margin-bottom: 26px;
+    text-align: center;
+  }
+  .benefits-slider__swiper {
+    padding: 12px 14px 0;
+  }
+  .benefits-slider__nav {
+    display: none;
+  }
+  .benefit-slide {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    border-radius: 22px;
+    box-shadow: 0px 4px 21px 0px #D3DDEA;
+  }
+  .benefit-slide__media {
+    min-height: 220px;
+    padding: 28px 20px;
+    border-right: 0;
+    border-bottom: 1px solid #edf2fb;
+  }
+  .benefit-slide__image {
+    max-height: 190px;
+  }
+  .benefit-slide__body {
+    width: auto;
+    min-height: 0;
+    justify-self: stretch;
+    padding: 28px 22px 30px;
+  }
+  .benefit-slide__title {
+    margin-bottom: 16px;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .benefit-slide__text {
+    font-size: 15px;
+  }
+  .benefits-slider__pagination {
+    margin-top: 28px;
+  }
+}
+
+/* SERVICE LIST */
 .service-list .container {
   max-width: 1200px;
 }
@@ -4083,9 +4259,7 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ═══════════════════════════════════════════
-   SERVICE CARDS
-   ═══════════════════════════════════════════ */
+/* SERVICE CARDS */
 .service-cards .container {
   max-width: 1150px;
 }
@@ -4221,9 +4395,7 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ═══════════════════════════════════════════
-   TRANSPORT VARIANTS
-   ═══════════════════════════════════════════ */
+/* TRANSPORT VARIANTS */
 .transport-variants .container {
   max-width: 1240px;
 }
@@ -4322,9 +4494,7 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ═══════════════════════════════════════════
-   CARE BLOCK
-   ═══════════════════════════════════════════ */
+/* CARE BLOCK */
 .care-block {
   padding: 0;
 }
@@ -4454,9 +4624,7 @@ a.office-card__contact-text:hover {
   }
 }
 
-/* ═══════════════════════════════════════════
-   BACKGROUND MODIFIERS (ACF section_bg)
-   ═══════════════════════════════════════════ */
+/* BACKGROUND MODIFIERS */
 
 .section--bg-page {
   background: var(--bg-page);
