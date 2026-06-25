@@ -11,11 +11,11 @@ if (!$items) {
 }
 
 $specs_meta = [
-    ['field' => 'spec_body_type',  'icon' => 'Body-type.svg',         'label' => 'Тип кузова:'],
-    ['field' => 'spec_dimensions', 'icon' => 'dimensions.svg',         'label' => 'Д/Ш/В:'],
-    ['field' => 'spec_volume',     'icon' => 'volume.svg',             'label' => 'Об\'єм:'],
-    ['field' => 'spec_pallets',    'icon' => 'number-seats.svg',       'label' => 'Кількість палетомісць:'],
-    ['field' => 'spec_additional', 'icon' => 'additional-options.svg', 'label' => 'Доп.опції:'],
+    ['field' => 'spec_body_type',  'icon' => 'Body-type.svg',         'label' => get_field('label_body_type') ?: 'Тип кузова:'],
+    ['field' => 'spec_dimensions', 'icon' => 'dimensions.svg',         'label' => get_field('label_dimensions') ?: 'Д/Ш/В:'],
+    ['field' => 'spec_volume',     'icon' => 'volume.svg',             'label' => get_field('label_volume') ?: 'Об\'єм:'],
+    ['field' => 'spec_pallets',    'icon' => 'number-seats.svg',       'label' => get_field('label_pallets') ?: 'Кількість палетомісць:'],
+    ['field' => 'spec_additional', 'icon' => 'additional-options.svg', 'label' => get_field('label_additional') ?: 'Доп.опції:'],
 ];
 ?>
 
@@ -71,18 +71,11 @@ $specs_meta = [
                                 </ul>
 
                                 <?php
-                                $btn_label = esc_html($v['vehicle_btn'] ?: 'Замовити авто');
-                                $btn_link  = $v['vehicle_link'] ?? '';
-                                if ($btn_link) : ?>
-                                <a href="<?php echo esc_url($btn_link); ?>"
-                                   class="btn--primary vehicle-card__btn">
-                                    <?php echo $btn_label; ?>
-                                </a>
-                                <?php else : ?>
-                                <span class="btn--primary vehicle-card__btn">
-                                    <?php echo $btn_label; ?>
-                                </span>
-                                <?php endif; ?>
+                                $btn_label  = $v['vehicle_btn'] ?: 'Замовити авто';
+                                $btn_action = $v['vehicle_btn_action'] ?: 'link';
+                                $btn_value  = $v['vehicle_btn_value'] ?? '';
+                                if ($btn_label) glc_action_btn($btn_label, $btn_action, $btn_value, 'btn--primary vehicle-card__btn');
+                                ?>
                             </div>
 
                         </article>

@@ -23,10 +23,13 @@ if (!$offices) {
             $phone   = get_field('office_phone', $office->ID);
             $email   = get_field('office_email', $office->ID);
             $address = get_field('office_address', $office->ID);
-            $map_src = get_field('office_map_src', $office->ID);
+            $map_src_raw = get_field('office_map_src', $office->ID);
+            $map_src = '';
+            if ($map_src_raw && preg_match('#^https://(www\.)?(google\.(com|com?\.[a-z]{2})|maps\.google\.)/#i', $map_src_raw))
+                $map_src = $map_src_raw;
             $reverse = ($index % 2 !== 0);
         ?>
-        <div class="office-card <?php echo $reverse ? 'office-card--reverse' : ''; ?>">
+        <div class="office-card <?php echo esc_attr($reverse ? 'office-card--reverse' : ''); ?>">
 
             <div class="office-card__map">
                 <iframe

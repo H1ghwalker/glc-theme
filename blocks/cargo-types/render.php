@@ -46,7 +46,12 @@ if (!$items) {
                 <div class="cargo-card__body">
                     <h3 class="cargo-card__title"><?php echo esc_html( $cargo['title'] ); ?></h3>
                     <p class="cargo-card__desc"><?php echo esc_html( $cargo['desc'] ); ?></p>
-                    <?php glc_btn('Детальніше', $cargo['link'] ?: '#', 'btn--outline cargo-card__btn'); ?>
+                    <?php
+                    $c_btn_text   = $cargo['btn_text'] ?: 'Детальніше';
+                    $c_btn_action = $cargo['btn_action'] ?: 'link';
+                    $c_btn_value  = $cargo['btn_value'] ?: '';
+                    if ($c_btn_text) glc_action_btn($c_btn_text, $c_btn_action, $c_btn_value, 'btn--outline cargo-card__btn');
+                    ?>
                 </div>
 
             </article>

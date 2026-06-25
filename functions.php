@@ -3,7 +3,6 @@ if (!defined('ABSPATH')) exit;
 
 define('THEME_VERSION', wp_get_theme()->get('Version'));
 
-// ── Налаштування теми ─────────────────────────────────────
 add_action('after_setup_theme', 'theme_setup');
 function theme_setup()
 {
@@ -16,6 +15,7 @@ function theme_setup()
     // Реєструємо з запасом для Retina.
     add_image_size('glc-hero-slide', 1200, 390, true);  // hero-банер (crop)
     add_image_size('glc-card', 600, 400, true);  // картки послуг/авто
+    add_image_size('glc-page-hero', 360, 440, true);  // page-hero зображення
 
     register_nav_menus([
         'main' => __('Main menu', 'wp-lesson'),
@@ -35,7 +35,6 @@ function theme_setup()
     ]);
 }
 
-// ── SVG: дозволити завантаження для адміністраторів ───────
 add_filter('upload_mimes', function ($mimes) {
     if (current_user_can('manage_options'))
         $mimes['svg'] = 'image/svg+xml';
@@ -68,6 +67,9 @@ add_filter('wp_handle_upload_prefilter', function ($file) {
 
 function glc_sanitize_svg($content)
 {
+    if (strpos($content, "\x00") !== false)
+        return false;
+
     libxml_use_internal_errors(true);
 
     $dom = new DOMDocument();
@@ -120,7 +122,6 @@ function glc_sanitize_svg($content)
     return $dom->saveXML();
 }
 
-// ── Режим обслуговування ──────────────────────────────────
 add_action('template_redirect', function() {
     if (!get_option('glc_maintenance_mode'))
         return;
@@ -128,6 +129,16 @@ add_action('template_redirect', function() {
         return;
 
     require get_template_directory() . '/maintenance.php';
+    exit;
+});
+
+add_filter('rest_authentication_errors', function($result) {
+    if (!get_option('glc_maintenance_mode'))
+        return $result;
+    if (current_user_can('manage_options'))
+        return $result;
+
+    return new WP_Error('maintenance_mode', 'Сайт на обслуговуванні.', ['status' => 503]);
 });
 
 add_action('admin_bar_menu', function($wp_admin_bar) {
@@ -154,20 +165,17 @@ add_action('admin_head', function() {
     echo '<style>.glc-maintenance-bar a{background:#d63638!important;color:#fff!important}</style>';
 });
 
-// ── HTTP-заголовки безпеки ─────────────────────────────────
 add_action('send_headers', function () {
     header('X-Content-Type-Options: nosniff');
     header('X-Frame-Options: SAMEORIGIN');
     header('Referrer-Policy: strict-origin-when-cross-origin');
     header('Permissions-Policy: camera=(), microphone=(), geolocation=()');
-    header('X-XSS-Protection: 0');
 
     if (is_ssl() && (!defined('WP_DEBUG') || !WP_DEBUG)) {
         header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
     }
 });
 
-// ── Підключення файлів ────────────────────────────────────
 require_once get_template_directory() . '/inc/connect-script-and-style.php';
 require_once get_template_directory() . '/inc/cpt.php';
 require_once get_template_directory() . '/inc/glc-settings.php';
@@ -178,8 +186,6 @@ require_once get_template_directory() . '/inc/class-walker-mega-menu.php';
 
 require_once get_template_directory() . '/inc/breadcrumbs.php';
 
-// ── ACF: валідація розмірів зображень для hero-слайдів ───
-// Мінімум 1200×390px — менше буде розтягнутим і нечітким.
 add_filter('acf/validate_value/type=image', 'glc_validate_hero_image', 10, 4);
 function glc_validate_hero_image($valid, $value, $field, $input)
 {
@@ -210,7 +216,6 @@ function glc_validate_hero_image($valid, $value, $field, $input)
     return $valid;
 }
 
-// ── Кнопка з вибором дії (link / popup / phone / scroll) ──
 function glc_action_btn($title = 'Кнопка', $action = 'link', $value = '#', $class = 'btn--primary')
 {
     switch ($action) {
@@ -248,9 +253,6 @@ function glc_action_btn($title = 'Кнопка', $action = 'link', $value = '#',
     }
 }
 
-// ── Форматування українського номера телефону ─────────────
-// Вхід: будь-який формат (+380XXXXXXXXX, 0XXXXXXXXX тощо)
-// Вихід: +38(0XX)XXX-XX-XX
 function glc_format_phone($raw)
 {
     $digits = preg_replace('/\D/', '', $raw);
@@ -261,7 +263,6 @@ function glc_format_phone($raw)
     return $raw;
 }
 
-// ── Виведення соцмереж (хедер + футер) ───────────────────
 function glc_render_socials($link_class = 'header__social-link', $icon_class = 'social-icon', $icon_size = 25)
 {
     $socials = get_option('glc_socials', []);
@@ -282,7 +283,6 @@ function glc_render_socials($link_class = 'header__social-link', $icon_class = '
     endforeach;
 }
 
-// ── Заглушка пустого стану блоку в редакторі ─────────────
 function glc_block_placeholder(string $hint): void
 {
     echo '<div style="padding:40px;text-align:center;background:#f5f5f5;border:2px dashed #ccc">
@@ -290,7 +290,6 @@ function glc_block_placeholder(string $hint): void
     </div>';
 }
 
-// ── Глобальна функція кнопки ──────────────────────────────
 function glc_btn($title = 'Кнопка', $link = '#', $class = 'btn--primary', $icon = false)
 {
     $icon_html = '';

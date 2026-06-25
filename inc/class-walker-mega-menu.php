@@ -83,9 +83,9 @@ class Walker_Mega_Menu extends Walker_Nav_Menu
             if ($has_children) $class .= ' has-children';
 
             $output .= '<li class="' . esc_attr($class) . '" data-title="' . esc_attr($item->title) . '" data-link="' . esc_url($item->url) . '">';
-            $output .= '<a href="' . esc_url($item->url) . '">' . esc_html($item->title);
-            if ($has_children) $output .= '<span class="mega-menu__cat-arrow"></span>';
-            $output .= '</a>';
+            $output .= '<a href="' . esc_url($item->url) . '" class="mega-menu__cat-link">' . esc_html($item->title) . '</a>';
+            if ($has_children)
+                $output .= '<button type="button" class="mega-menu__cat-toggle" aria-label="Open subcategories"><span class="mega-menu__cat-arrow"></span></button>';
             return;
         }
 

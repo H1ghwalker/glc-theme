@@ -40,11 +40,11 @@ $nums = ['01', '02', '03', '04', '05', '06'];
                 $has_description = !empty($item['description']);
                 $circle_class = 'steps__circle' . ($icon_num === '5' ? ' steps__circle--bare' : '');
             ?>
-            <div class="steps__item<?php echo $has_description ? ' has-desc' : ''; ?>">
+            <div class="steps__item<?php echo esc_attr($has_description ? ' has-desc' : ''); ?>">
 
                 <div class="steps__circle-wrap">
                     <div class="<?php echo esc_attr($circle_class); ?>">
-                        <?php if ( file_exists( $icon_path ) ) readfile( $icon_path ); ?>
+                        <?php if ( file_exists( $icon_path ) ) echo glc_sanitize_svg(file_get_contents($icon_path)); ?>
                     </div>
                     <span class="steps__num"><?php echo esc_html($nums[ $i ] ?? '0' . ( $i + 1 )); ?></span>
                 </div>

@@ -8,10 +8,12 @@ if (!defined('ABSPATH')) exit;
  */
 $bg         = get_field('section_bg') ?: 'page';
 $map_title  = get_field('map_title');
-$btn_1_text = get_field('map_btn_1_text');
-$btn_1_link = get_field('map_btn_1_link');
-$btn_2_text = get_field('map_btn_2_text');
-$btn_2_link = get_field('map_btn_2_link');
+$btn_1_text   = get_field('map_btn_1_text');
+$btn_1_action = get_field('map_btn_1_action') ?: 'link';
+$btn_1_value  = get_field('map_btn_1_value');
+$btn_2_text   = get_field('map_btn_2_text');
+$btn_2_action = get_field('map_btn_2_action') ?: 'link';
+$btn_2_value  = get_field('map_btn_2_value');
 
 if (!$map_title) {
     glc_block_placeholder('GLC: Карта маршрутів — заповніть поля в правій панелі →');
@@ -39,8 +41,8 @@ $img_uri = get_template_directory_uri() . '/assets/img';
 
     <div class="container">
         <div class="svc-map__btns">
-            <?php if ($btn_1_text && $btn_1_link) glc_btn($btn_1_text, $btn_1_link, 'btn--primary'); ?>
-            <?php if ($btn_2_text && $btn_2_link) glc_btn($btn_2_text, $btn_2_link, 'btn--primary'); ?>
+            <?php if ($btn_1_text) glc_action_btn($btn_1_text, $btn_1_action, $btn_1_value, 'btn--primary'); ?>
+            <?php if ($btn_2_text) glc_action_btn($btn_2_text, $btn_2_action, $btn_2_value, 'btn--primary'); ?>
         </div>
     </div>
 

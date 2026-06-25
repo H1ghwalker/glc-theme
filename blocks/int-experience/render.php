@@ -21,7 +21,6 @@ if (!$title && !$map_image) {
     <div class="container">
         <div class="int-experience__inner">
 
-            <!-- Ліва колонка: карта -->
             <?php if ( ! empty( $map_image['url'] ) ) : ?>
             <div class="int-experience__map">
                 <img src="<?php echo esc_url( $map_image['sizes']['medium_large'] ?? $map_image['url'] ); ?>"
@@ -30,7 +29,6 @@ if (!$title && !$map_image) {
             </div>
             <?php endif; ?>
 
-            <!-- Права колонка: контент -->
             <div class="int-experience__content">
 
                 <?php if ( $title ) : ?>

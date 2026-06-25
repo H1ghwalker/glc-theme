@@ -5,11 +5,11 @@ $bg            = get_field('section_bg') ?: 'page';
 $section_title = get_field('section_title');
 $items         = get_field('items');
 
-if (empty($items)) : ?>
-    <div style="padding:40px;text-align:center;background:#f5f5f5;border:2px dashed #ccc">
-        <p style="color:#999">GLC: Варіанти перевезення — заповніть поля в правій панелі &rarr;</p>
-    </div>
-<?php return; endif; ?>
+if (empty($items)) {
+    glc_block_placeholder('GLC: Варіанти перевезення — заповніть поля в правій панелі →');
+    return;
+}
+?>
 
 <section class="transport-variants section section--bg-<?php echo esc_attr($bg); ?>">
     <div class="container">

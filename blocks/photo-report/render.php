@@ -19,11 +19,11 @@ $format_meta_value = static function ($value, $suffix, $has_suffix_pattern)
     return $value . ' ' . $suffix;
 };
 
-if (empty($items)) : ?>
-    <div style="padding:40px;text-align:center;background:#f5f5f5;border:2px dashed #ccc">
-        <p style="color:#999">GLC: Фотозвіт — заповніть поля в правій панелі &rarr;</p>
-    </div>
-<?php return; endif; ?>
+if (empty($items)) {
+    glc_block_placeholder('GLC: Фотозвіт — заповніть поля в правій панелі →');
+    return;
+}
+?>
 
 <section class="photo-report section section--bg-<?php echo esc_attr($bg); ?>">
     <div class="container">

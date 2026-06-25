@@ -7,22 +7,38 @@ function glc_register_block_field_groups()
     if (!function_exists('acf_add_local_field_group'))
         return;
 
-    // ── GLC Block: Карта маршрутів ────────────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_services_map',
         'title' => 'GLC Block: Карта маршрутів',
         'fields' => [
             ['key' => 'field_smap_title', 'label' => 'Заголовок', 'name' => 'map_title', 'type' => 'text', 'required' => 1],
             ['key' => 'field_smap_btn1_text', 'label' => 'Кнопка 1: текст', 'name' => 'map_btn_1_text', 'type' => 'text'],
-            ['key' => 'field_smap_btn1_link', 'label' => 'Кнопка 1: посилання', 'name' => 'map_btn_1_link', 'type' => 'url'],
+            [
+                'key' => 'field_smap_btn1_action',
+                'label' => 'Кнопка 1: дія',
+                'name' => 'map_btn_1_action',
+                'type' => 'select',
+                'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                'default_value' => 'link',
+                'return_format' => 'value',
+            ],
+            ['key' => 'field_smap_btn1_value', 'label' => 'Кнопка 1: значення (URL / id / телефон)', 'name' => 'map_btn_1_value', 'type' => 'text'],
             ['key' => 'field_smap_btn2_text', 'label' => 'Кнопка 2: текст', 'name' => 'map_btn_2_text', 'type' => 'text'],
-            ['key' => 'field_smap_btn2_link', 'label' => 'Кнопка 2: посилання', 'name' => 'map_btn_2_link', 'type' => 'url'],
+            [
+                'key' => 'field_smap_btn2_action',
+                'label' => 'Кнопка 2: дія',
+                'name' => 'map_btn_2_action',
+                'type' => 'select',
+                'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                'default_value' => 'link',
+                'return_format' => 'value',
+            ],
+            ['key' => 'field_smap_btn2_value', 'label' => 'Кнопка 2: значення (URL / id / телефон)', 'name' => 'map_btn_2_value', 'type' => 'text'],
             ['key' => 'field_smap_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
         ],
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-services-map']]],
     ]);
 
-    // ── GLC Block: Слайдер послуг ─────────────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_services_hero',
         'title' => 'GLC Block: Слайдер послуг',
@@ -55,7 +71,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-services-hero']]],
     ]);
 
-    // ── GLC Block: Маршрути ───────────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_routes',
         'title'  => 'GLC Block: Маршрути',
@@ -86,7 +101,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-routes']]],
     ]);
 
-    // ── GLC Block: Види вантажів ──────────────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_cargo_types',
         'title' => 'GLC Block: Види вантажів',
@@ -104,7 +118,17 @@ function glc_register_block_field_groups()
                 'sub_fields' => [
                     ['key' => 'field_cargo_item_title', 'label' => 'Назва', 'name' => 'title', 'type' => 'text', 'required' => 1],
                     ['key' => 'field_cargo_item_desc', 'label' => 'Опис', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3],
-                    ['key' => 'field_cargo_item_link', 'label' => 'Посилання', 'name' => 'link', 'type' => 'url'],
+                    ['key' => 'field_cargo_item_btn_text', 'label' => 'Текст кнопки', 'name' => 'btn_text', 'type' => 'text', 'default_value' => 'Детальніше'],
+                    [
+                        'key' => 'field_cargo_item_btn_action',
+                        'label' => 'Дія кнопки',
+                        'name' => 'btn_action',
+                        'type' => 'select',
+                        'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                        'default_value' => 'link',
+                        'return_format' => 'value',
+                    ],
+                    ['key' => 'field_cargo_item_btn_value', 'label' => 'Значення (URL / id / телефон)', 'name' => 'btn_value', 'type' => 'text'],
                     [
                         'key' => 'field_cargo_item_image',
                         'label' => 'Зображення',
@@ -120,7 +144,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-cargo-types']]],
     ]);
 
-    // ── GLC Block: Види вантажів (слайдер) ────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_cargo_slider',
         'title' => 'GLC Block: Види вантажів (слайдер)',
@@ -138,7 +161,17 @@ function glc_register_block_field_groups()
                 'sub_fields' => [
                     ['key' => 'field_cslider_item_title', 'label' => 'Назва', 'name' => 'title', 'type' => 'text', 'required' => 1],
                     ['key' => 'field_cslider_item_desc', 'label' => 'Опис', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3],
-                    ['key' => 'field_cslider_item_link', 'label' => 'Посилання', 'name' => 'link', 'type' => 'url'],
+                    ['key' => 'field_cslider_item_btn_text', 'label' => 'Текст кнопки', 'name' => 'btn_text', 'type' => 'text', 'default_value' => 'Детальніше'],
+                    [
+                        'key' => 'field_cslider_item_btn_action',
+                        'label' => 'Дія кнопки',
+                        'name' => 'btn_action',
+                        'type' => 'select',
+                        'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                        'default_value' => 'link',
+                        'return_format' => 'value',
+                    ],
+                    ['key' => 'field_cslider_item_btn_value', 'label' => 'Значення (URL / id / телефон)', 'name' => 'btn_value', 'type' => 'text'],
                     [
                         'key' => 'field_cslider_item_image',
                         'label' => 'Зображення',
@@ -155,54 +188,40 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-cargo-slider']]],
     ]);
 
-    // ── GLC Block: Типи послуг + тарифи ──────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_service_types',
-        'title' => 'GLC Block: Типи послуг + тарифи',
+        'title' => 'GLC Block: Типи послуг',
         'fields' => [
+            ['key' => 'field_stype_services_title', 'label' => 'Лівий заголовок: види послуг', 'name' => 'services_title', 'type' => 'text', 'default_value' => 'Види послуг перевезення'],
+            ['key' => 'field_stype_tariffs_title', 'label' => 'Лівий заголовок: тарифи', 'name' => 'tariffs_title', 'type' => 'text', 'default_value' => 'Тарифи транспортних послуг'],
             [
                 'key' => 'field_stype_transport',
-                'label' => 'Типи транспортування',
+                'label' => 'Пункти акордеону',
                 'name' => 'transport_types',
                 'type' => 'repeater',
                 'layout' => 'block',
-                'button_label' => 'Додати тип',
+                'button_label' => 'Додати пункт',
+                'required' => 1,
                 'sub_fields' => [
                     ['key' => 'field_stype_t_title', 'label' => 'Назва', 'name' => 'title', 'type' => 'text', 'required' => 1],
                     ['key' => 'field_stype_t_desc', 'label' => 'Опис', 'name' => 'desc', 'type' => 'textarea', 'rows' => 4],
-                    ['key' => 'field_stype_t_link', 'label' => 'Посилання', 'name' => 'link', 'type' => 'url'],
                     ['key' => 'field_stype_t_btn_text', 'label' => 'Текст кнопки', 'name' => 'btn_text', 'type' => 'text', 'default_value' => 'Детальніше'],
                     [
-                        'key' => 'field_stype_t_icon',
-                        'label' => 'Іконка',
-                        'name' => 'icon',
-                        'type' => 'image',
-                        'return_format' => 'array',
-                        'preview_size' => 'thumbnail',
+                        'key' => 'field_stype_t_btn_action',
+                        'label' => 'Дія кнопки',
+                        'name' => 'btn_action',
+                        'type' => 'select',
+                        'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                        'default_value' => 'link',
+                        'return_format' => 'value',
                     ],
+                    ['key' => 'field_stype_t_btn_value', 'label' => 'Значення кнопки (URL / id / телефон)', 'name' => 'btn_value', 'type' => 'text'],
                 ],
             ],
-            [
-                'key' => 'field_stype_tariffs',
-                'label' => 'Тарифи',
-                'name' => 'tariffs',
-                'type' => 'repeater',
-                'layout' => 'table',
-                'button_label' => 'Додати тариф',
-                'sub_fields' => [
-                    ['key' => 'field_stype_tar_weight', 'label' => 'Вантажопідйомність', 'name' => 'weight', 'type' => 'text', 'required' => 1],
-                    ['key' => 'field_stype_tar_price', 'label' => 'Вартість', 'name' => 'price', 'type' => 'text', 'required' => 1],
-                ],
-            ],
-            ['key' => 'field_stype_note', 'label' => 'Примітка до тарифів', 'name' => 'tariffs_note', 'type' => 'text'],
-            ['key' => 'field_stype_btn_text', 'label' => 'Кнопка "Отримати розрахунок": текст', 'name' => 'tariffs_btn_text', 'type' => 'text', 'default_value' => 'Отримати розрахунок'],
-            ['key' => 'field_stype_btn_link', 'label' => 'Кнопка "Отримати розрахунок": посилання', 'name' => 'tariffs_btn_link', 'type' => 'url'],
             ['key' => 'field_stype_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
         ],
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-service-types']]],
     ]);
-
-    // ── CPT: Відгук — поля запису ─────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_cpt_review',
         'title'  => 'Відгук',
@@ -224,7 +243,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'post_type', 'operator' => '==', 'value' => 'review']]],
     ]);
 
-    // ── GLC Block: Відгуки ────────────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_reviews',
         'title'  => 'GLC Block: Відгуки',
@@ -245,7 +263,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-reviews']]],
     ]);
 
-    // ── GLC Block: Hero сторінки ──────────────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_page_hero',
         'title' => 'GLC Block: Hero сторінки',
@@ -253,9 +270,27 @@ function glc_register_block_field_groups()
             ['key' => 'field_phero_title', 'label' => 'Заголовок', 'name' => 'hero_title', 'type' => 'text', 'required' => 1],
             ['key' => 'field_phero_desc', 'label' => 'Опис', 'name' => 'hero_desc', 'type' => 'textarea'],
             ['key' => 'field_phero_btn1_text', 'label' => 'Кнопка 1: текст', 'name' => 'hero_btn_1_text', 'type' => 'text'],
-            ['key' => 'field_phero_btn1_link', 'label' => 'Кнопка 1: посилання', 'name' => 'hero_btn_1_link', 'type' => 'url'],
+            [
+                'key' => 'field_phero_btn1_action',
+                'label' => 'Кнопка 1: дія',
+                'name' => 'hero_btn_1_action',
+                'type' => 'select',
+                'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                'default_value' => 'link',
+                'return_format' => 'value',
+            ],
+            ['key' => 'field_phero_btn1_value', 'label' => 'Кнопка 1: значення (URL / id / телефон)', 'name' => 'hero_btn_1_value', 'type' => 'text'],
             ['key' => 'field_phero_btn2_text', 'label' => 'Кнопка 2: текст', 'name' => 'hero_btn_2_text', 'type' => 'text'],
-            ['key' => 'field_phero_btn2_link', 'label' => 'Кнопка 2: посилання', 'name' => 'hero_btn_2_link', 'type' => 'url'],
+            [
+                'key' => 'field_phero_btn2_action',
+                'label' => 'Кнопка 2: дія',
+                'name' => 'hero_btn_2_action',
+                'type' => 'select',
+                'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                'default_value' => 'link',
+                'return_format' => 'value',
+            ],
+            ['key' => 'field_phero_btn2_value', 'label' => 'Кнопка 2: значення (URL / id / телефон)', 'name' => 'hero_btn_2_value', 'type' => 'text'],
             [
                 'key' => 'field_phero_image',
                 'label' => 'Зображення',
@@ -270,68 +305,49 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-page-hero']]],
     ]);
 
-    // ── GLC Block: Hero з текстом і фото ──────────────────
     acf_add_local_field_group([
-        'key' => 'group_glc_content_hero',
-        'title' => 'GLC Block: Hero з текстом і фото',
+        'key' => 'group_glc_page_hero_accent',
+        'title' => 'GLC Block: Hero сторінки з акцентом',
         'fields' => [
-            ['key' => 'field_chero_title', 'label' => 'Заголовок', 'name' => 'content_hero_title', 'type' => 'text', 'required' => 1],
+            ['key' => 'field_phero_accent_title', 'label' => 'Заголовок', 'name' => 'hero_title', 'type' => 'text', 'required' => 1],
+            ['key' => 'field_phero_accent_desc', 'label' => 'Опис', 'name' => 'hero_desc', 'type' => 'textarea'],
+            ['key' => 'field_phero_accent_text', 'label' => 'Акцентний текст', 'name' => 'hero_accent_text', 'type' => 'textarea', 'rows' => 5],
+            ['key' => 'field_phero_accent_btn1_text', 'label' => 'Кнопка 1: текст', 'name' => 'hero_btn_1_text', 'type' => 'text'],
             [
-                'key' => 'field_chero_intro',
-                'label' => 'Основний текст',
-                'name' => 'content_hero_intro',
-                'type' => 'wysiwyg',
-                'toolbar' => 'basic',
-                'media_upload' => 0,
-                'tabs' => 'visual',
-            ],
-            ['key' => 'field_chero_highlight', 'label' => 'Акцентний текст', 'name' => 'content_hero_highlight', 'type' => 'textarea', 'rows' => 6],
-            ['key' => 'field_chero_btn1_text', 'label' => 'Кнопка 1: текст', 'name' => 'content_hero_btn_1_text', 'type' => 'text'],
-            [
-                'key' => 'field_chero_btn1_action',
+                'key' => 'field_phero_accent_btn1_action',
                 'label' => 'Кнопка 1: дія',
-                'name' => 'content_hero_btn_1_action',
+                'name' => 'hero_btn_1_action',
                 'type' => 'select',
                 'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
                 'default_value' => 'link',
                 'return_format' => 'value',
             ],
-            ['key' => 'field_chero_btn1_value', 'label' => 'Кнопка 1: значення', 'name' => 'content_hero_btn_1_value', 'type' => 'text'],
-            ['key' => 'field_chero_btn2_text', 'label' => 'Кнопка 2: текст', 'name' => 'content_hero_btn_2_text', 'type' => 'text'],
+            ['key' => 'field_phero_accent_btn1_value', 'label' => 'Кнопка 1: значення (URL / id / телефон)', 'name' => 'hero_btn_1_value', 'type' => 'text'],
+            ['key' => 'field_phero_accent_btn2_text', 'label' => 'Кнопка 2: текст', 'name' => 'hero_btn_2_text', 'type' => 'text'],
             [
-                'key' => 'field_chero_btn2_action',
+                'key' => 'field_phero_accent_btn2_action',
                 'label' => 'Кнопка 2: дія',
-                'name' => 'content_hero_btn_2_action',
+                'name' => 'hero_btn_2_action',
                 'type' => 'select',
                 'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
                 'default_value' => 'link',
                 'return_format' => 'value',
             ],
-            ['key' => 'field_chero_btn2_value', 'label' => 'Кнопка 2: значення', 'name' => 'content_hero_btn_2_value', 'type' => 'text'],
+            ['key' => 'field_phero_accent_btn2_value', 'label' => 'Кнопка 2: значення (URL / id / телефон)', 'name' => 'hero_btn_2_value', 'type' => 'text'],
             [
-                'key' => 'field_chero_bottom_text',
-                'label' => 'Текст під кнопками',
-                'name' => 'content_hero_bottom_text',
-                'type' => 'wysiwyg',
-                'toolbar' => 'basic',
-                'media_upload' => 0,
-                'tabs' => 'visual',
-            ],
-            [
-                'key' => 'field_chero_image',
+                'key' => 'field_phero_accent_image',
                 'label' => 'Зображення',
-                'name' => 'content_hero_image',
+                'name' => 'hero_image',
                 'type' => 'image',
                 'return_format' => 'array',
                 'preview_size' => 'medium',
-                'instructions' => 'Рекомендовано вертикальне фото близько 420x520px',
+                'instructions' => 'Мін. 800×600px',
             ],
-            ['key' => 'field_chero_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
+            ['key' => 'field_phero_accent_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
         ],
-        'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-content-hero']]],
+        'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-page-hero-accent']]],
     ]);
 
-    // ── GLC Block: Фото + текст ───────────────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_media_text',
         'title' => 'GLC Block: Фото + текст',
@@ -366,7 +382,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-media-text']]],
     ]);
 
-    // ── GLC Block: Етапи ─────────────────────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_steps',
         'title' => 'GLC Block: Етапи',
@@ -405,7 +420,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-steps']]],
     ]);
 
-    // ── GLC Block: Переваги / іконки ─────────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_features',
         'title' => 'GLC Block: Переваги / іконки',
@@ -419,7 +433,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-features']]],
     ]);
 
-    // ── GLC Block: Експрес CTA ───────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_express_cta',
         'title'  => 'GLC Block: Експрес CTA',
@@ -442,7 +455,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-express-cta']]],
     ]);
 
-    // ── GLC Block: Транспорт / іконки ────────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_transport_icons',
         'title' => 'GLC Block: Транспорт / іконки',
@@ -456,7 +468,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-transport-icons']]],
     ]);
 
-    // ── GLC Block: Прайс-таблиця ────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_price_table',
         'title'  => 'GLC Block: Прайс-таблиця',
@@ -484,7 +495,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-price-table']]],
     ]);
 
-    // ── GLC Block: Фотозвіт перевезень ──────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_photo_report',
         'title'  => 'GLC Block: Фотозвіт перевезень',
@@ -528,7 +538,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-photo-report']]],
     ]);
 
-    // ── GLC Block: Список послуг ────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_service_list',
         'title'  => 'GLC Block: Список послуг',
@@ -593,7 +602,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-service-list']]],
     ]);
 
-    // ── GLC Block: Картки послуг ─────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_service_cards',
         'title'  => 'GLC Block: Картки послуг',
@@ -638,7 +646,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-service-cards']]],
     ]);
 
-    // ── GLC Block: Варіанти перевезення ─────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_care',
         'title'  => 'GLC Block: Всі турботи',
@@ -727,7 +734,44 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-transport-variants']]],
     ]);
 
-    // ── GLC Block: FAQ (акордеон) ──────────────────────────
+    acf_add_local_field_group([
+        'key'    => 'group_glc_benefits_slider',
+        'title'  => 'GLC Block: Слайдер переваг',
+        'fields' => [
+            ['key' => 'field_bslider_title', 'label' => 'Заголовок секції', 'name' => 'section_title', 'type' => 'text', 'default_value' => 'Переваги:'],
+            [
+                'key'          => 'field_bslider_items',
+                'label'        => 'Слайди',
+                'name'         => 'items',
+                'type'         => 'repeater',
+                'layout'       => 'block',
+                'button_label' => 'Додати слайд',
+                'required'     => 1,
+                'sub_fields'   => [
+                    [
+                        'key'           => 'field_bslider_image',
+                        'label'         => 'Зображення',
+                        'name'          => 'image',
+                        'type'          => 'image',
+                        'return_format' => 'array',
+                        'preview_size'  => 'medium',
+                    ],
+                    ['key' => 'field_bslider_item_title', 'label' => 'Заголовок', 'name' => 'title', 'type' => 'text', 'required' => 1],
+                    [
+                        'key'       => 'field_bslider_item_desc',
+                        'label'     => 'Опис',
+                        'name'      => 'description',
+                        'type'      => 'textarea',
+                        'rows'      => 7,
+                        'new_lines' => 'br',
+                    ],
+                ],
+            ],
+            ['key' => 'field_bslider_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
+        ],
+        'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-benefits-slider']]],
+    ]);
+
     acf_add_local_field_group([
         'key'    => 'group_glc_faq',
         'title'  => 'GLC Block: FAQ',
@@ -751,7 +795,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-faq']]],
     ]);
 
-    // ── GLC Block: Наш досвід (карта) ────────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_int_experience',
         'title' => 'GLC Block: Наш досвід (карта)',
@@ -795,7 +838,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-int-experience']]],
     ]);
 
-    // ── GLC Block: Види транспорту ────────────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_transport_types',
         'title' => 'GLC Block: Види транспорту',
@@ -821,7 +863,17 @@ function glc_register_block_field_groups()
                     ],
                     ['key' => 'field_tt_item_title', 'label' => 'Назва', 'name' => 'title', 'type' => 'text', 'required' => 1],
                     ['key' => 'field_tt_item_desc', 'label' => 'Опис', 'name' => 'desc', 'type' => 'textarea'],
-                    ['key' => 'field_tt_item_link', 'label' => 'Посилання', 'name' => 'link', 'type' => 'url'],
+                    ['key' => 'field_tt_item_btn_text', 'label' => 'Текст кнопки', 'name' => 'btn_text', 'type' => 'text', 'default_value' => 'Детальніше про послугу'],
+                    [
+                        'key' => 'field_tt_item_btn_action',
+                        'label' => 'Дія кнопки',
+                        'name' => 'btn_action',
+                        'type' => 'select',
+                        'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                        'default_value' => 'link',
+                        'return_format' => 'value',
+                    ],
+                    ['key' => 'field_tt_item_btn_value', 'label' => 'Значення (URL / id / телефон)', 'name' => 'btn_value', 'type' => 'text'],
                 ],
             ],
             ['key' => 'field_tt_cta_btn_text',   'label' => 'CTA: Текст кнопки',                'name' => 'cta_btn_text',   'type' => 'text'],
@@ -841,7 +893,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-transport-types']]],
     ]);
 
-    // ── GLC Block: Типи вантажних автомобілів ─────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_truck_types',
         'title'  => 'GLC Block: Типи вантажних автомобілів',
@@ -885,7 +936,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-truck-types']]],
     ]);
 
-    // ── GLC Block: Головний слайдер ──────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_home_hero',
         'title'  => 'GLC Block: Головний слайдер',
@@ -917,19 +967,19 @@ function glc_register_block_field_groups()
                     ],
                     [
                         'key'           => 'field_hhero_focus_desktop',
-                        'label'         => 'Focus desktop',
+                        'label'         => 'Фокус (десктоп)',
                         'name'          => 'slide_focus_desktop',
                         'type'          => 'text',
-                        'instructions'  => 'CSS object-position. Examples: center center, 60% center, center top.',
+                        'instructions'  => 'Яка частина фото буде видима на десктопі. Приклади: center center (по центру), left center (ліворуч), right top (правий верх), 60% center.',
                         'placeholder'   => 'center center',
                         'wrapper'       => ['width' => '30'],
                     ],
                     [
                         'key'           => 'field_hhero_focus_mobile',
-                        'label'         => 'Focus mobile',
+                        'label'         => 'Фокус (мобільний)',
                         'name'          => 'slide_focus_mobile',
                         'type'          => 'text',
-                        'instructions'  => 'Optional mobile crop focus. Examples: 58% center, center top.',
+                        'instructions'  => 'Яка частина фото буде видима на мобільному. Якщо порожньо — використовується десктопне значення.',
                         'placeholder'   => 'center center',
                         'wrapper'       => ['width' => '30'],
                     ],
@@ -940,12 +990,16 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-home-hero']]],
     ]);
 
-    // ── GLC Block: Транспорт ──────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_vehicles',
         'title'  => 'GLC Block: Транспорт',
         'fields' => [
             ['key' => 'field_veh_heading', 'label' => 'Заголовок секції', 'name' => 'section_heading', 'type' => 'text', 'default_value' => 'Види транспорту в GLC:', 'instructions' => 'Слово GLC виділяється жирним автоматично'],
+            ['key' => 'field_veh_label_body',    'label' => 'Лейбл: тип кузова',   'name' => 'label_body_type',  'type' => 'text', 'default_value' => 'Тип кузова:',              'instructions' => 'Назва характеристики на картці'],
+            ['key' => 'field_veh_label_dims',    'label' => 'Лейбл: Д/Ш/В',        'name' => 'label_dimensions', 'type' => 'text', 'default_value' => 'Д/Ш/В:'],
+            ['key' => 'field_veh_label_volume',  'label' => 'Лейбл: об\'єм',       'name' => 'label_volume',     'type' => 'text', 'default_value' => 'Об\'єм:'],
+            ['key' => 'field_veh_label_pallets', 'label' => 'Лейбл: палетомісця',   'name' => 'label_pallets',    'type' => 'text', 'default_value' => 'Кількість палетомісць:'],
+            ['key' => 'field_veh_label_extra',   'label' => 'Лейбл: доп.опції',     'name' => 'label_additional', 'type' => 'text', 'default_value' => 'Доп.опції:'],
             [
                 'key'          => 'field_veh_items',
                 'label'        => 'Транспорт',
@@ -965,8 +1019,17 @@ function glc_register_block_field_groups()
                         'return_format' => 'array',
                         'preview_size'  => 'thumbnail',
                     ],
-                    ['key' => 'field_vitem_link',    'label' => 'Посилання',             'name' => 'vehicle_link',    'type' => 'url'],
                     ['key' => 'field_vitem_btn',     'label' => 'Текст кнопки',          'name' => 'vehicle_btn',     'type' => 'text', 'default_value' => 'Замовити авто'],
+                    [
+                        'key'           => 'field_vitem_btn_action',
+                        'label'         => 'Дія кнопки',
+                        'name'          => 'vehicle_btn_action',
+                        'type'          => 'select',
+                        'choices'       => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                        'default_value' => 'link',
+                        'return_format' => 'value',
+                    ],
+                    ['key' => 'field_vitem_btn_value', 'label' => 'Значення (URL / id / телефон)', 'name' => 'vehicle_btn_value', 'type' => 'text'],
                     ['key' => 'field_vitem_body',    'label' => 'Тип кузова',            'name' => 'spec_body_type',  'type' => 'text'],
                     ['key' => 'field_vitem_dims',    'label' => 'Д/Ш/В',                'name' => 'spec_dimensions', 'type' => 'text'],
                     ['key' => 'field_vitem_vol',     'label' => 'Об\'єм',               'name' => 'spec_volume',     'type' => 'text'],
@@ -979,7 +1042,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-vehicles']]],
     ]);
 
-    // ── GLC Block: Бігуча стрічка ─────────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_ticker',
         'title'  => 'GLC Block: Бігуча стрічка',
@@ -1001,7 +1063,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-ticker']]],
     ]);
 
-    // ── GLC Block: SEO текст ──────────────────────────
     acf_add_local_field_group([
         'key' => 'group_glc_seo_text',
         'title' => 'GLC Block: SEO текст',
@@ -1030,8 +1091,34 @@ function glc_register_block_field_groups()
         ],
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-seo-text']]],
     ]);
+    acf_add_local_field_group([
+        'key' => 'group_glc_seo_text_title',
+        'title' => 'GLC Block: SEO текст з заголовком',
+        'fields' => [
+            ['key' => 'field_seo_title_heading', 'label' => 'Заголовок', 'name' => 'section_title', 'type' => 'text', 'default_value' => 'Заголовок...'],
+            [
+                'key' => 'field_seo_title_content',
+                'label' => 'Текст',
+                'name' => 'seo_text',
+                'type' => 'wysiwyg',
+                'toolbar' => 'basic',
+                'media_upload' => 0,
+                'required' => 1,
+            ],
+            [
+                'key' => 'field_seo_title_preview_length',
+                'label' => 'Кількість символів до кнопки "Читати далі"',
+                'name' => 'preview_length',
+                'type' => 'number',
+                'default_value' => 300,
+                'min' => 100,
+                'max' => 1000,
+            ],
+            ['key' => 'field_seo_title_bg', 'label' => 'Фон секції', 'name' => 'section_bg', 'type' => 'select', 'choices' => ['page' => 'Основний', 'white' => 'Білий', 'light' => 'Підложка'], 'default_value' => 'page', 'return_format' => 'value'],
+        ],
+        'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-seo-text-title']]],
+    ]);
 
-    // ── GLC Block: Про компанію ───────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_about',
         'title'  => 'GLC Block: Про компанію',
@@ -1047,9 +1134,27 @@ function glc_register_block_field_groups()
             ],
             ['key' => 'field_about_quote', 'label' => 'Цитата (виділена)', 'name' => 'about_quote', 'type' => 'textarea', 'rows' => 3],
             ['key' => 'field_about_btn_outline_text', 'label' => 'Кнопка 1 — текст', 'name' => 'about_btn_outline_text', 'type' => 'text'],
-            ['key' => 'field_about_btn_outline_link', 'label' => 'Кнопка 1 — посилання', 'name' => 'about_btn_outline_link', 'type' => 'url'],
+            [
+                'key' => 'field_about_btn_outline_action',
+                'label' => 'Кнопка 1 — дія',
+                'name' => 'about_btn_outline_action',
+                'type' => 'select',
+                'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                'default_value' => 'link',
+                'return_format' => 'value',
+            ],
+            ['key' => 'field_about_btn_outline_value', 'label' => 'Кнопка 1 — значення (URL / id / телефон)', 'name' => 'about_btn_outline_value', 'type' => 'text'],
             ['key' => 'field_about_btn_primary_text', 'label' => 'Кнопка 2 — текст', 'name' => 'about_btn_primary_text', 'type' => 'text'],
-            ['key' => 'field_about_btn_primary_link', 'label' => 'Кнопка 2 — посилання', 'name' => 'about_btn_primary_link', 'type' => 'url'],
+            [
+                'key' => 'field_about_btn_primary_action',
+                'label' => 'Кнопка 2 — дія',
+                'name' => 'about_btn_primary_action',
+                'type' => 'select',
+                'choices' => ['link' => 'Посилання', 'popup' => 'Popup', 'phone' => 'Телефон', 'scroll' => 'Скрол'],
+                'default_value' => 'link',
+                'return_format' => 'value',
+            ],
+            ['key' => 'field_about_btn_primary_value', 'label' => 'Кнопка 2 — значення (URL / id / телефон)', 'name' => 'about_btn_primary_value', 'type' => 'text'],
             [
                 'key'           => 'field_about_image',
                 'label'         => 'Зображення',
@@ -1063,7 +1168,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-about']]],
     ]);
 
-    // ── GLC Block: Статистика ─────────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_stats',
         'title'  => 'GLC Block: Статистика',
@@ -1086,7 +1190,6 @@ function glc_register_block_field_groups()
         'location' => [[['param' => 'block', 'operator' => '==', 'value' => 'acf/glc-stats']]],
     ]);
 
-    // ── Сторінка: прапорець «Скоро» ─────────────────────────
     acf_add_local_field_group([
         'key'    => 'group_glc_page_coming_soon',
         'title'  => 'Налаштування сторінки',

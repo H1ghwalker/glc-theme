@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ── Бургер меню ──
+    // Burger menu
     const burger  = document.querySelector('.header__burger');
     const navRow  = document.querySelector('.header__row--nav');
-    const mobileQuery = window.matchMedia('(max-width: 1024px)');
+    const mobileQuery = window.matchMedia('(max-width: 860px)');
 
     function closeMobileMenu() {
         navRow?.classList.remove('is-open');
@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ── Мега-меню "Послуги": відкриття/закриття по кліку ──
     const megaParent = document.querySelector('.header__menu > li.has-mega');
     const megaToggle = megaParent && megaParent.querySelector('.mega-menu__toggle');
 
@@ -56,9 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ── Мега-меню "Послуги": перемикання категорій ──
     document.querySelectorAll('.mega-menu__cat-item').forEach(function (catItem) {
         catItem.addEventListener('mouseenter', function () {
+            if (mobileQuery.matches) return;
+
             const megaMenu = catItem.closest('.mega-menu');
             if (!megaMenu) return;
 
@@ -72,25 +72,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    document.querySelectorAll('.mega-menu__cat-item.has-children > a').forEach(function (catLink) {
-        catLink.addEventListener('click', function (e) {
-            if (!mobileQuery.matches) return;
+    document.addEventListener('click', function (e) {
+        if (!mobileQuery.matches) return;
 
-            e.preventDefault();
+        const catToggle = e.target.closest('.mega-menu__cat-toggle');
+        if (!catToggle) return;
 
-            const catItem = catLink.closest('.mega-menu__cat-item');
-            const megaMenu = catLink.closest('.mega-menu');
-            if (!catItem || !megaMenu) return;
+        e.preventDefault();
+        e.stopPropagation();
 
-            const isActive = catItem.classList.contains('is-active');
-            megaMenu.querySelectorAll('.mega-menu__cat-item').forEach(function (item) {
-                item.classList.remove('is-active');
-            });
+        const catItem = catToggle.closest('.mega-menu__cat-item');
+        const megaMenu = catToggle.closest('.mega-menu');
+        if (!catItem || !megaMenu) return;
 
-            if (!isActive) {
-                catItem.classList.add('is-active');
-            }
+        const isActive = catItem.classList.contains('is-active');
+        megaMenu.querySelectorAll('.mega-menu__cat-item').forEach(function (item) {
+            item.classList.remove('is-active');
         });
+
+        if (!isActive) {
+            catItem.classList.add('is-active');
+        }
     });
 
     mobileQuery.addEventListener('change', function () {
@@ -99,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function () {
         resetMobileMega();
     });
 
-    // ── Helpers ──
     function syncNavVisibility(swiper, prev, next) {
         const hide = swiper.isBeginning && swiper.isEnd;
         [prev, next].forEach(el => { if (el) el.style.display = hide ? 'none' : ''; });
@@ -126,6 +127,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (raw.charAt(0) === '#') {
             return raw.slice(1);
+        }
+
+        if (!raw.includes('#') && !raw.startsWith('/') && !/^[a-z][a-z0-9+.-]*:/i.test(raw)) {
+            return raw;
         }
 
         try {
@@ -204,15 +209,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // ── Photo Report слайдер ──
+    // Photo Report slider
     if (document.querySelector('.photo-report__swiper')) {
         hoverSwap('.photo-report__nav');
         const prPrev = document.querySelector('.photo-report__nav--prev');
         const prNext = document.querySelector('.photo-report__nav--next');
+        const prCount = document.querySelectorAll('.photo-report__swiper .swiper-slide').length;
 
         new Swiper('.photo-report__swiper', {
             slidesPerView: 3,
             spaceBetween: 16,
+            speed: 500,
+            rewind: prCount > 1,
+            autoplay: prCount > 1 ? { delay: 4000, disableOnInteraction: false } : false,
             navigation: {
                 prevEl: '.photo-report__nav--prev',
                 nextEl: '.photo-report__nav--next',
@@ -234,15 +243,54 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ── Vehicles слайдер ──
+    // Benefits slider
+    document.querySelectorAll('.benefits-slider').forEach(function (section) {
+        const swiperEl = section.querySelector('.benefits-slider__swiper');
+        if (!swiperEl) return;
+
+        hoverSwap('.benefits-slider__nav');
+
+        const bPrev = section.querySelector('.benefits-slider__nav--prev');
+        const bNext = section.querySelector('.benefits-slider__nav--next');
+        const bPagination = section.querySelector('.benefits-slider__pagination');
+        const bCount = section.querySelectorAll('.benefits-slider__swiper .swiper-slide').length;
+
+        new Swiper(swiperEl, {
+            slidesPerView: 1,
+            spaceBetween: 72,
+            autoHeight: true,
+            speed: 500,
+            rewind: bCount > 1,
+            autoplay: bCount > 1 ? { delay: 4000, disableOnInteraction: false } : false,
+            navigation: {
+                prevEl: bPrev,
+                nextEl: bNext,
+            },
+            pagination: {
+                el: bPagination,
+                clickable: true,
+            },
+            on: {
+                init(sw)        { syncNavVisibility(sw, bPrev, bNext); },
+                breakpoint(sw)  { syncNavVisibility(sw, bPrev, bNext); },
+                slideChange(sw) { syncNavVisibility(sw, bPrev, bNext); },
+            },
+        });
+    });
+
+    // Vehicles slider
     if (document.querySelector('.vehicles__swiper')) {
         hoverSwap('.vehicles__nav');
         const vPrev = document.querySelector('.vehicles__nav--prev');
         const vNext = document.querySelector('.vehicles__nav--next');
+        const vCount = document.querySelectorAll('.vehicles__swiper .swiper-slide').length;
 
         new Swiper('.vehicles__swiper', {
             slidesPerView: 3,
             spaceBetween: 24,
+            speed: 500,
+            rewind: vCount > 1,
+            autoplay: vCount > 1 ? { delay: 4000, disableOnInteraction: false } : false,
             navigation: {
                 prevEl: '.vehicles__nav--prev',
                 nextEl: '.vehicles__nav--next',
@@ -264,15 +312,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ── Cargo Slider ──
+    // Cargo slider
     if (document.querySelector('.cargo-slider__swiper')) {
         hoverSwap('.cargo-slider__nav');
         const cPrev = document.querySelector('.cargo-slider__nav--prev');
         const cNext = document.querySelector('.cargo-slider__nav--next');
+        const cCount = document.querySelectorAll('.cargo-slider__swiper .swiper-slide').length;
 
         new Swiper('.cargo-slider__swiper', {
             slidesPerView: 3,
             spaceBetween: 15,
+            speed: 500,
+            rewind: cCount > 1,
+            autoplay: cCount > 1 ? { delay: 4000, disableOnInteraction: false } : false,
             navigation: {
                 prevEl: '.cargo-slider__nav--prev',
                 nextEl: '.cargo-slider__nav--next',
@@ -294,15 +346,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ── Reviews: слайдер + розгортання тексту ──
+    // Reviews slider
     if (document.querySelector('.reviews__swiper')) {
         hoverSwap('.reviews__nav');
         const rPrev = document.querySelector('.reviews__nav--prev');
         const rNext = document.querySelector('.reviews__nav--next');
+        const rCount = document.querySelectorAll('.reviews__swiper .swiper-slide').length;
 
         new Swiper('.reviews__swiper', {
             slidesPerView: 3,
             spaceBetween: 24,
+            speed: 500,
+            rewind: rCount > 1,
+            autoplay: rCount > 1 ? { delay: 4000, disableOnInteraction: false } : false,
             navigation: {
                 prevEl: '.reviews__nav--prev',
                 nextEl: '.reviews__nav--next',
@@ -323,7 +379,6 @@ document.addEventListener('DOMContentLoaded', function () {
             },
         });
 
-        // Показуємо toggle тільки якщо текст обрізається
         document.querySelectorAll('.review-card').forEach(card => {
             const text   = card.querySelector('.review-card__text');
             const toggle = card.querySelector('.review-card__toggle');
@@ -333,7 +388,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Розгортання/згортання
         document.addEventListener('click', function(e) {
             const btn = e.target.closest('.review-card__toggle');
             if (!btn) return;
@@ -344,7 +398,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ── Services Hero: один Swiper для зображень ──
+    // Services Hero slider
     if (document.querySelector('.services-hero__swiper')) {
         hoverSwap('.services-hero__nav');
         const shPrev  = document.querySelector('.services-hero__nav--prev');
@@ -370,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function () {
         shNext?.addEventListener('click', () => servicesSwiper.slideNext());
     }
 
-    // ── Hero: один Swiper ──
+    // Hero slider
     if (document.querySelector('.hero__swiper')) {
         hoverSwap('.hero__nav');
         const hPrev  = document.querySelector('.hero__nav--prev');
@@ -396,7 +450,6 @@ document.addEventListener('DOMContentLoaded', function () {
         hNext?.addEventListener('click', () => heroSwiper.slideNext());
     }
 
-    // ── Scroll to top ──
     const scrollTopBtn = document.getElementById('scrollTopBtn');
     if (scrollTopBtn) {
         scrollTopBtn.addEventListener('click', function () {
@@ -404,10 +457,12 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ── Services: sidebar tabs ──
+    // Service tabs
     document.querySelectorAll('.svc-sidebar__item').forEach(btn => {
         btn.addEventListener('click', function () {
             const target = this.getAttribute('data-tab');
+            if (!target) return;
+
             const section = this.closest('.svc-section');
             if (!section) return;
 
@@ -420,7 +475,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ── Services: accordion ──
+    // Service accordion
     document.querySelectorAll('.svc-accordion__head').forEach(head => {
         head.addEventListener('click', function () {
             const item = this.closest('.svc-accordion__item');
@@ -449,7 +504,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // ── Аналітика: конверсії ──
+    // Analytics
     document.addEventListener('click', function (e) {
         var link = e.target.closest('a[href^="tel:"]');
         if (!link) return;
@@ -458,6 +513,17 @@ document.addEventListener('DOMContentLoaded', function () {
         window.dataLayer.push({
             event: 'click_phone',
             phone_number: link.getAttribute('href').replace('tel:', ''),
+        });
+    });
+
+    document.addEventListener('click', function (e) {
+        var link = e.target.closest('a[href^="mailto:"]');
+        if (!link) return;
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'click_email',
+            email: link.getAttribute('href').replace('mailto:', '').split('?')[0],
         });
     });
 

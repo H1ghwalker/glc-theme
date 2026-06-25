@@ -8,11 +8,11 @@ $col_2         = get_field('col_2_label') ?: 'Ціна 1';
 $col_3         = get_field('col_3_label') ?: 'Ціна 2';
 $rows          = get_field('rows');
 
-if (empty($rows)) : ?>
-    <div style="padding:40px;text-align:center;background:#f5f5f5;border:2px dashed #ccc">
-        <p style="color:#999">GLC: Прайс — заповніть рядки таблиці в правій панелі &rarr;</p>
-    </div>
-<?php return; endif; ?>
+if (empty($rows)) {
+    glc_block_placeholder('GLC: Прайс — заповніть рядки таблиці в правій панелі →');
+    return;
+}
+?>
 
 <section class="price-table section section--bg-<?php echo esc_attr($bg); ?>">
     <div class="container">
